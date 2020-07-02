@@ -35,9 +35,7 @@ public class Employee {
      */
     public Employee() {
     }
-    //Comentario prueba commit
-    //segundo committ   
-    // Tercer comentario de prueba
+
     /**
      * Contructor recibe ID de Employee
      *
@@ -46,6 +44,23 @@ public class Employee {
     public Employee(int empNo) {
         this.empNo = empNo;
     }
+    
+    /**
+     *Contructor recibe todos los campos de Employee
+    *@param  int empNo numero correlativo
+    *@param GregorianCalendar birthDate fecha de nacimiento
+    *@param String firstName primer nombre
+    *@param String lastName primer apellido
+    *@param char gender permite M o F 
+    *@param GregorianCalendar hireDate fecha de pago
+    *@param Department positionNo;
+    *@param Position deptNo;
+    *@param String UserCreate usuario de auditoria crear
+    *@param GregorianCalendar dateCreate fecha de creacion
+    *@param String userChange usuario de auditoria actualizar
+    *@param GregorianCalendar dateChange fecha de actualizacion
+     * 
+     */
 
     public Employee(int empNo, GregorianCalendar birthDate, String firstName, String lastName, char gender, GregorianCalendar hireDate, Department positionNo, Position deptNo, String UserCreate, GregorianCalendar dateCreate, String userChange, GregorianCalendar dateChange) {
         this.empNo = empNo;
