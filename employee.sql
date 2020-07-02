@@ -96,8 +96,8 @@ CREATE TABLE emp_rol_rol (
 ) ;
 
 CREATE TABLE emp_usr_user (
-    usr_user_no       INT             	NOT NULL,
-    usr_user 		   FLOAT(7,2)		NOT NULL,
+    usr_user_no        INT             	NOT NULL,
+    usr_user 		   VARCHAR(10)		NOT NULL,
     user_password	   VARCHAR(130) 	NOT NULL,
     usr_rol_no 		   INT 				NOT NULL,
 	A_user_create 	   VARCHAR(10)      NOT NULL,
