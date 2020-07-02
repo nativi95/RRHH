@@ -7,8 +7,6 @@ SELECT 'CREATING DATABASE STRUCTURE' as 'INFO';
 DROP TABLE IF EXISTS emp_emp_employee,
                      emp_dep_department,
                      emp_dmr_dept_manager,
-                     emp_dem_dept_emp, 
-                     emp_pmp_pos_emp, 
                      emp_pay_payroll,
                      emp_bil_bill,
                      emp_usr_user,
@@ -18,20 +16,7 @@ DROP TABLE IF EXISTS emp_emp_employee,
 /*!50503 set default_storage_engine = InnoDB */;
 /*!50503 select CONCAT('storage engine: ', @@default_storage_engine) as INFO */;
 
-CREATE TABLE emp_emp_employee (
-    emp_emp_no      		INT             NOT NULL,
-    emp_birth_date  	DATE            NOT NULL,
-    emp_first_name  	VARCHAR(14)     NOT NULL,
-    emp_last_name   	VARCHAR(16)     NOT NULL,
-    emp_gender      	ENUM ('M','F')  NOT NULL,    
-    emp_hire_date   	DATE            NOT NULL,
-	A_user_create 	    VARCHAR(10)     NOT NULL,
-    A_date_create       DATE     		NOT NULL,
-    A_user_change 	    VARCHAR(10)  	NOT NULL,
-    A_date_change       DATE     		NOT NULL,
-    PRIMARY KEY (emp_emp_no)
-    
-);
+
 
 CREATE TABLE emp_dep_department (
     dep_dept_no     	CHAR(4)         NOT NULL,
@@ -45,20 +30,6 @@ CREATE TABLE emp_dep_department (
 );
 
 
-CREATE TABLE emp_dem_dept_emp (
-    dmr_emp_no      	INT             NOT NULL,
-    dmr_dept_no     	CHAR(4)         NOT NULL,
-    dmr_from_date   	DATE            NOT NULL,
-    dmr_to_date     	DATE            NOT NULL,
-	A_user_create 	    VARCHAR(10)     NOT NULL,
-    A_date_create       DATE     		NOT NULL,
-    A_user_change 	    VARCHAR(10)  	NOT NULL,
-    A_date_change       DATE     		NOT NULL,
-    FOREIGN KEY (dmr_emp_no)  REFERENCES emp_emp_employee  (emp_emp_no)  ON DELETE CASCADE,
-    FOREIGN KEY (dmr_dept_no) REFERENCES emp_dep_department (dep_dept_no) ON DELETE CASCADE
- 
-);
-
 CREATE TABLE emp_pos_position (
     pos_position_no     INT             NOT NULL,
     pos_position       	VARCHAR(50)     NOT NULL,
@@ -68,20 +39,23 @@ CREATE TABLE emp_pos_position (
     A_date_change       DATE     		NOT NULL,
     PRIMARY KEY (pos_position_no)
 ); 
-
-
-CREATE TABLE emp_pmp_pos_emp (
-    pmp_position_no     INT             NOT NULL,
-    pmp_emp_no          INT             NOT NULL,
-    pmp_from_date   	DATE            NOT NULL,
-    pmp_to_date     	DATE            NOT NULL,
+CREATE TABLE emp_emp_employee (
+    emp_emp_no      	INT             NOT NULL,
+    emp_birth_date  	DATE            NOT NULL,
+    emp_first_name  	VARCHAR(14)     NOT NULL,
+    emp_last_name   	VARCHAR(16)     NOT NULL,
+    emp_gender      	ENUM ('M','F')  NOT NULL,    
+    emp_hire_date   	DATE            NOT NULL,
+    emp_position_no     INT             NOT NULL,
+    emp_dept_no     	CHAR(4)         NOT NULL,
 	A_user_create 	    VARCHAR(10)     NOT NULL,
     A_date_create       DATE     		NOT NULL,
     A_user_change 	    VARCHAR(10)  	NOT NULL,
     A_date_change       DATE     		NOT NULL,
-	FOREIGN KEY (pmp_emp_no)  REFERENCES emp_emp_employee  (emp_emp_no)  ON DELETE CASCADE,
-    FOREIGN KEY (pmp_position_no) REFERENCES emp_pos_position (pos_position_no) ON DELETE CASCADE
-); 
+    PRIMARY KEY (emp_emp_no),
+    FOREIGN KEY (emp_position_no) REFERENCEs emp_pos_position(pos_position_no) ON update cascade on delete cascade,
+    FOREIGN KEY (emp_dept_no) REFERENCES emp_dep_department(dep_dept_no) ON update cascade on delete cascade
+);
 
 CREATE TABLE emp_pay_payroll (
 	pay_payroll_no		INT				NOT NULL,

@@ -20,6 +20,8 @@ public class Employee {
     private String lastName;//primer apellido
     private char gender; // permite M o F 
     private GregorianCalendar hireDate;// fecha de pago
+    private Department positionNo;
+    private Position deptNo;
 
     //+++++++++++++++++auditoria++++++++++++++++++++
     private String UserCreate; //usuario de auditoria crear
@@ -45,33 +47,22 @@ public class Employee {
         this.empNo = empNo;
     }
 
-    /**
-     * Contructor de Employee con parametros
-     * 
-     * @param int empNo numero correlativo 
-     * @param GregorianCalendar birthDate fecha nacimiento
-     * @param String firstName primer nombre String lastName primer apellido
-     * @param GregorianCalendar hireDate fecha de pago
-     * @param String UserCreate usuario de auditoria crea
-     * @param GregorianCalendar dateCreate fecha de creacion
-     * @param String userChange usuario de auditoria actualizar
-     * @param GregorianCalendar dateChange fecha de actualizacion
-     */
-    public Employee(int empNo, GregorianCalendar birthDate, String firstName, String lastName, char gender, GregorianCalendar hireDate, String UserCreate, GregorianCalendar dateCreate, String userChange, GregorianCalendar dateChange) {
+    public Employee(int empNo, GregorianCalendar birthDate, String firstName, String lastName, char gender, GregorianCalendar hireDate, Department positionNo, Position deptNo, String UserCreate, GregorianCalendar dateCreate, String userChange, GregorianCalendar dateChange) {
         this.empNo = empNo;
         this.birthDate = birthDate;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.hireDate = hireDate;
+        this.positionNo = positionNo;
+        this.deptNo = deptNo;
         this.UserCreate = UserCreate;
         this.dateCreate = dateCreate;
         this.userChange = userChange;
         this.dateChange = dateChange;
     }
-    
-    //+++++++++++++++++++++++++++Get y Set++++++++++++++++++++++++++++++
 
+    //+++++++++++++++++++++++++++Get y Set++++++++++++++++++++++++++++++
     public int getEmpNo() {
         return empNo;
     }
@@ -152,12 +143,32 @@ public class Employee {
         this.dateChange = dateChange;
     }
     
+    
+    
+    
+
+
+
+    public Department getPositionNo() {
+        return positionNo;
+    }
+
+    public void setPositionNo(Department positionNo) {
+        this.positionNo = positionNo;
+    }
+
+    public Position getDeptNo() {
+        return deptNo;
+    }
+
+    public void setDeptNo(Position deptNo) {
+        this.deptNo = deptNo;
+    }
     //+++++++++++++++++++++toString+++++++++++++++++++++++++++++++
 
     @Override
     public String toString() {
-        return "Employee{" + "empNo=" + empNo + ", birthDate=" + birthDate + ", firstName=" + firstName + ", lastName=" + lastName + ", gender=" + gender + ", hireDate=" + hireDate + ", UserCreate=" + UserCreate + ", dateCreate=" + dateCreate + ", userChange=" + userChange + ", dateChange=" + dateChange + '}';
+        return "Employee{" + "empNo=" + empNo + ", birthDate=" + birthDate + ", firstName=" + firstName + ", lastName=" + lastName + ", gender=" + gender + ", hireDate=" + hireDate + ", positionNo=" + positionNo + ", deptNo=" + deptNo + ", UserCreate=" + UserCreate + ", dateCreate=" + dateCreate + ", userChange=" + userChange + ", dateChange=" + dateChange + '}';
     }
-    
-
+  
 }
