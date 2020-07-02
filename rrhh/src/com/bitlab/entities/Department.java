@@ -13,7 +13,7 @@ import java.util.GregorianCalendar;
  */
 public class Department {
     //++++++++++++atributos++++++++++++++++++++++
-    private int deptNo;// llave primaria de departamento
+    private String deptNo;// llave primaria de departamento
     private String deptName;// nombre de departamanto
 	//+++++++++++++++++auditoria++++++++++++++++++++
     private String UserCreate; //usuario de auditoria crear
@@ -31,15 +31,15 @@ public class Department {
      /**
      * Contructor recibe ID de Department
      *
-     * @param int id
+     * @param String id
      */
-    public Department(int deptNo) {
+    public Department(String deptNo) {
         this.deptNo = deptNo;
     }
 
     /**
      *Contructor recibe todos los campos de Department
-    *@param int deptNo llave primaria de departamento
+    *@param String deptNo llave primaria de departamento
     *@param String deptName nombre de departamanto 
     *@param String UserCreate usuario de auditoria crear
     *@param GregorianCalendar dateCreate fecha de creacion
@@ -47,7 +47,7 @@ public class Department {
     *@param GregorianCalendar dateChange fecha de actualizacion
      * 
      */
-    public Department(int deptNo, String deptName, String UserCreate, GregorianCalendar dateCreate, String userChange, GregorianCalendar dateChange) {
+    public Department(String deptNo, String deptName, String UserCreate, GregorianCalendar dateCreate, String userChange, GregorianCalendar dateChange) {
         this.deptNo = deptNo;
         this.deptName = deptName;
         this.UserCreate = UserCreate;
@@ -58,11 +58,11 @@ public class Department {
     
     //+++++++++++++++++++++++++++Get y Set++++++++++++++++++++++++++++++
 
-    public int getDeptNo() {
+    public String getDeptNo() {
         return deptNo;
     }
 
-    public void setDeptNo(int deptNo) {
+    public void setDeptNo(String deptNo) {
         this.deptNo = deptNo;
     }
 
