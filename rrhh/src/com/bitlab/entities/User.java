@@ -9,21 +9,44 @@ import java.util.GregorianCalendar;
 
 /**
  *
- * @author Liliana De Santos
+ * @author CarlosAlex
  */
 public class User {
 
-    private int userNo;
-    private float user;
-    private String password;
-    private Rol rolNo;
+     //-------------------Atributos------------------------------
+    private int userNo; // Indica numero de identificacion de usuario
+    private String user; // Indica tipo de usuario 
+    private String password; // Indica la contraseña de identificacion de usuario
+    private Rol rolNo; // Recibe los atributos de la clase Rol
 
+    //-----------------------Auditoria---------------------------
     private String UserCreate; //usuario de auditoria crear
     private GregorianCalendar dateCreate;//fecha de creacion
     private String userChange;//usuario de auditoria actualizar
     private GregorianCalendar dateChange;//fecha de actualizacion
 
-    public User(int userNo, float user, String password, Rol rolNo, String UserCreate, GregorianCalendar dateCreate, String userChange, GregorianCalendar dateChange) {
+     //-----------------------Constructores-------------------------
+    /**
+     * Constructor vacio, crea un nuevo objeto User vacio
+     */
+    public User() {
+    }
+    
+     /**
+     *Contructor recibe todos los campos de User 
+     * 
+    *@param int userNo recibe numero de usuario 
+    *@paramString user recibe el tipo de usuario
+    *@param String password recibe la contraseña del usuario 
+    *@param  Rol rolNo recibe el numero de rol y se lo envia a la clase Rol
+   
+    *@param String UserCreate usuario de auditoria crear
+    *@param GregorianCalendar dateCreate fecha de creacion
+    *@param String userChange usuario de auditoria actualizar
+    *@param GregorianCalendar dateChange fecha de actualizacion
+     * 
+     */
+    public User(int userNo, String user, String password, Rol rolNo, String UserCreate, GregorianCalendar dateCreate, String userChange, GregorianCalendar dateChange) {
         this.userNo = userNo;
         this.user = user;
         this.password = password;
@@ -39,9 +62,8 @@ public class User {
         this.userNo = userNo;
     }
 
-    public User() {
-    }
-
+    
+ //------------------------------Getters and Setters----------------------------
     public int getUserNo() {
         return userNo;
     }
@@ -50,11 +72,11 @@ public class User {
         this.userNo = userNo;
     }
 
-    public float getUser() {
+    public String getUser() {
         return user;
     }
 
-    public void setUser(float user) {
+    public void setUser(String user) {
         this.user = user;
     }
 
@@ -106,6 +128,7 @@ public class User {
         this.dateChange = dateChange;
     }
 
+    //------------------------toString------------------------------
     @Override
     public String toString() {
         return "User{" + "userNo=" + userNo + ", user=" + user + ", password=" + password + ", rolNo=" + rolNo + ", UserCreate=" + UserCreate + ", dateCreate=" + dateCreate + ", userChange=" + userChange + ", dateChange=" + dateChange + '}';

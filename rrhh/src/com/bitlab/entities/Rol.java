@@ -9,31 +9,49 @@ import java.util.GregorianCalendar;
 
 /**
  *
- * @author Liliana De Santos
+ * @author CarlosAlex
  */
 public class Rol {
-    private int RolRolNo;        
-    private String RolRol;
-    private String UserChange;
-  
+    //-------------------Atributos------------------------------
+    private int RolRolNo; // Indica numero de rol del empleado        
+    private String RolRol;// Indica tipo de rol del empleado 
+   
+  //-----------------------Auditoria---------------------------
     private String UserCreate; //usuario de auditoria crear
     private GregorianCalendar dateCreate;//fecha de creacion
     private String userChange;//usuario de auditoria actualizar
     private GregorianCalendar dateChange;//fecha de actualizacion    
 
+     //-----------------------Constructores-------------------------
+    /**
+     * Constructor vacio, crea un nuevo objeto Rol vacio
+     */
     public Rol() {
     }
 
-    public Rol(int RolRolNo, String RolRol, String UserChange, String UserCreate, GregorianCalendar dateCreate, String userChange, GregorianCalendar dateChange) {
+      /**
+     *Contructor recibe todos los campos de Rol 
+     * 
+    *@param int RolRolNo recibe el numero de rol de empleado 
+    *@param String RolRol  recibe el tipo de rol del empleado 
+   
+   
+    *@param String UserCreate usuario de auditoria crear
+    *@param GregorianCalendar dateCreate fecha de creacion
+    *@param String userChange usuario de auditoria actualizar
+    *@param GregorianCalendar dateChange fecha de actualizacion
+     * 
+     */
+    public Rol(int RolRolNo, String RolRol, String UserCreate, GregorianCalendar dateCreate, String userChange, GregorianCalendar dateChange) {
         this.RolRolNo = RolRolNo;
         this.RolRol = RolRol;
-        this.UserChange = UserChange;
         this.UserCreate = UserCreate;
         this.dateCreate = dateCreate;
         this.userChange = userChange;
         this.dateChange = dateChange;
     }
 
+     //------------------------------Getters and Setters----------------------------
     public int getRolRolNo() {
         return RolRolNo;
     }
@@ -48,14 +66,6 @@ public class Rol {
 
     public void setRolRol(String RolRol) {
         this.RolRol = RolRol;
-    }
-
-    public String getUserChange() {
-        return UserChange;
-    }
-
-    public void setUserChange(String UserChange) {
-        this.UserChange = UserChange;
     }
 
     public String getUserCreate() {
@@ -90,6 +100,14 @@ public class Rol {
         this.dateChange = dateChange;
     }
 
+    //------------------------toString------------------------------
+    @Override
+    public String toString() {
+        return "Rol{" + "RolRolNo=" + RolRolNo + ", RolRol=" + RolRol + ", UserCreate=" + UserCreate + ", dateCreate=" + dateCreate + ", userChange=" + userChange + ", dateChange=" + dateChange + '}';
+    }
+
+    
+    
     
     
 
