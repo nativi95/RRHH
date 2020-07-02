@@ -11,11 +11,11 @@ import java.util.GregorianCalendar;
  *
  * @author Andrea
  */
-public class Payroll {
-    private int payrollNo; // Numero de planilla
-    private Employee empNo; // Llave de empleado
-    private GregorianCalendar fromDate; // Fecha desde
-    private GregorianCalendar toDate; //Fecha hasta
+public class Bill {
+     //++++++++++++atributos++++++++++++++++++++++
+    private Payroll payrollNo; //Llave de planilla
+    private double bilValue; // Valor
+    private String bilDescription; //Descripcion del valor
     
     //+++++++++++++++++auditoria++++++++++++++++++++
     private String UserCreate; //usuario de auditoria crear
@@ -23,54 +23,41 @@ public class Payroll {
     private String userChange;//usuario de auditoria actualizar
     private GregorianCalendar dateChange;//fecha de actualizacion
 
-    public Payroll() {
-    }
-
-    public Payroll(int payrollNo, Employee empNo, GregorianCalendar fromDate, GregorianCalendar toDate, String UserCreate, GregorianCalendar dateCreate, String userChange, GregorianCalendar dateChange) {
+    public Bill(Payroll payrollNo, double bilValue, String bilDescription, String UserCreate, GregorianCalendar dateCreate, String userChange, GregorianCalendar dateChange) {
         this.payrollNo = payrollNo;
-        this.empNo = empNo;
-        this.fromDate = fromDate;
-        this.toDate = toDate;
+        this.bilValue = bilValue;
+        this.bilDescription = bilDescription;
         this.UserCreate = UserCreate;
         this.dateCreate = dateCreate;
         this.userChange = userChange;
         this.dateChange = dateChange;
     }
 
-    public Payroll(int payrollNo) {
-        this.payrollNo = payrollNo;
+    public Bill() {
     }
 
-    public int getPayrollNo() {
+    public Payroll getPayrollNo() {
         return payrollNo;
     }
 
-    public void setPayrollNo(int payrollNo) {
+    public void setPayrollNo(Payroll payrollNo) {
         this.payrollNo = payrollNo;
     }
 
-    public Employee getEmpNo() {
-        return empNo;
+    public double getBilValue() {
+        return bilValue;
     }
 
-    public void setEmpNo(Employee empNo) {
-        this.empNo = empNo;
+    public void setBilValue(double bilValue) {
+        this.bilValue = bilValue;
     }
 
-    public GregorianCalendar getFromDate() {
-        return fromDate;
+    public String getBilDescription() {
+        return bilDescription;
     }
 
-    public void setFromDate(GregorianCalendar fromDate) {
-        this.fromDate = fromDate;
-    }
-
-    public GregorianCalendar getToDate() {
-        return toDate;
-    }
-
-    public void setToDate(GregorianCalendar toDate) {
-        this.toDate = toDate;
+    public void setBilDescription(String bilDescription) {
+        this.bilDescription = bilDescription;
     }
 
     public String getUserCreate() {
@@ -107,8 +94,12 @@ public class Payroll {
 
     @Override
     public String toString() {
-        return "Payroll{" + "payrollNo=" + payrollNo + ", empNo=" + empNo + ", fromDate=" + fromDate + ", toDate=" + toDate + ", UserCreate=" + UserCreate + ", dateCreate=" + dateCreate + ", userChange=" + userChange + ", dateChange=" + dateChange + '}';
+        return "Bill{" + "payrollNo=" + payrollNo + ", bilValue=" + bilValue + ", bilDescription=" + bilDescription + ", UserCreate=" + UserCreate + ", dateCreate=" + dateCreate + ", userChange=" + userChange + ", dateChange=" + dateChange + '}';
     }
+
+    
+
+    
     
     
 }
