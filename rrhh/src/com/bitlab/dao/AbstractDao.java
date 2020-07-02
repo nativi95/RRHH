@@ -44,13 +44,6 @@ public abstract class AbstractDao<T> {
      */
     public abstract String getTableName();
 
-    /**
-     * metodo abstracto retorna los nombres de los atributos 
-     * como resultado de consultas
-     * @return  String[] 
-     */
-    public abstract String[] getTableAtributtes();
-
      /**
      * metodo abstracto retorna los nombres de las columnas 
      * para sentencias update o insert
@@ -138,12 +131,12 @@ public abstract class AbstractDao<T> {
     /**
      * metodo que permite construir la sentencia estandar SELECT a partir  de los siguientes metodos:
      * getTableName() ingresar nombre de tabla
-     * getTableAtributtes() nombre de las columnas en orden
+     * getTableColumns() nombre de las columnas en orden
      * @return String sql
      */
     protected String getFindAllSQL() {
         String sql = SQL_FINDALL;
-        sql.replace("[tabla]", getTableName()).replace("[campos]", Arrays.toString(getTableAtributtes()));
+        sql.replace("[tabla]", getTableName()).replace("[campos]", Arrays.toString(getTableColumns()));
         sql = sql.replace("[", " ").replace("]", " ");
         return sql;
     }

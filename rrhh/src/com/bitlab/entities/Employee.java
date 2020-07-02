@@ -20,8 +20,8 @@ public class Employee {
     private String lastName;//primer apellido
     private char gender; // permite M o F 
     private GregorianCalendar hireDate;// fecha de pago
-    private Department positionNo;
-    private Position deptNo;
+    private Position positionNo;
+    private Department deptNo;
 
     //+++++++++++++++++auditoria++++++++++++++++++++
     private String UserCreate; //usuario de auditoria crear
@@ -53,8 +53,8 @@ public class Employee {
     *@param String lastName primer apellido
     *@param char gender permite M o F 
     *@param GregorianCalendar hireDate fecha de pago
-    *@param Department positionNo;
-    *@param Position deptNo;
+    *@param Position positionNo;
+    *@param Department deptNo;
     *@param String UserCreate usuario de auditoria crear
     *@param GregorianCalendar dateCreate fecha de creacion
     *@param String userChange usuario de auditoria actualizar
@@ -62,7 +62,7 @@ public class Employee {
      * 
      */
 
-    public Employee(int empNo, GregorianCalendar birthDate, String firstName, String lastName, char gender, GregorianCalendar hireDate, Department positionNo, Position deptNo, String UserCreate, GregorianCalendar dateCreate, String userChange, GregorianCalendar dateChange) {
+    public Employee(int empNo, GregorianCalendar birthDate, String firstName, String lastName, char gender, GregorianCalendar hireDate, Position positionNo, Department deptNo, String UserCreate, GregorianCalendar dateCreate, String userChange, GregorianCalendar dateChange) {
         this.empNo = empNo;
         this.birthDate = birthDate;
         this.firstName = firstName;
@@ -164,19 +164,19 @@ public class Employee {
 
 
 
-    public Department getPositionNo() {
+    public Position getPositionNo() {
         return positionNo;
     }
 
-    public void setPositionNo(Department positionNo) {
+    public void setPositionNo(Position positionNo) {
         this.positionNo = positionNo;
     }
 
-    public Position getDeptNo() {
+    public Department getDeptNo() {
         return deptNo;
     }
 
-    public void setDeptNo(Position deptNo) {
+    public void setDeptNo(Department deptNo) {
         this.deptNo = deptNo;
     }
     //+++++++++++++++++++++toString+++++++++++++++++++++++++++++++
