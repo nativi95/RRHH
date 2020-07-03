@@ -22,7 +22,20 @@ public class Bill {
     private GregorianCalendar dateCreate;//fecha de creacion
     private String userChange;//usuario de auditoria actualizar
     private GregorianCalendar dateChange;//fecha de actualizacion
-
+   
+    /**
+    *Contructor recibe todos los campos de Employee
+    *@param  Payroll payrollNo numero correlativo
+    *@param  double bilValue valor
+    *@param  String bilDescription Descripcion del valor
+    *@param  String payrollNo numero correlativo
+    *@param  Payroll payrollNo numero correlativo
+    *@param String UserCreate usuario de auditoria crear
+    *@param GregorianCalendar dateCreate fecha de creacion
+    *@param String userChange usuario de auditoria actualizar
+    *@param GregorianCalendar dateChange fecha de actualizacion    
+    * 
+    */
     public Bill(Payroll payrollNo, double bilValue, String bilDescription, String UserCreate, GregorianCalendar dateCreate, String userChange, GregorianCalendar dateChange) {
         this.payrollNo = payrollNo;
         this.bilValue = bilValue;

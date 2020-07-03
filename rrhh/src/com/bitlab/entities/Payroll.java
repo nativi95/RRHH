@@ -25,7 +25,17 @@ public class Payroll {
 
     public Payroll() {
     }
-
+    /**
+    *@param int payrollNo numero de planilla
+    *@param Employee id de empleado
+    *@param GregorianCalendar fromDate fecha desde
+    *@param GregorianCalendar toDate fecha hasta
+    *@param String UserCreate usuario de auditoria crear
+    *@param GregorianCalendar dateCreate fecha de creacion
+    *@param String userChange usuario de auditoria actualizar
+    *@param GregorianCalendar dateChange fecha de actualizacion  
+    *
+    */
     public Payroll(int payrollNo, Employee empNo, GregorianCalendar fromDate, GregorianCalendar toDate, String UserCreate, GregorianCalendar dateCreate, String userChange, GregorianCalendar dateChange) {
         this.payrollNo = payrollNo;
         this.empNo = empNo;

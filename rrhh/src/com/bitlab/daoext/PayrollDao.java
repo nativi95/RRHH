@@ -34,7 +34,7 @@ public class PayrollDao extends AbstractDao<Payroll>{
 
     @Override
     protected String getTableKey() {
-        return "pay_emp_no";
+        return "pay_payroll_no";
     }
 
     @Override
