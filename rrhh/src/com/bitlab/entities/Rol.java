@@ -29,6 +29,11 @@ public class Rol {
     public Rol() {
     }
 
+    public Rol(int RolRolNo) {
+        this.RolRolNo = RolRolNo;
+    }
+
+    
       /**
      *Contructor recibe todos los campos de Rol 
      * 
