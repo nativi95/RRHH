@@ -189,8 +189,8 @@ public abstract class AbstractDao<T> {
 
         //Se crea un pequeno proceso de concatenación de CAMPO=?,
         StringBuilder strIndicators = new StringBuilder();
-        for (String str : getTableColumns()) {
-            strIndicators.append(str).append("=?,");
+        for (byte i= 1; i<getTableColumns().length; i++) {
+            strIndicators.append(getTableColumns()[i]).append("=?,");
         }
 
         //Se quita la ultima "," de la cadena para formatear correctamente el SQL y se reemplaza el comodin 
