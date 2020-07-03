@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.bitlab.imp;
+package com.bitlab.daoext;
 
 import com.bitlab.dao.AbstractDao;
 import com.bitlab.entities.Department;
@@ -19,7 +19,7 @@ import java.sql.SQLException;
  *
  * @author nativi
  */
-public class EmployeeImp extends AbstractDao<Employee> {
+public class EmployeeDao extends AbstractDao<Employee> {
 
     @Override
     public String getTableName() {
