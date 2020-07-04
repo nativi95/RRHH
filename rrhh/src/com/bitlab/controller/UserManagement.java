@@ -149,13 +149,15 @@ public class UserManagement extends AbstractManagement<User> {
         return null;
     }
 
-    public static void main(String[] args) {
-        UserManagement uM = new UserManagement();
+    @Override
+    protected List<User> findLike(String user) {
+        System.out.println("Ingrese el usuario para buscar similitudes o presiones [cancel] para cancelar");
         try {
-            uM.AbstractManagement("roberto");
-        } catch (SQLException ex) {
+            return uDao.findLike(getCapture(user));
+        } catch (SQLException | ClassNotFoundException ex) {
             java.util.logging.Logger.getLogger(UserManagement.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return null;
     }
 
 }

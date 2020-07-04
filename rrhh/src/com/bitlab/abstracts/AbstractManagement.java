@@ -21,6 +21,12 @@ import java.util.logging.Logger;
  * @author nativi
  */
 public abstract class AbstractManagement<T> {
+    
+    /**
+     * metodos permitira la captura de datos de para buscar similitudes
+     * @return List<T>
+     */
+    protected abstract List<T>findLike(String user);
 
     /**
      * Metodo abstracto que recibira una lista de tipo T
@@ -136,6 +142,7 @@ public abstract class AbstractManagement<T> {
                     flag = true;
                     break;
                 case "e":
+                    findLike(user);
                     flag = false;
                     break;
                 default:
@@ -221,6 +228,7 @@ public abstract class AbstractManagement<T> {
                         search = false;
                         break;
                     case "c":
+                        findLike(user);
                         search = false;
                         break;
                     case "d":
