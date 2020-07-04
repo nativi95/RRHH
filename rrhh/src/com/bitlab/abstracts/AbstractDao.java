@@ -25,7 +25,7 @@ public abstract class AbstractDao<T> {
 
     //+++++++base para las consultas++++++++++
     private final String SQL_FINDALL = "SELECT [COLUMNS] FROM [TABLE]";//consulta basica de consulta select
-    private final String SQL_CREATE = "INSERT INTO [TABLE] ([COLUMNS]) VALUES ([COLUMNS_INDEX])";//estructura para nuevos registros
+    private final String SQL_CREATE = "INSERT INTO [TABLE] VALUES ([COLUMNS_INDEX])";//estructura para nuevos registros
     private final String SQL_REMOVE = "DELETE FROM [TABLE] WHERE [CONDITIONS]";// estructura sql para eliminar registros
     private final String SQL_UPDATE = "UPDATE [TABLE] SET [COLUMNS] WHERE [CONDITIONS]";//estructura sql para actualizar
 
@@ -85,8 +85,8 @@ public abstract class AbstractDao<T> {
     protected abstract void setMappingParamsToUpdate(PreparedStatement ps, T entity) throws SQLException;
 
     public List getColumnsName() {
-        List names=new ArrayList<>();
-        
+        List names = new ArrayList<>();
+
         for (byte i = 1; i < getTableColumns().length; i++) {
             if (!getTableColumns()[i].equals("A_user_create") || !getTableColumns()[i].equals("A_user_change") || !getTableColumns()[i].equals("A_date_create") || !getTableColumns()[i].equals("A_date_change")) {
                 names.add(getTableColumns()[i].substring(4));
@@ -156,7 +156,7 @@ public abstract class AbstractDao<T> {
      */
     protected String getFindAllSQL() {
         String sql = SQL_FINDALL;
-        sql.replace("[tabla]", getTableName()).replace("[campos]", Arrays.toString(getTableColumns()));
+        sql = sql.replace(TABLE_INDICATOR, getTableName()).replace(COLUMNS_INDICATOR, Arrays.toString(getTableColumns()));
         sql = sql.replace("[", " ").replace("]", " ");
         return sql;
     }
@@ -187,7 +187,6 @@ public abstract class AbstractDao<T> {
         //Se reemplazan los valores de los comodines [TABLE_INDICATOR] y [COLUMNS_INDICATOR] 
         //con el nombre de la tabla y columnas que indicará la clase hija 
         sql = sql.replace(TABLE_INDICATOR, getTableName())
-                .replace(COLUMNS_INDICATOR, Arrays.toString(getTableColumns()))
                 .replace("[", "").replace("]", ""); //Debido al metodo Arrays devuelve los resultas [campo,campo2,campo3] se aplica el replace de los corchetes []
 
         return sql;
@@ -211,12 +210,13 @@ public abstract class AbstractDao<T> {
         //Se crea un pequeno proceso de concatenación de CAMPO=?,
         StringBuilder strIndicators = new StringBuilder();
         for (byte i = 1; i < getTableColumns().length; i++) {
-            strIndicators.append(getTableColumns()[i]).append("=?,");
+            if (!getTableColumns()[i].equals("A_user_create") && !getTableColumns()[i].equals("A_date_create") && !getTableColumns()[i].equals(getTableKey())) {
+                strIndicators.append(getTableColumns()[i]).append("=?,");
+            }
         }
-
+byte size=(byte)strIndicators.toString().length();
         //Se quita la ultima "," de la cadena para formatear correctamente el SQL y se reemplaza el comodin 
-        sql = sql.replace(COLUMNS_INDICATOR, strIndicators.toString().substring(0, strIndicators.toString().length() - 1));
-
+        sql = sql.replace(COLUMNS_INDICATOR, strIndicators.toString().substring(0, size- 1));
         return sql;
     }
 

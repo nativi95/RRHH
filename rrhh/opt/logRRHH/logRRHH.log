@@ -1,0 +1,129 @@
+2020-07-04 06:55:03,064 DEBUG com.bitlab.dao.UserDao [main] Obtiene los datos segun id de registro
+2020-07-04 06:55:03,070 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
+2020-07-04 06:55:03,423 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
+2020-07-04 06:55:03,431 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
+2020-07-04 06:55:03,438 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
+2020-07-04 06:55:03,444 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
+2020-07-04 06:55:03,448 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
+2020-07-04 06:55:03,458 DEBUG com.bitlab.dao.UserDao [main] Obtiene los datos segun id de registro
+2020-07-04 06:55:03,458 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
+2020-07-04 06:55:03,463 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
+2020-07-04 06:55:03,469 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
+2020-07-04 06:55:03,476 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
+2020-07-04 06:55:03,479 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
+2020-07-04 06:55:03,483 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
+2020-07-04 06:55:08,964 DEBUG com.bitlab.dao.UserDao [main] Actualización de registro de usuario
+2020-07-04 06:55:15,744 DEBUG com.bitlab.dao.UserDao [main] Obtiene los datos segun id de registro
+2020-07-04 06:55:15,745 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
+2020-07-04 06:55:15,755 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
+2020-07-04 06:55:15,760 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
+2020-07-04 06:55:15,764 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
+2020-07-04 06:55:15,774 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
+2020-07-04 06:55:15,780 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
+2020-07-04 06:55:15,786 DEBUG com.bitlab.dao.UserDao [main] Ejectuta metodo captuteData
+2020-07-04 06:55:15,786 DEBUG com.bitlab.dao.UserDao [main] Captura de datos a guardar
+2020-07-04 06:56:31,692 DEBUG com.bitlab.dao.UserDao [main] Mapeo de paramentros para actualizar Usuario
+2020-07-04 06:57:07,057 ERROR com.bitlab.dao.UserDao [main] Ha ocurrido una excepcion en la actualizacion
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE usr_user_no = 1' at line 1
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.Util.getInstance(Util.java:408)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:944)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3976)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3912)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2530)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2683)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2486)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1858)
+	at com.mysql.jdbc.PreparedStatement.executeUpdateInternal(PreparedStatement.java:2079)
+	at com.mysql.jdbc.PreparedStatement.executeUpdateInternal(PreparedStatement.java:2013)
+	at com.mysql.jdbc.PreparedStatement.executeLargeUpdate(PreparedStatement.java:5104)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:1998)
+	at com.bitlab.abstracts.AbstractDao.update(AbstractDao.java:302)
+	at com.bitlab.controller.UserManagement.updateRecord(UserManagement.java:95)
+	at com.bitlab.abstracts.AbstractManagement.menuResultados(AbstractManagement.java:191)
+	at com.bitlab.abstracts.AbstractManagement.searchMenu(AbstractManagement.java:166)
+	at com.bitlab.abstracts.AbstractManagement.show(AbstractManagement.java:130)
+	at com.bitlab.abstracts.AbstractManagement.findById(AbstractManagement.java:119)
+	at com.bitlab.abstracts.AbstractManagement.AbstractManagement(AbstractManagement.java:85)
+	at com.bitlab.controller.UserManagement.main(UserManagement.java:157)
+2020-07-04 13:10:24,370 DEBUG com.bitlab.dao.UserDao [main] Obtiene los datos segun id de registro
+2020-07-04 13:10:24,373 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
+2020-07-04 13:10:24,896 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
+2020-07-04 13:10:24,913 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
+2020-07-04 13:10:24,922 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
+2020-07-04 13:10:24,926 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
+2020-07-04 13:10:24,932 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
+2020-07-04 13:10:24,941 DEBUG com.bitlab.dao.UserDao [main] Obtiene los datos segun id de registro
+2020-07-04 13:10:24,942 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
+2020-07-04 13:10:24,950 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
+2020-07-04 13:10:24,965 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
+2020-07-04 13:10:24,971 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
+2020-07-04 13:10:24,977 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
+2020-07-04 13:10:24,982 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
+2020-07-04 13:10:43,384 DEBUG com.bitlab.dao.UserDao [main] Actualización de registro de usuario
+2020-07-04 13:10:53,056 DEBUG com.bitlab.dao.UserDao [main] Obtiene los datos segun id de registro
+2020-07-04 13:10:53,056 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
+2020-07-04 13:10:53,062 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
+2020-07-04 13:10:53,073 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
+2020-07-04 13:10:53,081 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
+2020-07-04 13:10:53,092 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
+2020-07-04 13:10:53,108 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
+2020-07-04 13:10:53,113 DEBUG com.bitlab.dao.UserDao [main] Ejectuta metodo captuteData
+2020-07-04 13:10:53,113 DEBUG com.bitlab.dao.UserDao [main] Captura de datos a guardar
+2020-07-04 13:11:17,520 DEBUG com.bitlab.dao.UserDao [main] Mapeo de paramentros para actualizar Usuario
+2020-07-04 13:11:17,570 ERROR com.bitlab.dao.UserDao [main] Ha ocurrido una excepcion en la actualizacion
+com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE usr_user_no = 1' at line 1
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
+	at com.mysql.jdbc.Util.getInstance(Util.java:408)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:944)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3976)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3912)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2530)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2683)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2486)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1858)
+	at com.mysql.jdbc.PreparedStatement.executeUpdateInternal(PreparedStatement.java:2079)
+	at com.mysql.jdbc.PreparedStatement.executeUpdateInternal(PreparedStatement.java:2013)
+	at com.mysql.jdbc.PreparedStatement.executeLargeUpdate(PreparedStatement.java:5104)
+	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:1998)
+	at com.bitlab.abstracts.AbstractDao.update(AbstractDao.java:302)
+	at com.bitlab.controller.UserManagement.updateRecord(UserManagement.java:97)
+	at com.bitlab.abstracts.AbstractManagement.menuResultados(AbstractManagement.java:191)
+	at com.bitlab.abstracts.AbstractManagement.searchMenu(AbstractManagement.java:166)
+	at com.bitlab.abstracts.AbstractManagement.show(AbstractManagement.java:130)
+	at com.bitlab.abstracts.AbstractManagement.findById(AbstractManagement.java:119)
+	at com.bitlab.abstracts.AbstractManagement.AbstractManagement(AbstractManagement.java:85)
+	at com.bitlab.controller.UserManagement.main(UserManagement.java:159)
+2020-07-04 13:12:48,292 DEBUG com.bitlab.dao.UserDao [main] Obtiene los datos segun id de registro
+2020-07-04 13:12:48,295 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
+2020-07-04 13:12:48,801 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
+2020-07-04 13:12:48,812 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
+2020-07-04 13:12:48,824 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
+2020-07-04 13:12:48,838 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
+2020-07-04 13:12:48,845 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
+2020-07-04 13:12:48,852 DEBUG com.bitlab.dao.UserDao [main] Obtiene los datos segun id de registro
+2020-07-04 13:12:48,852 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
+2020-07-04 13:12:48,857 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
+2020-07-04 13:12:48,868 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
+2020-07-04 13:12:48,876 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
+2020-07-04 13:12:48,888 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
+2020-07-04 13:12:48,906 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
+2020-07-04 13:12:58,998 DEBUG com.bitlab.dao.UserDao [main] Actualización de registro de usuario
+2020-07-04 13:13:00,808 DEBUG com.bitlab.dao.UserDao [main] Obtiene los datos segun id de registro
+2020-07-04 13:13:00,809 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
+2020-07-04 13:13:00,820 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
+2020-07-04 13:13:00,856 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
+2020-07-04 13:13:00,874 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
+2020-07-04 13:13:00,916 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
+2020-07-04 13:13:00,948 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
+2020-07-04 13:13:00,961 DEBUG com.bitlab.dao.UserDao [main] Ejectuta metodo captuteData
+2020-07-04 13:13:00,961 DEBUG com.bitlab.dao.UserDao [main] Captura de datos a guardar
+2020-07-04 13:13:09,897 DEBUG com.bitlab.dao.UserDao [main] Mapeo de paramentros para actualizar Usuario

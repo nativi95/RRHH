@@ -8,6 +8,8 @@ package com.bitlab.conection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -17,11 +19,11 @@ import java.sql.SQLException;
 public class Conection {
     
     //++++++++++++++++++++++++++++++Atributos de conexion+++++++++++++++++++++++++++++
-    private static final String BD="db_employee";
+    private static final String BD="employees";
     private static final String USER="root";
     private static final String PASS="bathory80";
     private static final String URL="jdbc:mysql://localhost:3306/"+BD+"?useSSL=false";
-    private static final String DRIVER="com.mysql.cj.jdbc.Driver";
+    private static final String DRIVER="com.mysql.jdbc.Driver";
     
     /**
      * metodo para generar conexion a base de datos JDBC

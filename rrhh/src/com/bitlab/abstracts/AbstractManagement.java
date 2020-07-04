@@ -6,11 +6,11 @@
 package com.bitlab.abstracts;
 
 import com.bitlab.controller.UserManagement;
-import com.bitlab.dao.UserDao;
+
 import com.bitlab.entities.User;
-import com.bitlab.util.DatesControls;
+
 import java.sql.SQLException;
-import java.util.Date;
+
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -30,7 +30,7 @@ public abstract class AbstractManagement<T> {
 
     public abstract void updateRecord(String user);
 
-    public abstract void captuteData(User u);
+    public abstract void captuteData(User u, String user);
 
     public abstract void remove(int id);
 
@@ -40,12 +40,18 @@ public abstract class AbstractManagement<T> {
 
     String capture = null;
 
-    public String getCapture() {
+    public String getCapture(String user) throws SQLException {
         capture = scan.nextLine();
-        return capture;
+        
+       if(capture.toLowerCase().equals("cancel")){
+           AbstractManagement(user);
+       return null;    
+       }else{
+       return capture;
+       } 
     }
 
-    public AbstractManagement(String user) throws SQLException {
+    public void AbstractManagement(String user) throws SQLException {
 
         //capturo datos
         //
@@ -57,8 +63,8 @@ public abstract class AbstractManagement<T> {
             System.out.println("C.Buscar por código identificador registros");
             System.out.println("D.Buscar similares");
             System.out.println("E. Regresar al menu anterior");
-           capture=scan.nextLine();
-            switch (capture.toLowerCase()) {
+           
+            switch (getCapture(user).toLowerCase()) {
                 case "a":
                     addRecord(user);
                     flag = true;
@@ -76,7 +82,7 @@ public abstract class AbstractManagement<T> {
 
                 case "c": {
                     try {
-                        buscarById(user);
+                        findById(user);
                     } catch (SQLException ex) {
                         Logger.getLogger(UserManagement.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (ClassNotFoundException ex) {
@@ -108,17 +114,16 @@ public abstract class AbstractManagement<T> {
 
     }
 
-    public void buscarById(String user) throws SQLException, ClassNotFoundException {
-        System.out.println("Ingrese el codigo de registro");
-        getCapture();
-        show(validatedNumber(), user);//abstracto
+    public void findById(String user) throws SQLException, ClassNotFoundException {
+        System.out.println("Ingrese el codigo de registro");   
+        show(validatedNumber(user), user);//abstracto
 
     }
 
     public void show(int id, String user) throws SQLException, ClassNotFoundException {
 
         if(!getFindToString(id).isEmpty()){
-            System.out.println("getFindToString(id)");
+            System.out.println(getFindToString(id));
         }else{
             System.out.println("No se encontró el registro");
         }
@@ -134,6 +139,7 @@ public abstract class AbstractManagement<T> {
     }
 
     public void searchMenu(String user) {//se repite
+        System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
         boolean search = true;
 
         System.out.println("Desea ingresar más parámetros de búsqueda escriba la opión y pulse [enter] ");
@@ -144,14 +150,13 @@ public abstract class AbstractManagement<T> {
         System.out.println("E.Cancelar");
         while (search) {
             try {
-                getCapture();
-                switch (capture.toLowerCase()) {
+                switch (getCapture(user).toLowerCase()) {
                     case "a":
                         show(user);
                         search = false;
                         break;
                     case "b":
-                        buscarById(user);
+                        findById(user);
                         search = false;
                         break;
                     case "c":
@@ -175,20 +180,21 @@ public abstract class AbstractManagement<T> {
     }
 
     public void menuResultados(String user) throws ClassNotFoundException, SQLException {//se repite
+        System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
         System.out.println("Escriba la opión de la acción que deseas realizar y pulse [enter] ");
         System.out.println("A.Editar registro");
         System.out.println("B.Eliminar registro");
-        getCapture();
         boolean result = true;
         while (result) {
-            switch (capture.toLowerCase()) {
+            switch (getCapture(user).toLowerCase()) {
                 case "a":
                     updateRecord(user);
                     result = false;
                     break;
                 case "b":
-                    removeRecord();
+                    removeRecord(user);
                     result = false;
+                    break;
                 default:
                     System.out.println("Escriba una opción valida");
                     result = true;
@@ -197,19 +203,21 @@ public abstract class AbstractManagement<T> {
         }
     }
 
-    public void removeRecord() throws ClassNotFoundException, SQLException {//se repite
+    public void removeRecord(String user) throws ClassNotFoundException, SQLException {//se repite
 
-        System.out.println("Ingrese el número de registro a eliminar");
+        System.out.println("Ingrese el número de registro a eliminar o [Cancel] para cancelar");
 
-        remove(validatedNumber());
+        remove(validatedNumber(user));
+
+        System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
     }
 
-    public int validatedNumber() {// Se repite
+    public int validatedNumber(String user) throws SQLException {// Se repite
         boolean flag = true;
 
         while (flag) {
-            getCapture();
-            flag = validateNumber(capture.trim());
+            
+            flag = validateNumber(getCapture(user).trim());
         }
         return Integer.parseInt(capture.trim());
     }
