@@ -78,4 +78,9 @@ public class UserDao extends AbstractDao<User> {
         ps.setString(4, entity.getUserChange());
         ps.setString(5, DatesControls.dateToString(entity.getDateChange()));
     }
+
+    @Override
+    protected String getColumnLike() {
+        return " ";
+    }
 }

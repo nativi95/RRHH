@@ -51,6 +51,14 @@ public abstract class AbstractDao<T> {
      * @return String[]
      */
     protected abstract String[] getTableColumns();
+    
+    
+    /**
+     * metodo abstracto retorna los nombres de la columna a buscar
+     *
+     * @return String[]
+     */
+    protected abstract String getColumnLike();
 
     /**
      * metodo abstracto retorna condiccion de las sentencias para sentencias
@@ -311,6 +319,20 @@ byte size=(byte)strIndicators.toString().length();
      */
     public T find(Object id) throws SQLException, ClassNotFoundException {
         String sql = getFindAllSQL() + SQL_WHERE + getTableKey() + " = ?"; //Se juega con el SQL dinámico
+        Connection con = getConnection(); //Se obtiene la conexión
+        PreparedStatement ps = con.prepareStatement(sql); //Se prepara el Statement
+        ps.setObject(1, id); //Se aplican los parametros
+        ResultSet rs = ps.executeQuery(); //Se ejecuta y se utiliza un ResultSet para obtener los valores
+        T e = null;
+        if (rs.next()) { //Si la BD devolvio coincidencias (Registros)
+            e = getMappingResults(rs); //Se mapean y se asignan a la variable
+        }
+        closeJDBCObjects(con, ps, rs); //Se cierra la conexión
+        return e;
+    }
+    
+    public T findLike(Object id) throws SQLException, ClassNotFoundException {
+        String sql = getFindAllSQL() + SQL_WHERE + getColumnLike() + " LIKE %?%"; //Se juega con el SQL dinámico
         Connection con = getConnection(); //Se obtiene la conexión
         PreparedStatement ps = con.prepareStatement(sql); //Se prepara el Statement
         ps.setObject(1, id); //Se aplican los parametros
