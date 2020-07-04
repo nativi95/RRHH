@@ -59,7 +59,7 @@ public abstract class AbstractManagement<T> {
      * @param u
      * @param user 
      */
-    public abstract void captuteData(User u, String user);
+    public abstract void captureData(T u, String user);
 
     /**
      * Metodo abstracto que relizara el delete del Dao de la entidad
