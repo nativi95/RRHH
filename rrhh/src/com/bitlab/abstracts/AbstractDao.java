@@ -331,11 +331,11 @@ byte size=(byte)strIndicators.toString().length();
         return e;
     }
     
-    public T findLike(Object id) throws SQLException, ClassNotFoundException {
+    public T findLike(Object name) throws SQLException, ClassNotFoundException {
         String sql = getFindAllSQL() + SQL_WHERE + getColumnLike() + " LIKE %?%"; //Se juega con el SQL dinámico
         Connection con = getConnection(); //Se obtiene la conexión
         PreparedStatement ps = con.prepareStatement(sql); //Se prepara el Statement
-        ps.setObject(1, id); //Se aplican los parametros
+        ps.setObject(1, name); //Se aplican los parametros
         ResultSet rs = ps.executeQuery(); //Se ejecuta y se utiliza un ResultSet para obtener los valores
         T e = null;
         if (rs.next()) { //Si la BD devolvio coincidencias (Registros)

@@ -59,4 +59,9 @@ public class PositionDao extends AbstractDao<Position> {
         ps.setString(5, DatesControls.dateToString(entity.getDateChange()));
     }
 
+    @Override
+    protected String getColumnLike() {
+        return "pos_position";
+    }
+
 }

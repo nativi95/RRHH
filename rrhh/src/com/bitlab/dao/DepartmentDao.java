@@ -61,4 +61,9 @@ public class DepartmentDao extends AbstractDao<Department> {
         ps.setString(5, DatesControls.dateToString(entity.getDateChange()));
     }
 
+    @Override
+    protected String getColumnLike() {
+        return "dep_dept_name";
+    }
+
 }

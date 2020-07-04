@@ -81,6 +81,6 @@ public class UserDao extends AbstractDao<User> {
 
     @Override
     protected String getColumnLike() {
-        return " ";
+        return "usr_user";
     }
 }
