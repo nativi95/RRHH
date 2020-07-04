@@ -40,8 +40,8 @@ public class BillDao extends AbstractDao<Bill>{
     protected Bill getMappingResults(ResultSet rs) throws SQLException {
         PayrollDao pDao = new PayrollDao();
         try {
-            return new Bill(pDao.find(rs.getInt(1)), rs.getDouble(2), rs.getString(3), rs.getString(4), 
-                    DatesControls.dateToGregorian(rs.getDate(5)), rs.getString(6), DatesControls.dateToGregorian(rs.getDate(7)));
+            return new Bill(pDao.find(rs.getInt(1)), rs.getDouble(2), rs.getString(3), rs.getString(4),
+                    rs.getDate(5), rs.getString(6), rs.getDate(7));
             
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(PayrollDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -55,9 +55,9 @@ public class BillDao extends AbstractDao<Bill>{
         ps.setDouble(2, entity.getBilValue());
         ps.setString(3, entity.getBilDescription());
         ps.setString(4, entity.getUserCreate());
-        ps.setString(5, entity.getDateCreate().toString());
+        ps.setString(5, DatesControls.dateToString(entity.getDateCreate()));
         ps.setString(6, entity.getUserChange());
-        ps.setString(7, entity.getDateChange().toString());
+        ps.setString(7, DatesControls.dateToString(entity.getDateChange()));
     }
 
     @Override
@@ -66,9 +66,9 @@ public class BillDao extends AbstractDao<Bill>{
         ps.setDouble(1, entity.getBilValue());
         ps.setString(2, entity.getBilDescription());
         ps.setString(3, entity.getUserCreate());
-        ps.setString(4, entity.getDateCreate().toString());
+        ps.setString(4, DatesControls.dateToString(entity.getDateCreate()));
         ps.setString(5, entity.getUserChange());
-        ps.setString(6, entity.getDateChange().toString());
+        ps.setString(6, DatesControls.dateToString(entity.getDateChange()));
     }
     
 }

@@ -5,6 +5,7 @@
  */
 package com.bitlab.entities;
 
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 /**
@@ -19,9 +20,9 @@ public class Bill {
     
     //+++++++++++++++++auditoria++++++++++++++++++++
     private String UserCreate; //usuario de auditoria crear
-    private GregorianCalendar dateCreate;//fecha de creacion
+    private Date dateCreate;//fecha de creacion
     private String userChange;//usuario de auditoria actualizar
-    private GregorianCalendar dateChange;//fecha de actualizacion
+    private Date dateChange;//fecha de actualizacion
    
     /**
     *Contructor recibe todos los campos de Employee
@@ -36,7 +37,9 @@ public class Bill {
     *@param GregorianCalendar dateChange fecha de actualizacion    
     * 
     */
-    public Bill(Payroll payrollNo, double bilValue, String bilDescription, String UserCreate, GregorianCalendar dateCreate, String userChange, GregorianCalendar dateChange) {
+   
+
+    public Bill(Payroll payrollNo, double bilValue, String bilDescription, String UserCreate, Date dateCreate, String userChange, Date dateChange) {
         this.payrollNo = payrollNo;
         this.bilValue = bilValue;
         this.bilDescription = bilDescription;
@@ -81,11 +84,11 @@ public class Bill {
         this.UserCreate = UserCreate;
     }
 
-    public GregorianCalendar getDateCreate() {
+    public Date getDateCreate() {
         return dateCreate;
     }
 
-    public void setDateCreate(GregorianCalendar dateCreate) {
+    public void setDateCreate(Date dateCreate) {
         this.dateCreate = dateCreate;
     }
 
@@ -97,14 +100,15 @@ public class Bill {
         this.userChange = userChange;
     }
 
-    public GregorianCalendar getDateChange() {
+    public Date getDateChange() {
         return dateChange;
     }
 
-    public void setDateChange(GregorianCalendar dateChange) {
+    public void setDateChange(Date dateChange) {
         this.dateChange = dateChange;
     }
 
+    
     @Override
     public String toString() {
         return "Bill{" + "payrollNo=" + payrollNo + ", bilValue=" + bilValue + ", bilDescription=" + bilDescription + ", UserCreate=" + UserCreate + ", dateCreate=" + dateCreate + ", userChange=" + userChange + ", dateChange=" + dateChange + '}';
