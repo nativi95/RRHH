@@ -59,4 +59,9 @@ public class RolDao extends AbstractDao<Rol> {
         ps.setString(4, entity.getUserChange());
         ps.setString(5, DatesControls.dateToString(entity.getDateChange()));
     }
+
+    @Override
+    protected String getColumnLike() {
+        return "rol_rol";
+    }
 }

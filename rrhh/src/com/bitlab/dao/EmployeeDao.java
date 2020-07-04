@@ -95,4 +95,9 @@ public class EmployeeDao extends AbstractDao<Employee> {
         ps.setString(11, DatesControls.dateToString(entity.getDateChange()));
     }
 
+    @Override
+    protected String getColumnLike() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
