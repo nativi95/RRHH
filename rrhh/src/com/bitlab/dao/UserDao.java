@@ -42,7 +42,7 @@ public class UserDao extends AbstractDao<User> {
     protected User getMappingResults(ResultSet rs) throws SQLException {
         RolDao rDao=new RolDao();
         try {
-            return new User(rs.getInt(1),rs.getString(2),rs.getString(3), (rDao.find(rs.getInt(4))),rs.getString(5), DatesControls.dateToGregorian(rs.getDate(6)),rs.getString(7), DatesControls.dateToGregorian(rs.getDate(8)));
+            return new User(rs.getInt(1),rs.getString(2),rs.getString(3), (rDao.find(rs.getInt(4))),rs.getString(5), rs.getDate(6),rs.getString(7), rs.getDate(8));
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -58,9 +58,9 @@ public class UserDao extends AbstractDao<User> {
         ps.setString(3, Sha.encrypt(entity.getPassword()));
         ps.setInt(4, entity.getRolNo().getRolRolNo());
         ps.setString(5, entity.getUserCreate());
-        ps.setString(6, entity.getDateCreate().toString());
+        ps.setString(6, DatesControls.dateToString(entity.getDateCreate()));
         ps.setString(7, entity.getUserChange());
-        ps.setString(8, entity.getDateChange().toString());
+        ps.setString(8, DatesControls.dateToString(entity.getDateChange()));
     }
 
     @Override
@@ -70,9 +70,9 @@ public class UserDao extends AbstractDao<User> {
         ps.setString(2, Sha.encrypt(entity.getPassword()));
         ps.setInt(3, entity.getRolNo().getRolRolNo());
         ps.setString(4, entity.getUserCreate());
-        ps.setString(5, entity.getDateCreate().toString());
+        ps.setString(5, DatesControls.dateToString(entity.getDateCreate()));
         ps.setString(6, entity.getUserChange());
-        ps.setString(7, entity.getDateChange().toString());
+        ps.setString(7, DatesControls.dateToString(entity.getDateChange()));
     }
 
 
