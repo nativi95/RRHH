@@ -38,7 +38,7 @@ public abstract class AbstractManagement<T> {
 
     Scanner scan = new Scanner(System.in);
 
-    private String capture = null;
+    String capture = null;
 
     public String getCapture() {
         capture = scan.nextLine();
