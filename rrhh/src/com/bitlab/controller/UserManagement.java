@@ -7,6 +7,7 @@ package com.bitlab.controller;
 
 import com.bitlab.abstracts.AbstractManagement;
 import com.bitlab.dao.UserDao;
+import com.bitlab.entities.Rol;
 import com.bitlab.entities.User;
 import com.bitlab.util.DatesControls;
 import java.util.Date;
@@ -34,10 +35,11 @@ public class UserManagement extends AbstractManagement<User> {
         u.setUser(getCapture());
         System.out.print("Escriba el " + uDao.getColumnsName().get(1));
         System.out.println("y despues presione [enter]");
-        u.setUser(getCapture());
+        u.setPassword(getCapture());
         System.out.print("Escriba el " + uDao.getColumnsName().get(2));
         System.out.println("y despues presione [enter]");
-        u.setUser(getCapture());
+        Rol r= new Rol(validatedNumber());
+        u.setRolNo(r);
     }
     
     @Override

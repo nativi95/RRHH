@@ -1,6 +1,7 @@
 DROP DATABASE IF EXISTS employees;
 CREATE DATABASE IF NOT EXISTS employees;
-USE employees;
+USE employees
+;
 
 SELECT 'CREATING DATABASE STRUCTURE' as 'INFO';
 
@@ -19,7 +20,7 @@ DROP TABLE IF EXISTS emp_emp_employee,
 
 
 CREATE TABLE emp_dep_department (
-    dep_dept_no     	int         	NOT NULL,
+    dep_dept_no     	int         	NOT NULL AUTO_INCREMENT,
     dep_dept_name   	VARCHAR(40)     NOT NULL,
 	A_user_create 	    VARCHAR(10)     NOT NULL,
     A_date_create       DATE     		NOT NULL,
@@ -31,7 +32,7 @@ CREATE TABLE emp_dep_department (
 
 
 CREATE TABLE emp_pos_position (
-    pos_position_no     INT             NOT NULL,
+    pos_position_no     INT             NOT NULL AUTO_INCREMENT,
     pos_position       	VARCHAR(50)     NOT NULL,
 	A_user_create 	    VARCHAR(10)     NOT NULL,
     A_date_create       DATE     		NOT NULL,
@@ -40,25 +41,27 @@ CREATE TABLE emp_pos_position (
     PRIMARY KEY (pos_position_no)
 ); 
 CREATE TABLE emp_emp_employee (
-    emp_emp_no      	INT             NOT NULL,
+    emp_emp_no      	INT             NOT NULL AUTO_INCREMENT,
     emp_birth_date  	DATE            NOT NULL,
     emp_first_name  	VARCHAR(14)     NOT NULL,
     emp_last_name   	VARCHAR(16)     NOT NULL,
     emp_gender      	ENUM ('M','F')  NOT NULL,    
     emp_hire_date   	DATE            NOT NULL,
     emp_position_no     INT             NOT NULL,
-    emp_dept_no     	CHAR(4)         NOT NULL,
+    emp_dept_no     	INT         	NOT NULL,
 	A_user_create 	    VARCHAR(10)     NOT NULL,
     A_date_create       DATE     		NOT NULL,
     A_user_change 	    VARCHAR(10)  	NOT NULL,
     A_date_change       DATE     		NOT NULL,
-    PRIMARY KEY (emp_emp_no),
-    FOREIGN KEY (emp_position_no) REFERENCEs emp_pos_position(pos_position_no) ON update cascade on delete cascade,
-    FOREIGN KEY (emp_dept_no) REFERENCES emp_dep_department(dep_dept_no) ON update cascade on delete cascade
+    PRIMARY KEY (emp_emp_no)
+    
 );
 
+ALTER TABLE emp_emp_employee add constraint FOREIGN KEY (emp_position_no) REFERENCES emp_pos_position(pos_position_no) ON update cascade on delete cascade;
+  ALTER TABLE emp_emp_employee add   constraint FOREIGN KEY (emp_dept_no) REFERENCES emp_dep_department(dep_dept_no) ON update cascade on delete cascade;
+
 CREATE TABLE emp_pay_payroll (
-	pay_payroll_no		INT				NOT NULL,
+	pay_payroll_no		INT				NOT NULL AUTO_INCREMENT,
     pay_emp_no      	INT             NOT NULL,
     pay_from_date   	DATE            NOT NULL,
     pay_to_date     	DATE            NOT NULL,
@@ -79,25 +82,26 @@ CREATE TABLE emp_bil_bill (
     A_date_create      DATE     		NOT NULL,
     A_user_change 	   VARCHAR(10)  	NOT NULL,
     A_date_change      DATE     		NOT NULL,
-    FOREIGN KEY (bil_payroll_no) REFERENCES emp_pay_payroll (pay_payroll_no) ON DELETE CASCADE
+    constraint FOREIGN KEY (bil_payroll_no) REFERENCES emp_pay_payroll (pay_payroll_no) ON DELETE CASCADE
 
 ) 
 ; 
 
 
 CREATE TABLE emp_rol_rol (
-    rol_rol_no         INT             	NOT NULL,
+    rol_rol_no         INT             	NOT NULL AUTO_INCREMENT,
     rol_rol	   		   VARCHAR(10) 		NOT NULL,
 	A_user_create 	   VARCHAR(10)      NOT NULL,
     A_date_create      DATE     		NOT NULL,
     A_user_change 	   VARCHAR(10)  	NOT NULL,
     A_date_change      DATE     		NOT NULL,
     PRIMARY KEY(rol_rol_no)
+    
 ) ;
 
 CREATE TABLE emp_usr_user (
-    usr_user_no       INT             	NOT NULL,
-    usr_user 		   FLOAT(7,2)		NOT NULL,
+    usr_user_no       INT             	NOT NULL AUTO_INCREMENT,
+    usr_user 		   VARCHAR(10)		NOT NULL,
     user_password	   VARCHAR(130) 	NOT NULL,
     usr_rol_no 		   INT 				NOT NULL,
 	A_user_create 	   VARCHAR(10)      NOT NULL,
@@ -105,6 +109,10 @@ CREATE TABLE emp_usr_user (
     A_user_change 	   VARCHAR(10)  	NOT NULL,
     A_date_change      DATE     		NOT NULL,
     PRIMARY KEY(usr_user_no),
-    FOREIGN KEY (usr_rol_no) REFERENCES emp_rol_rol (rol_rol_no) ON DELETE CASCADE
+    constraint FOREIGN KEY (usr_rol_no) REFERENCES emp_rol_rol (rol_rol_no) ON DELETE CASCADE
 ) 
 ; 
+INSERT INTO `employees`.`emp_rol_rol` ( `rol_rol`, `A_user_create`, `A_date_create`, `A_user_change`, `A_date_change`) VALUES ( 'admin', 'roberto', '2020-07-03', 'roberto', '2020-07-03');
+INSERT INTO `employees`.`emp_rol_rol` ( `rol_rol`, `A_user_create`, `A_date_create`, `A_user_change`, `A_date_change`) VALUES ( 'rrhh', 'roberto', '2020-07-03', 'roberto', '2020-07-03');
+
+insert into emp_usr_user value(0, 'roberto', '3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2', 1, 'roberto', '2020-07-03', 'roberto', '2020-07-03');
