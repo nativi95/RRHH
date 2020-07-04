@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 /**
  *
