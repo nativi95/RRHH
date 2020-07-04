@@ -17,7 +17,7 @@ public class DatesControls {
 
     //+++++++++++++++++++Atributos++++++++++++++++++++++++++++++++++
     private static SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");//formato de dates
-    private static Date today = new Date();//fecha actual
+    private Date today;//fecha actual
     private static GregorianCalendar cal;//calendariogregoriano
 
     /**
@@ -63,5 +63,18 @@ public class DatesControls {
     public void setCal(GregorianCalendar cal) {
         this.cal = cal;
     }
+
+    public void setToday(Date today) {
+        this.today = today;
+    }
+
+    public static Date getToday() {
+        return new Date();
+    }
+    
+    public static void main(String[] args) {
+        System.out.println( DatesControls.dateToGregorian(new Date()));
+    }
+    
 
 }
