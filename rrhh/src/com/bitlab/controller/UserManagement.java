@@ -31,14 +31,11 @@ public class UserManagement extends AbstractManagement<User> {
     
     @Override
     public void captuteData(User u) {
-        System.out.print("Escriba el " + uDao.getColumnsName().get(0));
-        System.out.println("y despues presione [enter]");
+        System.out.print("Escriba el usuario nuevo y despues presione [enter]");
         u.setUser(getCapture());
-        System.out.print("Escriba el " + uDao.getColumnsName().get(1));
-        System.out.println("y despues presione [enter]");
+        System.out.print("Escriba el contraseña y despues presione [enter]");
         u.setPassword(getCapture());
-        System.out.print("Escriba el " + uDao.getColumnsName().get(2));
-        System.out.println("y despues presione [enter]");
+        System.out.print("Escriba el ID de rol 1 es administrador y 2. rrhh y despues presione [enter]");
         Rol r= new Rol(validatedNumber());
         u.setRolNo(r);
     }
@@ -47,9 +44,9 @@ public class UserManagement extends AbstractManagement<User> {
     public void addRecord(String user) {
         User u = new User(0);
         u.setUserChange(user);
-        u.setDateChange(DatesControls.dateToGregorian(DatesControls.));
+        u.setDateChange(new Date());
         u.setUserCreate(user);
-        u.setDateCreate(DatesControls.dateToGregorian(new Date()));
+        u.setDateCreate(new Date());
         captuteData(u);
         try {
             uDao.create(u);
@@ -74,7 +71,7 @@ public class UserManagement extends AbstractManagement<User> {
         System.out.println(getFindToString(validatedNumber()));
         u.setUserNo(validatedNumber());
         u.setUserChange(user);
-        u.setDateChange(DatesControls.dateToGregorian(new Date()));
+        u.setDateChange(new Date());
         captuteData(u);
         try {
             uDao.update(u);
