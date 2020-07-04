@@ -3,46 +3,47 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.bitlab.daoext;
+package com.bitlab.dao;
 
-import com.bitlab.dao.AbstractDao;
-import com.bitlab.entities.Position;
+import com.bitlab.abstracts.AbstractDao;
+import com.bitlab.entities.Department;
 import com.bitlab.util.DatesControls;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.GregorianCalendar;
 
 /**
  *
  * @author nativi
  */
-public class PositionDao extends AbstractDao<Position> {
+public class DepartmentDao extends AbstractDao<Department> {
 
     @Override
     public String getTableName() {
-        return "emp_pos_position";
+        return "";
     }
 
     @Override
     protected String[] getTableColumns() {
-        String[] columns = {"pos_position_no", "pos_position", "A_user_create", "A_date_create", "A_user_change", "A_date_change"};
+        String[] columns = {"dep_dept_no", "dep_dept_name", "A_user_create", "A_date_create", "A_user_change", "A_date_change"};
         return columns;
     }
 
     @Override
     protected String getTableKey() {
-        return "pos_position_no";
+        return "dep_dept_no";
     }
 
     @Override
-    protected Position getMappingResults(ResultSet rs) throws SQLException {
-        return new Position(rs.getInt(1), rs.getString(2), rs.getString(3), DatesControls.dateToGregorian(rs.getDate(4)), rs.getString(5), DatesControls.dateToGregorian(rs.getDate(6)));
+    protected Department getMappingResults(ResultSet rs) throws SQLException {
+        return new Department(rs.getInt(1), rs.getString(2), rs.getString(3), DatesControls.dateToGregorian(rs.getDate(4)), rs.getString(5), DatesControls.dateToGregorian(rs.getDate(6)));
     }
 
     @Override
-    protected void setMappingParamsToCreate(PreparedStatement ps, Position entity) throws SQLException {
-        ps.setInt(1, entity.getPositionNo());
-        ps.setString(2, entity.getPosition());
+    protected void setMappingParamsToCreate(PreparedStatement ps, Department entity) throws SQLException {
+        ps.setInt(1, entity.getDeptNo());
+        ps.setString(2, entity.getDeptName());
         ps.setString(3, entity.getUserCreate());
         ps.setString(4, entity.getDateCreate().toString());
         ps.setString(5, entity.getUserChange());
@@ -50,9 +51,9 @@ public class PositionDao extends AbstractDao<Position> {
     }
 
     @Override
-    protected void setMappingParamsToUpdate(PreparedStatement ps, Position entity) throws SQLException {
-        ps.setInt(6, entity.getPositionNo());
-        ps.setString(1, entity.getPosition());
+    protected void setMappingParamsToUpdate(PreparedStatement ps, Department entity) throws SQLException {
+        ps.setInt(6, entity.getDeptNo());
+        ps.setString(1, entity.getDeptName());
         ps.setString(2, entity.getUserCreate());
         ps.setString(3, entity.getDateCreate().toString());
         ps.setString(4, entity.getUserChange());

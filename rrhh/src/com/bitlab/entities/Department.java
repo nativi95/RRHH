@@ -13,7 +13,7 @@ import java.util.GregorianCalendar;
  */
 public class Department {
     //++++++++++++atributos++++++++++++++++++++++
-    private String deptNo;// llave primaria de departamento
+    private int deptNo;// llave primaria de departamento
     private String deptName;// nombre de departamanto
 	//+++++++++++++++++auditoria++++++++++++++++++++
     private String UserCreate; //usuario de auditoria crear
@@ -33,7 +33,7 @@ public class Department {
      *
      * @param String id
      */
-    public Department(String deptNo) {
+    public Department(int deptNo) {
         this.deptNo = deptNo;
     }
 
@@ -47,7 +47,7 @@ public class Department {
     *@param GregorianCalendar dateChange fecha de actualizacion
      * 
      */
-    public Department(String deptNo, String deptName, String UserCreate, GregorianCalendar dateCreate, String userChange, GregorianCalendar dateChange) {
+    public Department(int deptNo, String deptName, String UserCreate, GregorianCalendar dateCreate, String userChange, GregorianCalendar dateChange) {
         this.deptNo = deptNo;
         this.deptName = deptName;
         this.UserCreate = UserCreate;
@@ -58,11 +58,11 @@ public class Department {
     
     //+++++++++++++++++++++++++++Get y Set++++++++++++++++++++++++++++++
 
-    public String getDeptNo() {
+    public int getDeptNo() {
         return deptNo;
     }
 
-    public void setDeptNo(String deptNo) {
+    public void setDeptNo(int deptNo) {
         this.deptNo = deptNo;
     }
 
