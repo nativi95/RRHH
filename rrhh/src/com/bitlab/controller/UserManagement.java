@@ -13,16 +13,15 @@ import com.bitlab.util.DatesControls;
 import java.util.Date;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 /**
  *
  * @author nativi
  */
 public class UserManagement extends AbstractManagement<User> {
-    private org.slf4j.Logger logger = LoggerFactory.getLogger(UserDao.class);
+    private static org.slf4j.Logger logger = LoggerFactory.getLogger(UserDao.class);
     
     UserDao uDao = new UserDao();
 
@@ -144,7 +143,7 @@ public class UserManagement extends AbstractManagement<User> {
         try {
             UserManagement uM= new UserManagement("roberto");
         } catch (SQLException ex) {
-            Logger.getLogger(UserManagement.class.getName()).log(Level.SEVERE, null, ex);
+           logger.error("Ha ocurrido una excepcion en la eliminación", ex);
         }
     }
     
