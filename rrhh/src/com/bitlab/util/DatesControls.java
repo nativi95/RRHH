@@ -16,7 +16,7 @@ import java.util.GregorianCalendar;
 public class DatesControls {
 
     //+++++++++++++++++++Atributos++++++++++++++++++++++++++++++++++
-    private static SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");//formato de dates
+    private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");//formato de dates
     private Date today;//fecha actual
     private static GregorianCalendar cal;//calendariogregoriano
 
