@@ -5,7 +5,7 @@
  */
 package com.bitlab.entities;
 
-import java.util.GregorianCalendar;
+import java.util.Date;
 
 /**
  *
@@ -14,29 +14,29 @@ import java.util.GregorianCalendar;
 public class Payroll {
     private int payrollNo; // Numero de planilla
     private Employee empNo; // Llave de empleado
-    private GregorianCalendar fromDate; // Fecha desde
-    private GregorianCalendar toDate; //Fecha hasta
+    private Date fromDate; // Fecha desde
+    private Date toDate; //Fecha hasta
     
     //+++++++++++++++++auditoria++++++++++++++++++++
     private String UserCreate; //usuario de auditoria crear
-    private GregorianCalendar dateCreate;//fecha de creacion
+    private Date dateCreate;//fecha de creacion
     private String userChange;//usuario de auditoria actualizar
-    private GregorianCalendar dateChange;//fecha de actualizacion
+    private Date dateChange;//fecha de actualizacion
 
     public Payroll() {
     }
     /**
     *@param int payrollNo numero de planilla
     *@param Employee id de empleado
-    *@param GregorianCalendar fromDate fecha desde
-    *@param GregorianCalendar toDate fecha hasta
+    *@param Date fromDate fecha desde
+    *@param Date toDate fecha hasta
     *@param String UserCreate usuario de auditoria crear
-    *@param GregorianCalendar dateCreate fecha de creacion
+    *@param Date dateCreate fecha de creacion
     *@param String userChange usuario de auditoria actualizar
-    *@param GregorianCalendar dateChange fecha de actualizacion  
+    *@param Date dateChange fecha de actualizacion  
     *
     */
-    public Payroll(int payrollNo, Employee empNo, GregorianCalendar fromDate, GregorianCalendar toDate, String UserCreate, GregorianCalendar dateCreate, String userChange, GregorianCalendar dateChange) {
+    public Payroll(int payrollNo, Employee empNo, Date fromDate, Date toDate, String UserCreate, Date dateCreate, String userChange, Date dateChange) {
         this.payrollNo = payrollNo;
         this.empNo = empNo;
         this.fromDate = fromDate;
@@ -67,19 +67,19 @@ public class Payroll {
         this.empNo = empNo;
     }
 
-    public GregorianCalendar getFromDate() {
+    public Date getFromDate() {
         return fromDate;
     }
 
-    public void setFromDate(GregorianCalendar fromDate) {
+    public void setFromDate(Date fromDate) {
         this.fromDate = fromDate;
     }
 
-    public GregorianCalendar getToDate() {
+    public Date getToDate() {
         return toDate;
     }
 
-    public void setToDate(GregorianCalendar toDate) {
+    public void setToDate(Date toDate) {
         this.toDate = toDate;
     }
 
@@ -91,11 +91,11 @@ public class Payroll {
         this.UserCreate = UserCreate;
     }
 
-    public GregorianCalendar getDateCreate() {
+    public Date getDateCreate() {
         return dateCreate;
     }
 
-    public void setDateCreate(GregorianCalendar dateCreate) {
+    public void setDateCreate(Date dateCreate) {
         this.dateCreate = dateCreate;
     }
 
@@ -107,11 +107,11 @@ public class Payroll {
         this.userChange = userChange;
     }
 
-    public GregorianCalendar getDateChange() {
+    public Date getDateChange() {
         return dateChange;
     }
 
-    public void setDateChange(GregorianCalendar dateChange) {
+    public void setDateChange(Date dateChange) {
         this.dateChange = dateChange;
     }
 
