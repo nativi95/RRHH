@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.bitlab.dao;
+package com.bitlab.abstracts;
 
 import com.bitlab.conection.Conection;
 import java.sql.Connection;
@@ -37,69 +37,88 @@ public abstract class AbstractDao<T> {
     private final String CONDITIONS_INDICATOR = "[CONDITIONS]";// comodin de condicion
 
     //++++++++++++++++++++++++++++++++++abstraccion de nomenclatura de BD++++++++++++++++++++++++++++++++
-    
     /**
      * metodo abstracto retorna nombre de la tabla
-     * @return  String 
+     *
+     * @return String
      */
-    public abstract String getTableName();
+    protected abstract String getTableName();
 
-     /**
-     * metodo abstracto retorna los nombres de las columnas 
-     * para sentencias update o insert
-     * @return  String[] 
+    /**
+     * metodo abstracto retorna los nombres de las columnas para sentencias
+     * update o insert
+     *
+     * @return String[]
      */
     protected abstract String[] getTableColumns();
 
     /**
-     * metodo abstracto retorna condiccion de las sentencias
-     * para sentencias select, update o delete
-     * @return  String
+     * metodo abstracto retorna condiccion de las sentencias para sentencias
+     * select, update o delete
+     *
+     * @return String
      */
     protected abstract String getTableKey();
 
     /**
-     * metodo abstracto retorna mapeo del ResultSet
-     * para sentencias select
+     * metodo abstracto retorna mapeo del ResultSet para sentencias select
+     *
      * @param rs ResultSet
-     * @return  T entity
+     * @return T entity
      */
     protected abstract T getMappingResults(ResultSet rs) throws SQLException;
 
     /**
      * metodo abstracto retorna parametros de la setencias Insert
+     *
      * @param ps PreparedStatement
-     * @param  T entity
+     * @param T entity
      */
     protected abstract void setMappingParamsToCreate(PreparedStatement ps, T entity) throws SQLException;
 
     /**
      * metodo abstracto retorna parametros de la setencias updates
+     *
      * @param ps PreparedStatement
-     * @param  T entity
+     * @param T entity
      */
     protected abstract void setMappingParamsToUpdate(PreparedStatement ps, T entity) throws SQLException;
 
+    public List getColumnsName() {
+        List names=new ArrayList<>();
+        
+        for (byte i = 1; i < getTableColumns().length; i++) {
+            if (!getTableColumns()[i].equals("A_user_create") || !getTableColumns()[i].equals("A_user_change") || !getTableColumns()[i].equals("A_date_create") || !getTableColumns()[i].equals("A_date_change")) {
+                names.add(getTableColumns()[i].substring(4));
+            }
+
+        }
+        return names;
+
+    }
+
     //+++++++++++++++++++++++++++++++++++gestion de conecion++++++++++++++++++++++++++++++++++++++++++
-    
     /**
-     * metodo para crear una conexion JDBC a BD 
-     * @return  con de la clase com.bitlab.conection.Conection
+     * metodo para crear una conexion JDBC a BD
+     *
+     * @return con de la clase com.bitlab.conection.Conection
      */
     protected Connection getConnection() throws SQLException, ClassNotFoundException {
         return Conection.openConnection();
     }
 
-     /**
-     * metodo para cerrar la conexion de los objetos 
+    /**
+     * metodo para cerrar la conexion de los objetos
+     *
      * @param con de la clase Connection
      */
     protected void closeJDBCObjects(Connection con) throws SQLException {
         Conection.closeConnection(con);
     }
 
-     /**
-     * metodo para cerrar la conexion de los objetos 
+    /**
+     * metodo para cerrar la conexion de los objetos
+     *
      * @param con de la interface Connection
      * @param ps de la interface PreparedStatement
      */
@@ -110,8 +129,9 @@ public abstract class AbstractDao<T> {
         Conection.closeConnection(con);
     }
 
-      /**
-     * metodo para cerrar la conexion de los objetos 
+    /**
+     * metodo para cerrar la conexion de los objetos
+     *
      * @param con de la interface Connection
      * @param ps de la interface PreparedStatement
      * @param rs de la interface ResultSet
@@ -127,11 +147,11 @@ public abstract class AbstractDao<T> {
     }
 
     //++++++++++++++++++++++++++++++++++++sentencias contruidas+++++++++++++++++++++++++++++++++++++++
-    
     /**
-     * metodo que permite construir la sentencia estandar SELECT a partir  de los siguientes metodos:
-     * getTableName() ingresar nombre de tabla
+     * metodo que permite construir la sentencia estandar SELECT a partir de los
+     * siguientes metodos: getTableName() ingresar nombre de tabla
      * getTableColumns() nombre de las columnas en orden
+     *
      * @return String sql
      */
     protected String getFindAllSQL() {
@@ -141,10 +161,11 @@ public abstract class AbstractDao<T> {
         return sql;
     }
 
-     /**
-     * metodo que permite construir la sentencia estandar INSERT a partir  de los siguientes metodos:
-     * getTableName() ingresar nombre de tabla
+    /**
+     * metodo que permite construir la sentencia estandar INSERT a partir de los
+     * siguientes metodos: getTableName() ingresar nombre de tabla
      * getTableColumns() nombre de las columnas en orden
+     *
      * @return String sql
      */
     protected String getCreateSQL() {
@@ -173,10 +194,10 @@ public abstract class AbstractDao<T> {
     }
 
     /**
-     * metodo que permite construir la sentencia estandar UPDATE a partir  de los siguientes metodos:
-     * getTableName() ingresar nombre de tabla
-     * getTableKey() condicion WHERE 
-     * getTableColumns() nombre de las columnas en orden
+     * metodo que permite construir la sentencia estandar UPDATE a partir de los
+     * siguientes metodos: getTableName() ingresar nombre de tabla getTableKey()
+     * condicion WHERE getTableColumns() nombre de las columnas en orden
+     *
      * @return String sql
      */
     protected String getUpdateSQL() {
@@ -189,7 +210,7 @@ public abstract class AbstractDao<T> {
 
         //Se crea un pequeno proceso de concatenación de CAMPO=?,
         StringBuilder strIndicators = new StringBuilder();
-        for (byte i= 1; i<getTableColumns().length; i++) {
+        for (byte i = 1; i < getTableColumns().length; i++) {
             strIndicators.append(getTableColumns()[i]).append("=?,");
         }
 
@@ -200,11 +221,11 @@ public abstract class AbstractDao<T> {
     }
 
     /**
-     * metodo que permite construir la sentencia estandar REMOVE a partir  de los siguientes metodos:
-     * getTableName() ingresar nombre de tabla
-     * getTableKey() condicion WHERE 
-     * getTableColumns() nombre de las columnas en orden
+     * metodo que permite construir la sentencia estandar REMOVE a partir de los
+     * siguientes metodos: getTableName() ingresar nombre de tabla getTableKey()
+     * condicion WHERE getTableColumns() nombre de las columnas en orden
      * getTableKey() establece la condicion
+     *
      * @return String sql
      */
     protected String getRemoveSQL() {
@@ -217,9 +238,10 @@ public abstract class AbstractDao<T> {
     //++++++++++++++++++++++++++++++++++++++++++crud basico+++++++++++++++++++++++++++++++++++++++++++++
     /**
      * metodo para ejecutar SELECT y listar resultados
+     *
      * @throws SQLException
      * @throws ClassNotFoundException
-     * @return List<T> 
+     * @return List<T>
      */
     public List<T> findAll() throws SQLException, ClassNotFoundException {
         Connection con = getConnection(); //Se conecta a la BD
@@ -236,6 +258,7 @@ public abstract class AbstractDao<T> {
 
     /**
      * metodo para ejecutar INSERT y agregar un campo
+     *
      * @param entity de la base de datos
      * @throws SQLException
      * @throws ClassNotFoundException
@@ -248,9 +271,10 @@ public abstract class AbstractDao<T> {
         closeJDBCObjects(con, ps); //Se cierran los objetos
     }
 
-        /**
+    /**
      * metodo para ejecutar DELETE y eliminar un campo
-     * @param  id llave identificadora del campo
+     *
+     * @param id llave identificadora del campo
      * @throws SQLException
      * @throws ClassNotFoundException
      */
@@ -262,9 +286,11 @@ public abstract class AbstractDao<T> {
         closeJDBCObjects(con, ps); //Se cierran los datos de conexión
     }
 
-         /**
+    /**
      * metodo para ejecutar UPDATE y actualiza un campo
-     * @param  entity llave identificadora del campo y las actualizaciones del registro
+     *
+     * @param entity llave identificadora del campo y las actualizaciones del
+     * registro
      * @throws SQLException
      * @throws ClassNotFoundException
      */
@@ -276,9 +302,10 @@ public abstract class AbstractDao<T> {
         closeJDBCObjects(con, ps); //Se cierran los objetos
     }
 
-             /**
+    /**
      * metodo para ejecutar SELECT condicionado por ID
-     * @param  id llave identificadora del campo
+     *
+     * @param id llave identificadora del campo
      * @throws SQLException
      * @throws ClassNotFoundException
      */

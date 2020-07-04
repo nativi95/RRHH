@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.bitlab.daoext;
+package com.bitlab.dao;
 
-import com.bitlab.dao.AbstractDao;
+import com.bitlab.abstracts.AbstractDao;
 import com.bitlab.entities.Rol;
 import com.bitlab.entities.User;
 import com.bitlab.util.DatesControls;
@@ -13,6 +13,8 @@ import com.bitlab.util.Sha;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -38,7 +40,13 @@ public class UserDao extends AbstractDao<User> {
 
     @Override
     protected User getMappingResults(ResultSet rs) throws SQLException {
-       return new User(rs.getInt(1),rs.getString(2),rs.getString(3), (new Rol(rs.getInt(4))),rs.getString(5), DatesControls.dateToGregorian(rs.getDate(6)),rs.getString(7), DatesControls.dateToGregorian(rs.getDate(8)));
+        RolDao rDao=new RolDao();
+        try {
+            return new User(rs.getInt(1),rs.getString(2),rs.getString(3), (rDao.find(rs.getInt(4))),rs.getString(5), DatesControls.dateToGregorian(rs.getDate(6)),rs.getString(7), DatesControls.dateToGregorian(rs.getDate(8)));
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
    

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.bitlab.daoext;
+package com.bitlab.dao;
 
-import com.bitlab.dao.AbstractDao;
+import com.bitlab.abstracts.AbstractDao;
 import com.bitlab.entities.Department;
 import com.bitlab.entities.Employee;
 import com.bitlab.entities.Position;
@@ -13,6 +13,8 @@ import com.bitlab.util.DatesControls;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -39,20 +41,28 @@ public class EmployeeDao extends AbstractDao<Employee> {
 
     @Override
     protected Employee getMappingResults(ResultSet rs) throws SQLException {
-        return new Employee(
-                rs.getInt("emp_emp_no"),
-                DatesControls.dateToGregorian(rs.getDate("emp_birth_date")),
-                rs.getString("emp_first_name"),
-                rs.getString("emp_last_name"),
-                (rs.getString("emp_gender")).charAt(0),
-                DatesControls.dateToGregorian(rs.getDate("emp_hire_date")),
-                (new Position(rs.getInt("emp_position_no"))),
-                (new Department(rs.getString("emp_dept_no"))),
-                rs.getString("A_user_create"),
-                DatesControls.dateToGregorian(rs.getDate("A_date_create")),
-                rs.getString("A_user_change"),
-                DatesControls.dateToGregorian(rs.getDate("A_user_change"))
-        );
+        
+        PositionDao pDao= new PositionDao();
+        DepartmentDao dDao= new DepartmentDao();
+        try {
+            return new Employee(
+                    rs.getInt("emp_emp_no"),
+                    DatesControls.dateToGregorian(rs.getDate("emp_birth_date")),
+                    rs.getString("emp_first_name"),
+                    rs.getString("emp_last_name"),
+                    (rs.getString("emp_gender")).charAt(0),
+                    DatesControls.dateToGregorian(rs.getDate("emp_hire_date")),
+                    (pDao.find(rs.getInt("emp_position_no"))),
+                    (dDao.find(rs.getInt("emp_dept_no"))),
+                    rs.getString("A_user_create"),
+                    DatesControls.dateToGregorian(rs.getDate("A_date_create")),
+                    rs.getString("A_user_change"),
+                    DatesControls.dateToGregorian(rs.getDate("A_user_change"))
+            );
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(EmployeeDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
     @Override
@@ -64,7 +74,7 @@ public class EmployeeDao extends AbstractDao<Employee> {
         ps.setString(5, String.valueOf(entity.getGender()));
         ps.setString(6, entity.getHireDate().toString());
         ps.setInt(7, entity.getPositionNo().getPositionNo());
-        ps.setString(8, entity.getDeptNo().getDeptNo());
+        ps.setInt(8, entity.getDeptNo().getDeptNo());
         ps.setString(9, entity.getUserCreate());
         ps.setString(10, entity.getDateCreate().toString());
         ps.setString(11, entity.getUserChange());
@@ -80,7 +90,7 @@ public class EmployeeDao extends AbstractDao<Employee> {
         ps.setString(4, String.valueOf(entity.getGender()));
         ps.setString(5, entity.getHireDate().toString());
         ps.setInt(6, entity.getPositionNo().getPositionNo());
-        ps.setString(7, entity.getDeptNo().getDeptNo());
+        ps.setInt(7, entity.getDeptNo().getDeptNo());
         ps.setString(8, entity.getUserCreate());
         ps.setString(9, entity.getDateCreate().toString());
         ps.setString(10, entity.getUserChange());

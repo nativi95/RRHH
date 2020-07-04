@@ -19,7 +19,7 @@ DROP TABLE IF EXISTS emp_emp_employee,
 
 
 CREATE TABLE emp_dep_department (
-    dep_dept_no     	CHAR(4)         NOT NULL,
+    dep_dept_no     	int         	NOT NULL,
     dep_dept_name   	VARCHAR(40)     NOT NULL,
 	A_user_create 	    VARCHAR(10)     NOT NULL,
     A_date_create       DATE     		NOT NULL,
@@ -96,8 +96,8 @@ CREATE TABLE emp_rol_rol (
 ) ;
 
 CREATE TABLE emp_usr_user (
-    usr_user_no        INT             	NOT NULL,
-    usr_user 		   VARCHAR(10)		NOT NULL,
+    usr_user_no       INT             	NOT NULL,
+    usr_user 		   FLOAT(7,2)		NOT NULL,
     user_password	   VARCHAR(130) 	NOT NULL,
     usr_rol_no 		   INT 				NOT NULL,
 	A_user_create 	   VARCHAR(10)      NOT NULL,

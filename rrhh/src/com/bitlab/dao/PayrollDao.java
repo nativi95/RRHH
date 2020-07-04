@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.bitlab.daoext;
+package com.bitlab.dao;
 
-import com.bitlab.dao.AbstractDao;
+import com.bitlab.abstracts.AbstractDao;
 import com.bitlab.entities.Employee;
 import com.bitlab.entities.Payroll;
 import com.bitlab.util.DatesControls;
