@@ -22,24 +22,60 @@ import java.util.logging.Logger;
  */
 public abstract class AbstractManagement<T> {
 
-    protected abstract List<T> getFindAll();//se debera llenar con un listado del tipo
-
+    /**
+     * Metodo abstracto que recibira una lista de tipo T
+     * @return List<T>
+     */
+    protected abstract List<T> getFindAll();
+    
+/**
+ * metodo abstracto para invocar una entidad por Id desde el Dao
+ * @param id
+ * @return un objeto de tipo <T>
+ */
     protected abstract T find(int id);//se deberar de llenar con metodo find del tipo
 
+    /**
+     * Metodo asbtract que retornara todos los campos de la entidad en una cadena de String
+     * @param id
+     * @return 
+     */
     protected abstract String getFindToString(int id);//to string de find
 
+    /**
+     * Metodo abstracto que realizara el Set a la entidad y posteriormente actualizara un registro 
+     * @param user 
+     */
     public abstract void updateRecord(String user);
 
+    /**
+     * Metodo abstracto que recibira los parametros que se capturan desde consola para posteriormente actualizar o crear
+     * @param u
+     * @param user 
+     */
     public abstract void captuteData(User u, String user);
 
+    /**
+     * Metodo abstracto que relizara el delete del Dao de la entidad
+     * @param id 
+     */
     public abstract void remove(int id);
-
+/**
+ * Metodo abstracto que realizara el Set a la entidad y posteriormente agregara un registro
+ * @param user 
+ */
     public abstract void addRecord(String user);//abstracto
 
     Scanner scan = new Scanner(System.in);
 
     String capture = null;
 
+    /**
+     * metodo de captura de datos, el cual al recibir el parametro [cancel]  retornara al menu principal
+     * @param user
+     * @return
+     * @throws SQLException 
+     */
     public String getCapture(String user) throws SQLException {
         capture = scan.nextLine();
         
@@ -50,7 +86,11 @@ public abstract class AbstractManagement<T> {
        return capture;
        } 
     }
-
+/**
+ * Menu principal del mantenimiento
+ * @param user
+ * @throws SQLException 
+ */
     public void AbstractManagement(String user) throws SQLException {
 
         //capturo datos
@@ -106,20 +146,36 @@ public abstract class AbstractManagement<T> {
 
         }
     }
-
+/**
+ * metodo que mostra la lista de los primeros 50 registros
+ * @param user
+ * @throws SQLException
+ * @throws ClassNotFoundException 
+ */
     public void show(String user) throws SQLException, ClassNotFoundException {
 
         showList();
         searchMenu(user);
 
     }
-
+/**
+ * metodo que ingresara la informacion para facilitar los parametros de busqueda ById
+ * @param user
+ * @throws SQLException
+ * @throws ClassNotFoundException 
+ */
     public void findById(String user) throws SQLException, ClassNotFoundException {
         System.out.println("Ingrese el codigo de registro");   
-        show(validatedNumber(user), user);//abstracto
+        show(validatedNumber(user), user);
 
     }
-
+/**
+ * metodo que imprimira el listar ById
+ * @param id
+ * @param user
+ * @throws SQLException
+ * @throws ClassNotFoundException 
+ */
     public void show(int id, String user) throws SQLException, ClassNotFoundException {
 
         if(!getFindToString(id).isEmpty()){
@@ -130,14 +186,19 @@ public abstract class AbstractManagement<T> {
         searchMenu(user);
 
     }
-
+/**
+ * Metodo que permite imprimir lista de la entidad <T>
+ */
     public void showList() {//se repite
 
         for (T object : getFindAll()) {
             System.out.println(object.toString());
         }
     }
-
+/**
+ * Menu de resultados posterior a una busqueda
+ * @param user 
+ */
     public void searchMenu(String user) {//se repite
         System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
         boolean search = true;
@@ -178,7 +239,12 @@ public abstract class AbstractManagement<T> {
             }
         }
     }
-
+/**
+ * menu de resultados al encontrar el registro buscado
+ * @param user
+ * @throws ClassNotFoundException
+ * @throws SQLException 
+ */
     public void menuResultados(String user) throws ClassNotFoundException, SQLException {//se repite
         System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
         System.out.println("Escriba la opión de la acción que deseas realizar y pulse [enter] ");
@@ -202,7 +268,12 @@ public abstract class AbstractManagement<T> {
             }
         }
     }
-
+/**
+ * metodo que permite recolectar la informacion de consola para posteriormente eliminar el registro
+ * @param user
+ * @throws ClassNotFoundException
+ * @throws SQLException 
+ */
     public void removeRecord(String user) throws ClassNotFoundException, SQLException {//se repite
 
         System.out.println("Ingrese el número de registro a eliminar o [Cancel] para cancelar");
@@ -211,7 +282,12 @@ public abstract class AbstractManagement<T> {
 
         System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
     }
-
+/**
+ * metodo que recibira la captura para posteriormente evaluarla si es u  numero entero y retornara el mismo
+ * @param user
+ * @return int numero capturado en consola
+ * @throws SQLException 
+ */
     public int validatedNumber(String user) throws SQLException {// Se repite
         boolean flag = true;
 
@@ -221,7 +297,11 @@ public abstract class AbstractManagement<T> {
         }
         return Integer.parseInt(capture.trim());
     }
-
+/**
+ * metodo que evalua si el estring es un numero
+ * @param i
+ * @return boolean
+ */
     public boolean validateNumber(String i) {//Se repite
         try {
             int number = Integer.parseInt(i);
