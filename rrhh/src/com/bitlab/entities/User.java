@@ -5,7 +5,7 @@
  */
 package com.bitlab.entities;
 
-import java.util.GregorianCalendar;
+import java.util.Date;
 
 /**
  *
@@ -21,9 +21,9 @@ public class User {
 
     //-----------------------Auditoria---------------------------
     private String UserCreate; //usuario de auditoria crear
-    private GregorianCalendar dateCreate;//fecha de creacion
+    private Date dateCreate;//fecha de creacion
     private String userChange;//usuario de auditoria actualizar
-    private GregorianCalendar dateChange;//fecha de actualizacion
+    private Date dateChange;//fecha de actualizacion
 
      //-----------------------Constructores-------------------------
     /**
@@ -46,7 +46,7 @@ public class User {
     *@param GregorianCalendar dateChange fecha de actualizacion
      * 
      */
-    public User(int userNo, String user, String password, Rol rolNo, String UserCreate, GregorianCalendar dateCreate, String userChange, GregorianCalendar dateChange) {
+    public User(int userNo, String user, String password, Rol rolNo, String UserCreate, Date dateCreate, String userChange, Date dateChange) {
         this.userNo = userNo;
         this.user = user;
         this.password = password;
@@ -104,11 +104,11 @@ public class User {
         this.UserCreate = UserCreate;
     }
 
-    public GregorianCalendar getDateCreate() {
+    public Date getDateCreate() {
         return dateCreate;
     }
 
-    public void setDateCreate(GregorianCalendar dateCreate) {
+    public void setDateCreate(Date dateCreate) {
         this.dateCreate = dateCreate;
     }
 
@@ -120,11 +120,11 @@ public class User {
         this.userChange = userChange;
     }
 
-    public GregorianCalendar getDateChange() {
+    public Date getDateChange() {
         return dateChange;
     }
 
-    public void setDateChange(GregorianCalendar dateChange) {
+    public void setDateChange(Date dateChange) {
         this.dateChange = dateChange;
     }
 
