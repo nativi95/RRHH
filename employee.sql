@@ -116,3 +116,8 @@ INSERT INTO `employees`.`emp_rol_rol` ( `rol_rol`, `A_user_create`, `A_date_crea
 INSERT INTO `employees`.`emp_rol_rol` ( `rol_rol`, `A_user_create`, `A_date_create`, `A_user_change`, `A_date_change`) VALUES ( 'rrhh', 'roberto', '2020-07-03', 'roberto', '2020-07-03');
 
 insert into emp_usr_user value(0, 'roberto', '3c9909afec25354d551dae21590bb26e38d53f2173b8d3dc3eee4c047e7ab1c1eb8b85103e3be7ba613b31bb5c9c36214dc9f14a42fd7a2fdb84856bca5c44c2', 1, 'roberto', '2020-07-03', 'roberto', '2020-07-03');
+INSERT INTO `employees`.`emp_rol_rol` ( `rol_rol`, `A_user_create`, `A_date_create`, `A_user_change`, `A_date_change`) VALUES ( 'rrhh', 'roberto', '2020-07-03', 'roberto', '2020-07-03');
+INSERT INTO `employees`.`emp_rol_rol` ( `rol_rol`, `A_user_create`, `A_date_create`, `A_user_change`, `A_date_change`) VALUES ( 'rrhh', 'Andrea', '2020-07-03', 'Andrea', '2020-07-03');
+INSERT INTO `employees`.`emp_rol_rol` ( `rol_rol`, `A_user_create`, `A_date_create`, `A_user_change`, `A_date_change`) VALUES ( 'rrhh', 'Juan', '2020-07-03', 'Juan', '2020-07-03');
+INSERT INTO `employees`.`emp_rol_rol` ( `rol_rol`, `A_user_create`, `A_date_create`, `A_user_change`, `A_date_change`) VALUES ( 'rrhh', 'Carlos', '2020-07-03', 'Juan', '2020-07-03');
+INSERT INTO `employees`.`emp_rol_rol` ( `rol_rol`, `A_user_create`, `A_date_create`, `A_user_change`, `A_date_change`) VALUES ( 'admin', 'Carlos', '2020-07-03', 'Juan', '2020-07-03');
