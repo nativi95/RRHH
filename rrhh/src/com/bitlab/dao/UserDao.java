@@ -13,8 +13,9 @@ import com.bitlab.util.Sha;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
+import java.util.List;
 import org.slf4j.LoggerFactory;
-import org.slf4j.Logger;
 
 /**
  *
@@ -70,17 +71,11 @@ public class UserDao extends AbstractDao<User> {
     @Override
     protected void setMappingParamsToUpdate(PreparedStatement ps, User entity) throws SQLException {
         logger.debug("Mapeo de paramentros para actualizar Usuario");
-        ps.setInt(8, entity.getUserNo());
+        ps.setInt(6, entity.getUserNo());
         ps.setString(1, entity.getUser());
         ps.setString(2, Sha.encrypt(entity.getPassword()));
         ps.setInt(3, entity.getRolNo().getRolRolNo());
-        ps.setString(4, entity.getUserCreate());
-        ps.setString(5, DatesControls.dateToString(entity.getDateCreate()));
-        ps.setString(6, entity.getUserChange());
-        ps.setString(7, DatesControls.dateToString(entity.getDateChange()));
+        ps.setString(4, entity.getUserChange());
+        ps.setString(5, DatesControls.dateToString(entity.getDateChange()));
     }
-
-
-    
-    
 }
