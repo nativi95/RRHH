@@ -17,7 +17,7 @@ import java.sql.SQLException;
 public class Conection {
     
     //++++++++++++++++++++++++++++++Atributos de conexion+++++++++++++++++++++++++++++
-    private static final String BD="db_biblioteca";
+    private static final String BD="db_employee";
     private static final String USER="root";
     private static final String PASS="bathory80";
     private static final String URL="jdbc:mysql://localhost:3306/"+BD+"?useSSL=false";

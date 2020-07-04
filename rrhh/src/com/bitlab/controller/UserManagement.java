@@ -118,4 +118,12 @@ public class UserManagement extends AbstractManagement<User> {
         return null;
     }
     
+    public static void main(String[] args) {
+        try {
+            UserManagement uM= new UserManagement("roberto");
+        } catch (SQLException ex) {
+            Logger.getLogger(UserManagement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 }
