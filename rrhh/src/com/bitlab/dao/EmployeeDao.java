@@ -66,33 +66,33 @@ public class EmployeeDao extends AbstractDao<Employee> {
     @Override
     protected void setMappingParamsToCreate(PreparedStatement ps, Employee entity) throws SQLException {
         ps.setInt(1, entity.getEmpNo());
-        ps.setString(2, entity.getBirthDate().toString());
+        ps.setString(2, DatesControls.dateToString(entity.getBirthDate()));
         ps.setString(3, entity.getFirstName());
         ps.setString(4, entity.getLastName());
         ps.setString(5, String.valueOf(entity.getGender()));
-        ps.setString(6, entity.getHireDate().toString());
+        ps.setString(6, DatesControls.dateToString(entity.getHireDate()) );
         ps.setInt(7, entity.getPositionNo().getPositionNo());
         ps.setInt(8, entity.getDeptNo().getDeptNo());
         ps.setString(9, entity.getUserCreate());
-        ps.setString(10, entity.getDateCreate().toString());
+        ps.setString(10, DatesControls.dateToString(entity.getDateCreate()));
         ps.setString(11, entity.getUserChange());
-        ps.setString(12, entity.getUserCreate());
+        ps.setString(12, DatesControls.dateToString(entity.getDateChange()));
     }
 
     @Override
     protected void setMappingParamsToUpdate(PreparedStatement ps, Employee entity) throws SQLException {
         ps.setInt(12, entity.getEmpNo());
-        ps.setString(1, entity.getBirthDate().toString());
+        ps.setString(1, DatesControls.dateToString(entity.getBirthDate()));
         ps.setString(2, entity.getFirstName());
         ps.setString(3, entity.getLastName());
         ps.setString(4, String.valueOf(entity.getGender()));
-        ps.setString(5, entity.getHireDate().toString());
+        ps.setString(5, DatesControls.dateToString(entity.getHireDate()) );
         ps.setInt(6, entity.getPositionNo().getPositionNo());
         ps.setInt(7, entity.getDeptNo().getDeptNo());
         ps.setString(8, entity.getUserCreate());
-        ps.setString(9, entity.getDateCreate().toString());
+        ps.setString(9, DatesControls.dateToString(entity.getDateCreate()));
         ps.setString(10, entity.getUserChange());
-        ps.setString(11, entity.getUserCreate());
+        ps.setString(11, DatesControls.dateToString(entity.getDateChange()));
     }
 
 }

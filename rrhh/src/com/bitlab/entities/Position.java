@@ -5,7 +5,7 @@
  */
 package com.bitlab.entities;
 
-import java.util.GregorianCalendar;
+import java.util.Date;
 
 /**
  *
@@ -19,9 +19,9 @@ public class Position {
 
     //+++++++++++++++++auditoria++++++++++++++++++++
     private String UserCreate; //usuario de auditoria crear
-    private GregorianCalendar dateCreate;//fecha de creacion
+    private Date dateCreate;//fecha de creacion
     private String userChange;//usuario de auditoria actualizar
-    private GregorianCalendar dateChange;//fecha de actualizacion
+    private Date dateChange;//fecha de actualizacion
 
     //+++++++++++++++++++constructores++++++++++++++++++
     /**
@@ -45,11 +45,11 @@ public class Position {
      * @param int positionNo llave primaria de position
      * @param String position position
      * @param String UserCreate usuario de auditoria crear
-     * @param GregorianCalendar dateCreate fecha de creacion
+     * @param Date dateCreate fecha de creacion
      * @param String userChange usuario de auditoria actualizar
-     * @param GregorianCalendar dateChange fecha de actualizacion
+     * @param Date dateChange fecha de actualizacion
      */
-    public Position(int positionNo, String position, String UserCreate, GregorianCalendar dateCreate, String userChange, GregorianCalendar dateChange) {
+    public Position(int positionNo, String position, String UserCreate, Date dateCreate, String userChange, Date dateChange) {
         this.positionNo = positionNo;
         this.position = position;
         this.UserCreate = UserCreate;
@@ -83,11 +83,11 @@ public class Position {
         this.UserCreate = UserCreate;
     }
 
-    public GregorianCalendar getDateCreate() {
+    public Date getDateCreate() {
         return dateCreate;
     }
 
-    public void setDateCreate(GregorianCalendar dateCreate) {
+    public void setDateCreate(Date dateCreate) {
         this.dateCreate = dateCreate;
     }
 
@@ -99,11 +99,11 @@ public class Position {
         this.userChange = userChange;
     }
 
-    public GregorianCalendar getDateChange() {
+    public Date getDateChange() {
         return dateChange;
     }
 
-    public void setDateChange(GregorianCalendar dateChange) {
+    public void setDateChange(Date dateChange) {
         this.dateChange = dateChange;
     }
 
