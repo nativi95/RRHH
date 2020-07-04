@@ -27,10 +27,8 @@ public class UserManagement extends AbstractManagement<User> {
 
     UserDao uDao = new UserDao();
 
-
-
     @Override
-    public void captuteData(User u, String user){
+    public void captuteData(User u, String user) {
         try {
             logger.debug("Captura de datos a guardar");
             System.out.print("Escriba el usuario nuevo y despues presione [enter] o [Cancel] para cancelar");
@@ -72,12 +70,12 @@ public class UserManagement extends AbstractManagement<User> {
     protected String getFindToString(int id) {
         logger.debug("Obtiene los datos segun id de registro");
         try {
-          return "--"+find(id).getUserNo() + " " + find(id).getUser() + " [contraseña] " + find(id).getRolNo().getRolRol()+"--";
-     
+            return "--" + find(id).getUserNo() + " " + find(id).getUser() + " [contraseña] " + find(id).getRolNo().getRolRol() + "--";
+
         } catch (Exception e) {
             return "No se encontraron resultados";
         }
-         }
+    }
 
     @Override
     public void updateRecord(String user) {
@@ -85,7 +83,7 @@ public class UserManagement extends AbstractManagement<User> {
             System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
             logger.debug("Actualización de registro de usuario");
             System.out.println("Ingrese el codigo de registro y posteriormente presione [enter] o [Cancel] para cancelar");
-            
+
             User u = new User(validatedNumber(user));
             System.out.println("Estos son los registros actuales, actualice los registros que desee y escriba nuevamente los que no desea actualizar o [Cancel] para cancelar:");
             System.out.println(getFindToString(u.getUserNo()));
@@ -96,12 +94,10 @@ public class UserManagement extends AbstractManagement<User> {
             try {
                 uDao.update(u);
             } catch (SQLException | ClassNotFoundException ex) {
-//            Logger.getLogger(UserManagement.class.getName()).log(Level.SEVERE, null, ex);
-logger.error("Ha ocurrido una excepcion en la actualizacion", ex);
+                logger.error("Ha ocurrido una excepcion en la actualizacion", ex);
 
             }
-//            Logger.getLogger(UserManagement.class.getName()).log(Level.SEVERE, null, ex);
-System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+            System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
         } catch (SQLException ex) {
             java.util.logging.Logger.getLogger(UserManagement.class.getName()).log(Level.SEVERE, null, ex);
 
