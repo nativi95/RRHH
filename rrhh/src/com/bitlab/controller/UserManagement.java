@@ -23,10 +23,11 @@ import java.util.logging.Logger;
 public class UserManagement extends AbstractManagement<User> {
     
     UserDao uDao = new UserDao();
-    
+
     public UserManagement(String user) throws SQLException {
         super(user);
     }
+
     
     @Override
     public void captuteData(User u) {
@@ -46,7 +47,7 @@ public class UserManagement extends AbstractManagement<User> {
     public void addRecord(String user) {
         User u = new User(0);
         u.setUserChange(user);
-        u.setDateChange(DatesControls.dateToGregorian(new Date()));
+        u.setDateChange(DatesControls.dateToGregorian(DatesControls.));
         u.setUserCreate(user);
         u.setDateCreate(DatesControls.dateToGregorian(new Date()));
         captuteData(u);
