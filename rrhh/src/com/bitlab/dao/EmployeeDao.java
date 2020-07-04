@@ -6,9 +6,7 @@
 package com.bitlab.dao;
 
 import com.bitlab.abstracts.AbstractDao;
-import com.bitlab.entities.Department;
 import com.bitlab.entities.Employee;
-import com.bitlab.entities.Position;
 import com.bitlab.util.DatesControls;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -47,17 +45,17 @@ public class EmployeeDao extends AbstractDao<Employee> {
         try {
             return new Employee(
                     rs.getInt("emp_emp_no"),
-                    DatesControls.dateToGregorian(rs.getDate("emp_birth_date")),
+                    rs.getDate("emp_birth_date"),
                     rs.getString("emp_first_name"),
                     rs.getString("emp_last_name"),
                     (rs.getString("emp_gender")).charAt(0),
-                    DatesControls.dateToGregorian(rs.getDate("emp_hire_date")),
+                    rs.getDate("emp_hire_date"),
                     (pDao.find(rs.getInt("emp_position_no"))),
                     (dDao.find(rs.getInt("emp_dept_no"))),
                     rs.getString("A_user_create"),
-                    DatesControls.dateToGregorian(rs.getDate("A_date_create")),
+                    rs.getDate("A_date_create"),
                     rs.getString("A_user_change"),
-                    DatesControls.dateToGregorian(rs.getDate("A_user_change"))
+                    rs.getDate("A_user_change")
             );
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(EmployeeDao.class.getName()).log(Level.SEVERE, null, ex);
