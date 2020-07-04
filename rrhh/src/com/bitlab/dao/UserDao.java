@@ -13,14 +13,14 @@ import com.bitlab.util.Sha;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
  * @author CarlosAlex
  */
 public class UserDao extends AbstractDao<User> {
+    private org.slf4j.Logger logger = LoggerFactory.getLogger(UserDao.class);
 
     @Override
     public String getTableName() {
@@ -42,17 +42,20 @@ public class UserDao extends AbstractDao<User> {
     protected User getMappingResults(ResultSet rs) throws SQLException {
         RolDao rDao=new RolDao();
         try {
+            logger.debug("Mapeo de resulset de User");
             return new User(rs.getInt(1),rs.getString(2),rs.getString(3), (rDao.find(rs.getInt(4))),rs.getString(5), rs.getDate(6),rs.getString(7), rs.getDate(8));
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+//            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+            logger.error("Ha ocurrido una excepcion en el mapeo", ex);
         }
         return null;
     }
-
+    
    
 
     @Override
     protected void setMappingParamsToCreate(PreparedStatement ps, User entity) throws SQLException {
+        logger.debug("Mapeo de paramentros para crear Usuario");
         ps.setInt(1, entity.getUserNo());
         ps.setString(2, entity.getUser());
         ps.setString(3, Sha.encrypt(entity.getPassword()));
@@ -65,6 +68,7 @@ public class UserDao extends AbstractDao<User> {
 
     @Override
     protected void setMappingParamsToUpdate(PreparedStatement ps, User entity) throws SQLException {
+        logger.debug("Mapeo de paramentros para actualizar Usuario");
         ps.setInt(8, entity.getUserNo());
         ps.setString(1, entity.getUser());
         ps.setString(2, Sha.encrypt(entity.getPassword()));
