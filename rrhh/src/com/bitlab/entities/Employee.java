@@ -5,7 +5,7 @@
  */
 package com.bitlab.entities;
 
-import java.util.GregorianCalendar;
+import java.util.Date;
 
 /**
  *
@@ -15,19 +15,19 @@ public class Employee {
 
     //++++++++++++atributos++++++++++++++++++++++
     private int empNo;//numero correlativo
-    private GregorianCalendar birthDate;//fecha de nacimiento
+    private Date birthDate;//fecha de nacimiento
     private String firstName;//primer nombre
     private String lastName;//primer apellido
     private char gender; // permite M o F 
-    private GregorianCalendar hireDate;// fecha de pago
+    private Date hireDate;// fecha de pago
     private Position positionNo;
     private Department deptNo;
 
     //+++++++++++++++++auditoria++++++++++++++++++++
     private String UserCreate; //usuario de auditoria crear
-    private GregorianCalendar dateCreate;//fecha de creacion
+    private Date dateCreate;//fecha de creacion
     private String userChange;//usuario de auditoria actualizar
-    private GregorianCalendar dateChange;//fecha de actualizacion
+    private Date dateChange;//fecha de actualizacion
 
     //+++++++++++++++++++constructores++++++++++++++++++
     /**
@@ -48,21 +48,21 @@ public class Employee {
     /**
      *Contructor recibe todos los campos de Employee
     *@param  int empNo numero correlativo
-    *@param GregorianCalendar birthDate fecha de nacimiento
+    *@param Date birthDate fecha de nacimiento
     *@param String firstName primer nombre
     *@param String lastName primer apellido
     *@param char gender permite M o F 
-    *@param GregorianCalendar hireDate fecha de pago
+    *@param Date hireDate fecha de pago
     *@param Position positionNo;
     *@param Department deptNo;
     *@param String UserCreate usuario de auditoria crear
-    *@param GregorianCalendar dateCreate fecha de creacion
+    *@param Date dateCreate fecha de creacion
     *@param String userChange usuario de auditoria actualizar
-    *@param GregorianCalendar dateChange fecha de actualizacion
+    *@param Date dateChange fecha de actualizacion
      * 
      */
 
-    public Employee(int empNo, GregorianCalendar birthDate, String firstName, String lastName, char gender, GregorianCalendar hireDate, Position positionNo, Department deptNo, String UserCreate, GregorianCalendar dateCreate, String userChange, GregorianCalendar dateChange) {
+    public Employee(int empNo, Date birthDate, String firstName, String lastName, char gender, Date hireDate, Position positionNo, Department deptNo, String UserCreate, Date dateCreate, String userChange, Date dateChange) {
         this.empNo = empNo;
         this.birthDate = birthDate;
         this.firstName = firstName;
@@ -86,11 +86,11 @@ public class Employee {
         this.empNo = empNo;
     }
 
-    public GregorianCalendar getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(GregorianCalendar birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -118,11 +118,11 @@ public class Employee {
         this.gender = gender;
     }
 
-    public GregorianCalendar getHireDate() {
+    public Date getHireDate() {
         return hireDate;
     }
 
-    public void setHireDate(GregorianCalendar hireDate) {
+    public void setHireDate(Date hireDate) {
         this.hireDate = hireDate;
     }
 
@@ -134,11 +134,11 @@ public class Employee {
         this.UserCreate = UserCreate;
     }
 
-    public GregorianCalendar getDateCreate() {
+    public Date getDateCreate() {
         return dateCreate;
     }
 
-    public void setDateCreate(GregorianCalendar dateCreate) {
+    public void setDateCreate(Date dateCreate) {
         this.dateCreate = dateCreate;
     }
 
@@ -150,18 +150,13 @@ public class Employee {
         this.userChange = userChange;
     }
 
-    public GregorianCalendar getDateChange() {
+    public Date getDateChange() {
         return dateChange;
     }
 
-    public void setDateChange(GregorianCalendar dateChange) {
+    public void setDateChange(Date dateChange) {
         this.dateChange = dateChange;
     }
-    
-    
-    
-    
-
 
 
     public Position getPositionNo() {
