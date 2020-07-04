@@ -57,7 +57,8 @@ public abstract class AbstractManagement<T> {
             System.out.println("C.Buscar por código identificador registros");
             System.out.println("D.Buscar similares");
             System.out.println("E. Regresar al menu anterior");
-            switch (getCapture().toLowerCase()) {
+           capture=scan.nextLine();
+            switch (capture.toLowerCase()) {
                 case "a":
                     addRecord(user);
                     flag = true;
