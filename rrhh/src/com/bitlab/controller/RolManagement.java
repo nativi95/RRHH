@@ -143,6 +143,17 @@ public class RolManagement extends AbstractManagement<Rol> {
         System.out.println("\n------------------------------------------------------\n");
     }
 
+    @Override
+    protected List<Rol> findLike(String user) {
+    System.out.println("Ingrese el nombre del rol para buscar similitudes o presiones [cancel] para cancelar");
+        try {
+            return rDao.findLike(getCapture(user));
+        } catch (SQLException | ClassNotFoundException ex) {
+            logger.error("Ha ocurrido una excepcion en la busqueda de registros", ex);
+        }
+        return null;
+    }
+
     
     
 }
