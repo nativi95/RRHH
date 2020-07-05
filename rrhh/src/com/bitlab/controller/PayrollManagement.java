@@ -82,9 +82,11 @@ public class PayrollManagement {
               java.util.logging.Logger.getLogger(PayrollManagement.class.getName()).log(Level.SEVERE, null, ex);
           }    
     }
-public void VerHistorial(){
-        }
-public void VerPlanilla (){
-}
+    public void VerHistorial(){
+    
+    }
+    public void VerPlanilla (){
+        
+    }
     
 }
