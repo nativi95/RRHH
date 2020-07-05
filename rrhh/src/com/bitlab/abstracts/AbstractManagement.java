@@ -7,7 +7,7 @@ package com.bitlab.abstracts;
 
 import com.bitlab.controller.UserManagement;
 
-import com.bitlab.entities.User;
+
 
 import java.sql.SQLException;
 
