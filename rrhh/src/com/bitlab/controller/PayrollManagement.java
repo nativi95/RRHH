@@ -16,6 +16,7 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -25,54 +26,62 @@ public class PayrollManagement {
 
   Validate val=new Validate();
   PayrollDao pay=new PayrollDao();
+  BillDao bill=new BillDao();
   Payroll py;
-    
-    Scanner scan =new Scanner(System.in);
+  Bill bl;
+   Scanner scan =new Scanner(System.in);
 
   
-public void CrearPago(String user){
-    py=new Payroll(0);
-    BillDao bill=new BillDao();
-    Bill bl=new Bill();
-    Employee employ=new Employee(val.isNumeric(scan));
-    System.out.println("Ingrese ID de Empleado");
-    py.setEmpNo(employ);
-    System.out.println("Ingrese Fecha de Inicio de Pago");
-    py.setFromDate(DatesControls.stringToDate(scan.nextLine()));
-     System.out.println("Ingrese Fecha de Corte de Pago");
-    py.setToDate(DatesControls.stringToDate(scan.nextLine()));
-     
-    py.setUserCreate(user);
-    py.setUserChange(user);
-    py.setDateCreate(new Date());
-    py.setDateChange(new Date());
-     
-      try {
-          pay.create(py);
-      } catch (SQLException ex) {
-          java.util.logging.Logger.getLogger(PayrollManagement.class.getName()).log(Level.SEVERE, null, ex);
-      } catch (ClassNotFoundException ex) {
-          java.util.logging.Logger.getLogger(PayrollManagement.class.getName()).log(Level.SEVERE, null, ex);
-      }
-      
-       System.out.println("¿Desea Ingresar informacion? [S] para si [N] para no");
-       String rs=scan.nextLine();
-       
-       while (rs.equals("S")){
-          System.out.println("Ingrese Valor de Pago");
-          bl.setBilValue(Double.valueOf(scan.nextLine()));
-          System.out.println("Ingrese Descripcion del Pago");
-          bl.setBilDescription(scan.nextLine());
- 
-           
-//         bill.create();
-                 
-                 
-                 
+    public void CrearPago(int id, String user){ 
+        boolean flag = true;
+        while (!flag){
+            System.out.println("¿Desea Ingresar informacion? [S] para SÍ [Cualquier tecla] para NO");
+            String rs=scan.nextLine();
+            if(rs.equalsIgnoreCase("S")){
+                bl = new Bill();
+                System.out.println("Ingrese Valor de Pago");
+                bl.setBilValue(Double.valueOf(scan.nextLine()));
+                System.out.println("Ingrese Descripcion del Pago");
+                bl.setBilDescription(scan.nextLine());
+
+                try {
+                    bill.create(bl);
+                } catch (SQLException ex) {
+                    Logger.getLogger(PayrollManagement.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(PayrollManagement.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }else{
+                flag = false;
+            }
+    
        }
-  }
-public void CrearPlanilla(){
-}
+    }
+    public void CrearPlanilla(String user){
+        py=new Payroll(0);
+
+        Employee employ=new Employee(val.isNumeric(scan));
+        System.out.println("Ingrese ID de Empleado");
+        py.setEmpNo(employ);
+        System.out.println("Ingrese Fecha de Inicio de Pago");
+        py.setFromDate(DatesControls.stringToDate(scan.nextLine()));
+         System.out.println("Ingrese Fecha de Corte de Pago");
+        py.setToDate(DatesControls.stringToDate(scan.nextLine()));
+
+        py.setUserCreate(user);
+        py.setUserChange(user);
+        py.setDateCreate(new Date());
+        py.setDateChange(new Date());
+
+          try {
+              pay.create(py);
+              CrearPago(pay.getLastInsertIdPayroll(), user);
+          } catch (SQLException ex) {
+              java.util.logging.Logger.getLogger(PayrollManagement.class.getName()).log(Level.SEVERE, null, ex);
+          } catch (ClassNotFoundException ex) {
+              java.util.logging.Logger.getLogger(PayrollManagement.class.getName()).log(Level.SEVERE, null, ex);
+          }    
+    }
 public void VerHistorial(){
         }
 public void VerPlanilla (){
