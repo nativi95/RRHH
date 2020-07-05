@@ -28,7 +28,7 @@ public class UserManagement extends AbstractManagement<User> {
     UserDao uDao = new UserDao();
 
     @Override
-    public void captuteData(User u, String user) {
+    public void captureData(User u, String user) {
         try {
             logger.debug("Captura de datos a guardar");
             System.out.print("Escriba el usuario nuevo y despues presione [enter] o [Cancel] para cancelar");
@@ -53,7 +53,7 @@ public class UserManagement extends AbstractManagement<User> {
         u.setUserCreate(user);
         u.setDateCreate(new Date());
         logger.debug("Se ejecuta el metodo captuteData");
-        captuteData(u, user);
+        captureData(u, user);
         try {
             uDao.create(u);
         } catch (SQLException ex) {
@@ -90,7 +90,7 @@ public class UserManagement extends AbstractManagement<User> {
             u.setUserChange(user);
             u.setDateChange(new Date());
             logger.debug("Ejectuta metodo captuteData");
-            captuteData(u, user);
+            captureData(u, user);
             try {
                 uDao.update(u);
             } catch (SQLException | ClassNotFoundException ex) {
