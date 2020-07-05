@@ -66,9 +66,7 @@ public class RrhhManagement {
         this.rrhhManagement(user);
 
     }
-    
-    
-  /**
+ /**
  * metodo que mostra la lista de los primeros 50 registros
  * @param user
  * @throws SQLException
@@ -94,22 +92,6 @@ public class RrhhManagement {
          }else{
             return capture;
        } 
-    }
-    
-    public void addRecord(String user) {
-//        System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
-//        logger.debug("Creacion de registro de empleado");
-//        Employee e = new Employee();
-//        
-//        this.getCapture(user);
-//        try {
-//            dDao.create(d);
-//        } catch (SQLException ex) {
-//            logger.error("Ha ocurrido una excepcion en la creacion", ex);
-//        } catch (ClassNotFoundException ex) {
-//            logger.error("Ha ocurrido una excepcion en la creacion", ex);
-//        }
-//        System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
     }
     
     public void rrhhManagement(String user) {
@@ -161,11 +143,12 @@ public class RrhhManagement {
         System.out.println("A. Contratación de empleados");
         System.out.println("B. Actualización de registros empleados");
         System.out.println("C. Desactivación de empleados por despido");
-        System.out.println("D. Buscar por código identificador registros");
-        System.out.println("E. Buscar similares");
-        System.out.println("F. Encontré mi resultado y deseo realizar cambios usando el número de registro");
-        System.out.println("G. Generación de pagos en planilla");
-        System.out.println("H. Salir");
+        System.out.println("D. Buscar primeros 50 registros");
+        System.out.println("E. Buscar por código identificador registros");
+        System.out.println("F. Buscar similares");
+        System.out.println("G. Encontré mi resultado y deseo realizar cambios usando el número de registro");
+        System.out.println("H. Generación de pagos en planilla");
+        System.out.println("I. Salir");
         
         while (search) {
             try {
@@ -180,11 +163,18 @@ public class RrhhManagement {
                         eMa.removeRecord(user);
                         break;
                     case "d":
-                        search = false;
+                        eMa.getFindAll();
+                        this.show(user);
                         break;
                     case "e":
-                        eMa.findLike(user);                        
+                        this.findById(user);
+                        break;
+                    case "f":
+                        eMa.findLike(user);   
                         search = false;
+                        break;
+                    case "g":
+                        this.rrhhManagement(user);
                         break;
                     default:
                         System.out.println("Escriba una opción valida");
