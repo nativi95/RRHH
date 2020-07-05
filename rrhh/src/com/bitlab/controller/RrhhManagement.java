@@ -6,6 +6,7 @@
 package com.bitlab.controller;
 import com.bitlab.dao.EmployeeDao;
 import com.bitlab.entities.Employee;
+import com.bitlab.util.Validate;
 import java.util.Scanner;
 
 
@@ -29,20 +30,69 @@ public class RrhhManagement {
     
     //Objeto de clase EmployeeDao
     private EmployeeDao eDao = new EmployeeDao();
+    private EmployeeManagement eMa = new EmployeeManagement();
     
+    //Objeto de clase que contiene metodos de validacion
+    private Validate validate = new Validate();
+    
+ 
+    
+ /**
+ * metodo que ingresara la informacion para facilitar los parametros de busqueda ById
+ * @param user
+ * @throws SQLException
+ * @throws ClassNotFoundException 
+ */
+    public void findById(String user) throws SQLException, ClassNotFoundException {
+        System.out.println("Ingrese el codigo de registro");   
+        show(validate.isNumeric(scan), user);
+
+    }   
+    
+ /**
+ * metodo que imprimira el listar ById
+ * @param id
+ * @param user
+ * @throws SQLException
+ * @throws ClassNotFoundException 
+ */
+    public void show(int id, String user) throws SQLException, ClassNotFoundException {
+
+        if(!eMa.getFindToString(id).isEmpty()){
+            System.out.println(eMa.getFindToString(id));
+        }else{
+            System.out.println("No se encontró el registro");
+        }
+        this.rrhhManagement(user);
+
+    }
+    
+    
+  /**
+ * metodo que mostra la lista de los primeros 50 registros
+ * @param user
+ * @throws SQLException
+ * @throws ClassNotFoundException 
+ */
+    public void show(String user) throws SQLException, ClassNotFoundException {
+
+        eMa.showList();
+        rrhhManagement(user);
+
+    }  
  /**
  * Metodo getCapture para realizad la captura de datos
  * @param string de usuario
  * @return un objeto de tipo <T>
  */
     public String getCapture(String user) throws SQLException {
-        capture = scan.nextLine();
+         capture = scan.nextLine();
         
-       if(capture.toLowerCase().equals("cancel")){
-           rrhhManagement(user);
-       return null;    
-       }else{
-       return capture;
+         if(capture.toLowerCase().equals("cancel")){
+            rrhhManagement(user);
+            return null;    
+         }else{
+            return capture;
        } 
     }
     
@@ -75,31 +125,31 @@ public class RrhhManagement {
             try {
                 switch (getCapture(user).toLowerCase()) {
                     case "a":
-                        show(user);
+                        menuManagement(user);
                         search = false;
                         break;
                     case "b":
-                        findById(user);
+//                        findById(user);
                         search = false;
                         break;
                     case "c":
-                        findLike(user);
+//                        findLike(user);
                         search = false;
                         break;
                     case "d":
-                        menuResultados(user);
+//                        menuResultados(user);
                         search = false;
                         break;
                     default:
-                        System.out.println("Escriba una opción valida");
+//                        System.out.println("Escriba una opción valida");
                         search = true;
                         break;
                 }
             } catch (SQLException ex) {
                 logger.error("Ha ocurrido una excepcion en la creacion", ex);
-            } catch (ClassNotFoundException ex) {
+            } /*catch (ClassNotFoundException ex) {
                 logger.error("Ha ocurrido una excepcion en la creacion", ex);
-            }
+            }*/
         }       
     }
     
@@ -111,27 +161,29 @@ public class RrhhManagement {
         System.out.println("A. Contratación de empleados");
         System.out.println("B. Actualización de registros empleados");
         System.out.println("C. Desactivación de empleados por despido");
-        System.out.println("D. Visualización de pagos generados");
-        System.out.println("E. Generación de pagos en planilla");
-        System.out.println("F. Salir");
+        System.out.println("D. Buscar por código identificador registros");
+        System.out.println("E. Buscar similares");
+        System.out.println("F. Encontré mi resultado y deseo realizar cambios usando el número de registro");
+        System.out.println("G. Generación de pagos en planilla");
+        System.out.println("H. Salir");
         
         while (search) {
             try {
                 switch (getCapture(user).toLowerCase()) {
                     case "a":
-                        show(user);
-                        search = false;
+                        eMa.addRecord(user);
                         break;
                     case "b":
-                        findById(user);
-                        search = false;
+                        eMa.updateRecord(user);
                         break;
                     case "c":
-                        findLike(user);
-                        search = false;
+                        eMa.removeRecord(user);
                         break;
                     case "d":
-                        menuResultados(user);
+                        search = false;
+                        break;
+                    case "e":
+                        eMa.findLike(user);                        
                         search = false;
                         break;
                     default:
