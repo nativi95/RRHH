@@ -46,7 +46,7 @@ public class UserManagement extends AbstractManagement<User> {
     @Override
     public void addRecord(String user) {
         System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
-        logger.debug("Creacion de registro de usuario");
+        logger.debug("Creacion de Nuevo Rol de Usuario");
         User u = new User(0);
         u.setUserChange(user);
         u.setDateChange(new Date());
