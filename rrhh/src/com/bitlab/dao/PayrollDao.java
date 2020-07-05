@@ -9,6 +9,7 @@ import com.bitlab.abstracts.AbstractDao;
 import com.bitlab.entities.Employee;
 import com.bitlab.entities.Payroll;
 import com.bitlab.util.DatesControls;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -78,4 +79,16 @@ public class PayrollDao extends AbstractDao<Payroll>{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    public int getLastInsertIdPayroll() throws SQLException, ClassNotFoundException{
+        int idPayroll = 0;
+        String lastInsertIdSql = "SELECT last_insert_id()";
+        Connection con = getConnection(); //Se conecta a la BD        
+        PreparedStatement ps = con.prepareStatement(lastInsertIdSql); //Crea el Statement
+        ResultSet rs = ps.executeQuery(); //Ejecuta la query
+        while (rs.next()) { //Si la BD devolvio coincidencias (Registros)
+            idPayroll = rs.getInt(1); //Se mapean y se asignan a la variable
+        }
+        closeJDBCObjects(con, ps, rs); //Cierra la conexión
+        return idPayroll;
+    }
 }
