@@ -14,6 +14,7 @@ import java.util.GregorianCalendar;
  */
 public class Bill {
      //++++++++++++atributos++++++++++++++++++++++
+    private int billNo;
     private Payroll payrollNo; //Llave de planilla
     private double bilValue; // Valor
     private String bilDescription; //Descripcion del valor
@@ -23,6 +24,21 @@ public class Bill {
     private Date dateCreate;//fecha de creacion
     private String userChange;//usuario de auditoria actualizar
     private Date dateChange;//fecha de actualizacion
+/**
+ * Constructor vacio
+ * 
+ */
+    public Bill() {
+    }
+/**
+ * Constructor con id primario 
+ * @param int 
+ */
+    public Bill(int billNo) {
+        this.billNo = billNo;
+    }
+    
+   
    
     /**
     *Contructor recibe todos los campos de Employee
@@ -48,8 +64,12 @@ public class Bill {
         this.userChange = userChange;
         this.dateChange = dateChange;
     }
-
-    public Bill() {
+/**
+ * Constructor con objeto payroll
+ * @param payrollNo 
+ */
+    public Bill(Payroll payrollNo) {
+        this.payrollNo = payrollNo;
     }
 
     public Payroll getPayrollNo() {
@@ -108,12 +128,20 @@ public class Bill {
         this.dateChange = dateChange;
     }
 
-    
-    @Override
-    public String toString() {
-        return "Bill{" + "payrollNo=" + payrollNo + ", bilValue=" + bilValue + ", bilDescription=" + bilDescription + ", UserCreate=" + UserCreate + ", dateCreate=" + dateCreate + ", userChange=" + userChange + ", dateChange=" + dateChange + '}';
+    public int getBillNo() {
+        return billNo;
     }
 
+    public void setBillNo(int billNo) {
+        this.billNo = billNo;
+    }
+
+    @Override
+    public String toString() {
+        return "Bill{" + "billNo=" + billNo + ", payrollNo=" + payrollNo + ", bilValue=" + bilValue + ", bilDescription=" + bilDescription + ", UserCreate=" + UserCreate + ", dateCreate=" + dateCreate + ", userChange=" + userChange + ", dateChange=" + dateChange + '}';
+    }
+
+    
     
 
     

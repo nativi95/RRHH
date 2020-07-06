@@ -76,6 +76,7 @@ CREATE TABLE emp_pay_payroll (
 ; 
 
 CREATE TABLE emp_bil_bill (
+    bill_bill_no       INT              NOT NULL,
     bil_payroll_no     INT             	NOT NULL,
     bil_value 		   FLOAT(7,2)		NOT NULL,
     bil_description	   VARCHAR(50) 		NOT NULL,
@@ -83,8 +84,8 @@ CREATE TABLE emp_bil_bill (
     A_date_create      DATE     		NOT NULL,
     A_user_change 	   VARCHAR(10)  	NOT NULL,
     A_date_change      DATE     		NOT NULL,
-    constraint FOREIGN KEY (bil_payroll_no) REFERENCES emp_pay_payroll (pay_payroll_no) ON DELETE CASCADE
-
+    constraint FOREIGN KEY (bil_payroll_no) REFERENCES emp_pay_payroll (pay_payroll_no) ON DELETE CASCADE,
+PRIMARY KEY(bill_bill_no)
 ) 
 ; 
 

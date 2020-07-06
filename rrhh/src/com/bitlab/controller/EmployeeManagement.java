@@ -36,7 +36,7 @@ public class EmployeeManagement extends AbstractManagement<Employee> {
 
     @Override
     protected List<Employee> findLike(String user) {
-        eDao=new EmployeeDao();
+        eDao = new EmployeeDao();
         System.out.println("Ingrese el nombre de empleado o [cancel] para cancelar");
         String name = scan.nextLine();
         if (!name.toLowerCase().equals("cancel")) {
@@ -105,9 +105,14 @@ public class EmployeeManagement extends AbstractManagement<Employee> {
                 e.setUserChange(user);
                 e.setDateChange(new Date());
                 e.setHireDate(eDao.find(e.getEmpNo()).getHireDate());
-                captureData(e, user);
-                if (e.getPositionNo() != null) {
-                    eDao.update(e);
+                System.out.println("Ingrese correo electronico del empleado o escriba [cancel] para cancelar");
+                fromCmd = scan.nextLine().toLowerCase();
+                if (!fromCmd.equals("cancel")) {
+                    e.setEmail(fromCmd);
+                    captureData(e, user);
+                    if (e.getPositionNo() != null) {
+                        eDao.update(e);
+                    }
                 }
 
             }
@@ -138,70 +143,70 @@ public class EmployeeManagement extends AbstractManagement<Employee> {
                     fromCmd = scan.nextLine().toLowerCase();
                     if (!fromCmd.equals("cancel")) {
                         e.setBirthDate(DatesControls.stringToDate(fromCmd));
-                        
+
                         System.out.println("Ingrese el correo electrónico o [cancel] para cancelar");
                         fromCmd = scan.nextLine().toLowerCase();
                         if (!fromCmd.equals("cancel")) {
                             e.setEmail(fromCmd);
-                        
-                        System.out.println("Ingrese el genero del nuevo empleado [F] femenino [M] Masculino o [cancel] para cancelar");
-                        fromCmd = scan.nextLine().toLowerCase();
-                        if (!fromCmd.equals("cancel") && (fromCmd.startsWith("f") || fromCmd.startsWith("m"))) {
-                            e.setGender(fromCmd.charAt(0));
-                            logger.debug("Creando istancia de DepartamentDao");
-                            DepartmentDao dDao = new DepartmentDao();
-                            logger.debug("Cargando lista de departamentos disponibles");
-                            List<Department> lsDeparment = dDao.findAll();
-                            System.out.println("Especifique a que departamento pertenece el empleado escribiendo el numero correspondiente posterior de [enter] o [cancel] para cancelar");
-                            boolean bandera = true;
-                            int captura = 0;
 
-                            while (bandera) {
-                                for (byte i = 1; i < lsDeparment.size() + 1; i++) {
-                                    System.out.println(i + ". " + lsDeparment.get(i - 1).getDeptName());
-                                }
-                                captura = v.isNumeric();
-                                if (captura != 0) {
+                            System.out.println("Ingrese el genero del nuevo empleado [F] femenino [M] Masculino o [cancel] para cancelar");
+                            fromCmd = scan.nextLine().toLowerCase();
+                            if (!fromCmd.equals("cancel") && (fromCmd.startsWith("f") || fromCmd.startsWith("m"))) {
+                                e.setGender(fromCmd.charAt(0));
+                                logger.debug("Creando istancia de DepartamentDao");
+                                DepartmentDao dDao = new DepartmentDao();
+                                logger.debug("Cargando lista de departamentos disponibles");
+                                List<Department> lsDeparment = dDao.findAll();
+                                System.out.println("Especifique a que departamento pertenece el empleado escribiendo el numero correspondiente posterior de [enter] o [cancel] para cancelar");
+                                boolean bandera = true;
+                                int captura = 0;
 
-                                    if (captura < lsDeparment.size() + 1 && captura > 0) {
-                                        e.setDeptNo(lsDeparment.get(captura - 1));
-                                        bandera = false;
-                                    } else {
-                                        System.out.println("Escriba una de las opciones de la lista\n");
-                                        bandera = true;
-                                    }
-                                } else {
-                                    bandera = false;
-                                }
-                            }
-                            if (captura != 0) {
-                                bandera = true;
-                                PositionDao pDao = new PositionDao();
-                                List<Position> lsPosition = pDao.findAll();
-                                System.out.println("Especifique a que cargo pertenece el empleado escribiendo el numero correspondiente posterior de [enter] o [cancel] para cancelar");
                                 while (bandera) {
                                     for (byte i = 1; i < lsDeparment.size() + 1; i++) {
-                                        System.out.println(i + ". " + lsPosition.get(i - 1).getPosition());
+                                        System.out.println(i + ". " + lsDeparment.get(i - 1).getDeptName());
                                     }
                                     captura = v.isNumeric();
                                     if (captura != 0) {
 
-                                        if (captura < lsPosition.size() + 1 && captura > 0) {
-                                            e.setPositionNo(lsPosition.get(captura - 1));
+                                        if (captura < lsDeparment.size() + 1 && captura > 0) {
+                                            e.setDeptNo(lsDeparment.get(captura - 1));
                                             bandera = false;
                                         } else {
+                                            System.out.println("Escriba una de las opciones de la lista\n");
                                             bandera = true;
                                         }
                                     } else {
                                         bandera = false;
                                     }
                                 }
+                                if (captura != 0) {
+                                    bandera = true;
+                                    PositionDao pDao = new PositionDao();
+                                    List<Position> lsPosition = pDao.findAll();
+                                    System.out.println("Especifique a que cargo pertenece el empleado escribiendo el numero correspondiente posterior de [enter] o [cancel] para cancelar");
+                                    while (bandera) {
+                                        for (byte i = 1; i < lsDeparment.size() + 1; i++) {
+                                            System.out.println(i + ". " + lsPosition.get(i - 1).getPosition());
+                                        }
+                                        captura = v.isNumeric();
+                                        if (captura != 0) {
+
+                                            if (captura < lsPosition.size() + 1 && captura > 0) {
+                                                e.setPositionNo(lsPosition.get(captura - 1));
+                                                bandera = false;
+                                            } else {
+                                                bandera = true;
+                                            }
+                                        } else {
+                                            bandera = false;
+                                        }
+                                    }
+                                }
+                            } else {
+                                System.out.println("Datos no validos");
                             }
-                        } else {
-                            System.out.println("Datos no validos");
                         }
                     }
-                  }
                 }
             }
 
@@ -232,14 +237,18 @@ public class EmployeeManagement extends AbstractManagement<Employee> {
         e.setDateChange(new Date());
         e.setDateCreate(new Date());
         e.setHireDate(new Date());
-        captureData(e, user);
-        try {
-            if (e.getPositionNo() != null) {
-                eDao.create(e);
-            }
+        System.out.println("Ingrese correo electronico del empleado o escriba [cancel] para cancelar");
+        fromCmd = scan.nextLine().toLowerCase();
+        if (!fromCmd.equals("cancel")) {
+            captureData(e, user);
+            try {
+                if (e.getPositionNo() != null) {
+                    eDao.create(e);
+                }
 
-        } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(EmployeeManagement.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException | ClassNotFoundException ex) {
+                Logger.getLogger(EmployeeManagement.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 }
