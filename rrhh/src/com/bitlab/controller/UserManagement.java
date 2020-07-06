@@ -201,5 +201,4 @@ public class UserManagement extends AbstractManagement<User> {
 
         }
     }
-
 }

@@ -11,6 +11,8 @@ import com.bitlab.util.Validate;
 import java.util.Scanner;
 
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,7 +21,6 @@ import org.slf4j.LoggerFactory;
  * @author Andrea
  */
 public class RrhhManagement {
-
     // Variable logger
     private static Logger logger = LoggerFactory.getLogger(DepartmentManagement.class);
 
@@ -68,6 +69,15 @@ public class RrhhManagement {
         this.rrhhManagement(user);
 
     }
+    /**
+     * Imprime las listas de tipo employee
+     * @param lsEmploye 
+     */
+    public void showList(List<Employee> lsEmploye){
+    for (Employee e : lsEmploye) {
+            System.out.println("Id: "+e.getEmpNo()+", Nombre: "+e.getFirstName()+", Apellido: "+e.getLastName()+", Nacimiento: "+e.getBirthDate()+", Contratado: "+e.getHireDate());
+        }
+    }
 
     /**
      * metodo que mostra la lista de los primeros 50 registros
@@ -79,7 +89,6 @@ public class RrhhManagement {
     public void show(String user) throws SQLException, ClassNotFoundException {
 
         eMa.showList();
-        rrhhManagement(user);
 
     }
 
@@ -106,8 +115,8 @@ public class RrhhManagement {
             logger.debug("Mostrando menu principal");
             System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
 
-            System.out.println("Desea ingresar más parámetros de búsqueda escriba la opión y pulse [enter] ");
-            System.out.println("A. Gestion de empleados");
+            System.out.println("Escriba la letra de la opción deseada y pulse [enter] ");
+            System.out.println("A. Gestión de empleados");
             System.out.println("B. Historial de planillas del mes actual");
             System.out.println("C. Ver Historial de planillas segun mes espacífico");
             System.out.println("D. Salir");
@@ -116,18 +125,18 @@ public class RrhhManagement {
                     case "a":
                         logger.debug("Mostrando menu de gestión de usuarios");
                         menuManagement(user);
-                        search = false;
+                        search = true;
                         break;
                     case "b":
 //                        findById(user);
-                        search = false;
+                        search = true;
                         break;
                     case "c":
 //                        findLike(user);
-                        search = false;
+                        search = true;
                         break;
                     case "d":
-//                        menuResultados(user);
+
                         search = false;
                         break;
                     default:
@@ -143,7 +152,10 @@ public class RrhhManagement {
             }*/
         }
     }
-
+/**
+ * Menu de mantenimiento de empleado por parte de rrhh
+ * @param user 
+ */
     public void menuManagement(String user) {
         boolean search = true;
 
@@ -158,34 +170,38 @@ public class RrhhManagement {
                 System.out.println("D. Buscar primeros 50 registros");
                 System.out.println("E. Buscar por código identificador registros");
                 System.out.println("F. Buscar similares");
-                System.out.println("G. Encontré mi resultado y deseo realizar cambios usando el número de registro");
-                System.out.println("H. Generación de pagos en planilla");
-                System.out.println("I. Salir");
+                System.out.println("G. Generación de planilla de empleado");
+                System.out.println("H. Salir");
                 switch (getCapture(user).toLowerCase()) {
                     case "a":
                         eMa.addRecord(user);
+                        search=true;
                         break;
                     case "b":
                         eMa.updateRecord(user);
+                        search=true;
                         break;
                     case "c":
                         eMa.removeRecord(user);
+                        search=true;
                         break;
                     case "d":
                         eMa.getFindAll();
                         this.show(user);
+                        search=true;
                         break;
                     case "e":
                         this.findById(user);
+                        search=true;
                         break;
                     case "f":
                         eMa.findLike(user);
-                        search = false;
+                        search=true;
                         break;
                     case "g":
                         this.rrhhManagement(user);
                         break;
-                        case "i":
+                        case "h":
                         search=false;
                         break;
                     default:
@@ -200,10 +216,4 @@ public class RrhhManagement {
             }
         }
     }
-
-    public static void main(String[] args) {
-        RrhhManagement obj = new RrhhManagement();
-        obj.rrhhManagement("Andrea");
-    }
-
 }
