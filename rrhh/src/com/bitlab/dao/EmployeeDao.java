@@ -6,6 +6,7 @@
 package com.bitlab.dao;
 
 import com.bitlab.abstracts.AbstractDao;
+import com.bitlab.controller.EmployeeManagement;
 import com.bitlab.entities.Employee;
 import com.bitlab.util.DatesControls;
 import java.sql.Connection;
@@ -119,7 +120,10 @@ public class EmployeeDao extends AbstractDao<Employee> {
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(EmployeeDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-return null;
+        return null;
     }
-
+    public static void main(String[] args) {
+        EmployeeManagement obj = new EmployeeManagement();
+        obj.addRecord("Andrea");
+    }
 }

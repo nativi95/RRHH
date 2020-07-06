@@ -21,7 +21,7 @@ public class Conection {
     //++++++++++++++++++++++++++++++Atributos de conexion+++++++++++++++++++++++++++++
     private static final String BD="employees";
     private static final String USER="root";
-    private static final String PASS="bathory80";
+    private static final String PASS="";
     private static final String URL="jdbc:mysql://localhost:3306/"+BD+"?useSSL=false";
     private static final String DRIVER="com.mysql.jdbc.Driver";
     

@@ -95,6 +95,7 @@ public class RrhhManagement {
     }
     
     public void rrhhManagement(String user) {
+        logger.debug("Mostrando menu principal");
         System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
         boolean search = true;
 
@@ -107,6 +108,7 @@ public class RrhhManagement {
             try {
                 switch (getCapture(user).toLowerCase()) {
                     case "a":
+                        logger.debug("Mostrando menu de gestión de usuarios");
                         menuManagement(user);
                         search = false;
                         break;
@@ -189,5 +191,9 @@ public class RrhhManagement {
         }  
     }
     
+    public static void main(String[] args) {
+        RrhhManagement obj = new RrhhManagement();
+        obj.rrhhManagement("Andrea");
+    }
     
 }

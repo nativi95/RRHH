@@ -196,7 +196,7 @@ public abstract class AbstractDao<T> {
         //con el nombre de la tabla y columnas que indicará la clase hija 
         sql = sql.replace(TABLE_INDICATOR, getTableName())
                 .replace("[", "").replace("]", ""); //Debido al metodo Arrays devuelve los resultas [campo,campo2,campo3] se aplica el replace de los corchetes []
-
+        System.out.println(sql);
         return sql;
     }
 
@@ -253,7 +253,7 @@ byte size=(byte)strIndicators.toString().length();
      */
     public List<T> findAll() throws SQLException, ClassNotFoundException {
         Connection con = getConnection(); //Se conecta a la BD
-        PreparedStatement ps = con.prepareStatement(getFindAllSQL()); //Crea el Statement
+        PreparedStatement ps = con.prepareStatement(getFindAllSQL()); //Crea el Statement 
         ps.setMaxRows(MAXROWS); //aplica el máximo de registros a devolver
         ResultSet rs = ps.executeQuery(); //Ejecuta la query
         List<T> objects = new ArrayList<>();
@@ -274,6 +274,7 @@ byte size=(byte)strIndicators.toString().length();
     public void create(T entity) throws SQLException, ClassNotFoundException {
         Connection con = getConnection(); //Se conecta a la BD
         PreparedStatement ps = con.prepareStatement(getCreateSQL()); //Crea el Statement
+        System.out.println("La consulta es: " + ps);
         setMappingParamsToCreate(ps, entity); //Se mapean los datos de la entidad al statement para enviarlos a la BD
         ps.executeUpdate(); //Se ejecuta en la BD
         closeJDBCObjects(con, ps); //Se cierran los objetos
