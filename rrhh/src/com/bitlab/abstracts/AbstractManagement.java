@@ -105,9 +105,9 @@ public abstract class AbstractManagement<T> {
         while (flag) {
             System.out.println("Eliga la opción deseada escribiendo la letra correspondiente después presione [enter]:");
             System.out.println("A. Agregar un nuevo registro");
-            System.out.println("B.Buscar primeros 50 registros");
-            System.out.println("C.Buscar por código identificador registros");
-            System.out.println("D.Buscar similares");
+            System.out.println("B. Buscar primeros 50 registros");
+            System.out.println("C. Buscar por código identificador registros");
+            System.out.println("D. Buscar similares");
             System.out.println("E. Regresar al menu anterior");
            
             switch (getCapture(user).toLowerCase()) {

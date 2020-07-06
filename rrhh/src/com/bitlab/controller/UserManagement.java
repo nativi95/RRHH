@@ -32,11 +32,11 @@ public class UserManagement extends AbstractManagement<User> {
     public void captureData(User u, String user) {
         try {
             logger.debug("Captura de datos a guardar");
-            System.out.print("Escriba el usuario nuevo y despues presione [enter] o [Cancel] para cancelar");
+            System.out.println("Escriba el usuario nuevo y despues presione [enter] o [Cancel] para cancelar ");
             u.setUser(getCapture(user));
-            System.out.print("Escriba la contraseña y despues presione [enter] o [Cancel] para cancelar");
+            System.out.println("Escriba la contraseña y despues presione [enter] o [Cancel] para cancelar ");
             u.setPassword(getCapture(user));
-            System.out.print("Escriba el ID de rol 1 es administrador y 2. rrhh y despues presione [enter] o [Cancel] para cancelar");
+            System.out.println("Escriba el ID de rol 1 es administrador y 2. rrhh y despues presione [enter] o [Cancel] para cancelar ");
             Rol r = new Rol(validatedNumber(user));
             u.setRolNo(r);
         } catch (SQLException ex) {
