@@ -205,6 +205,7 @@ public class RrhhManagement {
                         break;
                     case "f":
                         eMa.findLike(user);
+                        this.show(user);
                         search = true;
                         break;
                     case "g":
