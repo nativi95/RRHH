@@ -274,7 +274,6 @@ byte size=(byte)strIndicators.toString().length();
     public void create(T entity) throws SQLException, ClassNotFoundException {
         Connection con = getConnection(); //Se conecta a la BD
         PreparedStatement ps = con.prepareStatement(getCreateSQL()); //Crea el Statement
-        System.out.println("La consulta es: " + ps);
         setMappingParamsToCreate(ps, entity); //Se mapean los datos de la entidad al statement para enviarlos a la BD
         ps.executeUpdate(); //Se ejecuta en la BD
         closeJDBCObjects(con, ps); //Se cierran los objetos

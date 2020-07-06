@@ -122,8 +122,5 @@ public class EmployeeDao extends AbstractDao<Employee> {
         }
         return null;
     }
-    public static void main(String[] args) {
-        EmployeeManagement obj = new EmployeeManagement();
-        obj.addRecord("Andrea");
-    }
+
 }

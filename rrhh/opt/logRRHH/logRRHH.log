@@ -146,3 +146,19 @@
 2020-07-05 21:35:57,691 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando fecha de nacimiento
 2020-07-05 21:36:10,415 DEBUG com.bitlab.controller.DepartmentManagement [main] Creando istancia de DepartamentDao
 2020-07-05 21:36:10,416 DEBUG com.bitlab.controller.DepartmentManagement [main] Cargando lista de departamentos disponibles
+2020-07-05 21:48:15,598 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu principal
+2020-07-05 21:48:18,386 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu de gestión de usuarios
+2020-07-05 21:48:19,411 DEBUG com.bitlab.controller.DepartmentManagement [main] Ingresando a metodo captureData
+2020-07-05 21:48:19,412 DEBUG com.bitlab.controller.DepartmentManagement [main] Setendo nombre de empleado
+2020-07-05 21:48:21,893 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando apellido de empleado
+2020-07-05 21:48:23,793 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando fecha de nacimiento
+2020-07-05 21:48:32,430 DEBUG com.bitlab.controller.DepartmentManagement [main] Creando istancia de DepartamentDao
+2020-07-05 21:48:32,431 DEBUG com.bitlab.controller.DepartmentManagement [main] Cargando lista de departamentos disponibles
+2020-07-05 21:50:35,652 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu principal
+2020-07-05 21:50:39,981 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu de gestión de usuarios
+2020-07-05 21:50:41,032 DEBUG com.bitlab.controller.DepartmentManagement [main] Ingresando a metodo captureData
+2020-07-05 21:50:41,033 DEBUG com.bitlab.controller.DepartmentManagement [main] Setendo nombre de empleado
+2020-07-05 21:50:42,947 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando apellido de empleado
+2020-07-05 21:50:43,628 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando fecha de nacimiento
+2020-07-05 21:50:51,615 DEBUG com.bitlab.controller.DepartmentManagement [main] Creando istancia de DepartamentDao
+2020-07-05 21:50:51,616 DEBUG com.bitlab.controller.DepartmentManagement [main] Cargando lista de departamentos disponibles
