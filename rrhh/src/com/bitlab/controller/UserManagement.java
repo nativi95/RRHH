@@ -58,10 +58,8 @@ public class UserManagement extends AbstractManagement<User> {
         try {
             uDao.create(u);
         } catch (SQLException ex) {
-//            Logger.getLogger(UserManagement.class.getName()).log(Level.SEVERE, null, ex);
             logger.error("Ha ocurrido una excepcion en la creacion", ex);
         } catch (ClassNotFoundException ex) {
-//            Logger.getLogger(UserManagement.class.getName()).log(Level.SEVERE, null, ex);
             logger.error("Ha ocurrido una excepcion en la creacion", ex);
         }
         System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
@@ -189,21 +187,14 @@ public class UserManagement extends AbstractManagement<User> {
                 }
                 boolean flag2 = true;
                 while (flag2) {
-                    System.out.println("Desea iniciar sesion con otra cuenta\n A.Si\nB.No");
+                    System.out.println("Desea iniciar sesion con otra cuenta\n[A] Si\n[Cualquier tecla] No");
                     if (scan.nextLine().toLowerCase().equals("a")) {
                         flag = true;
                         flag2 = false;
                     } else {
-                        if (scan.nextLine().toLowerCase().equals("b")) {
-                            System.out.println("Finalizando");
-                            flag = false;
-                            flag2 = false;
-                        } else {
-
-                            System.out.println("Ingrese una de las opciones validas");
-                            flag2 = true;
-                        }
-
+                          System.out.println("Ejecución Finalizada");
+                          flag = false;
+                          flag2 = false;
                     }
                 }
             }
