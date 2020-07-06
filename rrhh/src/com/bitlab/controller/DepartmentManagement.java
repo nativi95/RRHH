@@ -11,6 +11,7 @@ import com.bitlab.entities.User;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -86,7 +87,7 @@ public class DepartmentManagement extends AbstractManagement<Department>{
         logger.debug("Se ejecuta el metodo captuteData");
         captureData(d, user);
         
-            dDao.create(d);
+            dDao.update(d);
         } catch (SQLException ex) {
             logger.error("Ha ocurrido una excepcion en la actualización", ex);
         } catch (ClassNotFoundException ex) {
@@ -141,6 +142,12 @@ public class DepartmentManagement extends AbstractManagement<Department>{
         } catch (SQLException ex) {
             logger.error("Ha ocurrido una excepcion en la creacion", ex);
         }
+    }
+    
+    public static void main(String[] args) {
+        DepartmentManagement dMh= new DepartmentManagement();
+        System.out.println(""+dMh.findLike("I").get(0).toString());
+        
     }
     
 }
