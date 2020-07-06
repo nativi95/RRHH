@@ -57,7 +57,7 @@ public class EmployeeManagement extends AbstractManagement<Employee> {
 
     @Override
     protected List<Employee> getFindAll() {
-        eDao=new EmployeeDao();
+        eDao=new EmployeeDao();//se inicializa para poder efectuar busquedas
         try {
             return eDao.findAll();
         } catch (SQLException | ClassNotFoundException ex) {
