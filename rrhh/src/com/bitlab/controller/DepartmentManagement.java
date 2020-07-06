@@ -143,11 +143,4 @@ public class DepartmentManagement extends AbstractManagement<Department>{
             logger.error("Ha ocurrido una excepcion en la creacion", ex);
         }
     }
-    
-    public static void main(String[] args) {
-        DepartmentManagement dMh= new DepartmentManagement();
-        System.out.println(""+dMh.findLike("I").get(0).toString());
-        
-    }
-    
 }

@@ -103,11 +103,9 @@ public class EmployeeDao extends AbstractDao<Employee> {
 
     public List<Employee> findLike(String nombre, String apellido) {
         try {
-            String sql = getFindAllSQL() + SQL_WHERE +getColumnLike()+" like %?% or emp_last_name like %?%";
+            String sql = getFindAllSQL() + SQL_WHERE +getColumnLike()+" like '%"+nombre+"%' or emp_last_name like '%"+apellido+"%'";
             Connection con = getConnection(); //Se obtiene la conexión
             PreparedStatement ps = con.prepareStatement(sql); //Se prepara el Statement
-            ps.setObject(1, nombre); //Se aplican los parametros
-            ps.setObject(2, apellido); //Se aplican los parametros
             ResultSet rs = ps.executeQuery(); //Se ejecuta y se utiliza un ResultSet para obtener los valores
             List<Employee> objects = new ArrayList<>();
             while (rs.next()) { //Si la BD encontro registros por cada uno itera
@@ -119,10 +117,5 @@ public class EmployeeDao extends AbstractDao<Employee> {
             Logger.getLogger(EmployeeDao.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-    }
-    
-    public static void main(String[] args) {
-        EmployeeDao e= new EmployeeDao();
-        System.out.println(""+e.getUpdateSQL());
     }
 }

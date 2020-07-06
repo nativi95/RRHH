@@ -154,6 +154,4 @@ public class RolManagement extends AbstractManagement<Rol> {
         return null;
     }
 
-    
-    
 }

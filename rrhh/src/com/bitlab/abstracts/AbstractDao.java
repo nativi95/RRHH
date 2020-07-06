@@ -340,10 +340,7 @@ public abstract class AbstractDao<T> {
     public List<T> findLike(String name) throws SQLException, ClassNotFoundException {
         String sql = getFindAllSQL() + SQL_WHERE + getColumnLike() + " LIKE '%" + name + "%'"; //Se juega con el SQL dinámico
         Connection con = getConnection(); //Se obtiene la conexión
-        System.out.println("print 1");
         PreparedStatement ps = con.prepareStatement(sql); //Se prepara el Statement
-        System.out.println("print 2");
-        System.out.println("print 3 " + ps);
         ResultSet rs = ps.executeQuery(); //Se ejecuta y se utiliza un ResultSet para obtener los valores
         List<T> objects = new ArrayList<>();
         while (rs.next()) { //Si la BD encontro registros por cada uno itera

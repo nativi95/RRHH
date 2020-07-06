@@ -36,14 +36,21 @@ public class EmployeeManagement extends AbstractManagement<Employee> {
 
     @Override
     protected List<Employee> findLike(String user) {
-        try {
-            System.out.println("Ingrese el nombre de empleado o [cancel] para cancelar");
-            String name = getCapture(user);
+        eDao=new EmployeeDao();
+        System.out.println("Ingrese el nombre de empleado o [cancel] para cancelar");
+        String name = scan.nextLine();
+        if (!name.toLowerCase().equals("cancel")) {
             System.out.println("Ingrese el apellido de empleado o [cancel] para cancelar");
-            String lastName = (getCapture(user));
-            return eDao.findLike(name, lastName);
-        } catch (SQLException ex) {
-            Logger.getLogger(EmployeeManagement.class.getName()).log(Level.SEVERE, null, ex);
+            String lastName = scan.nextLine();
+
+            if (!name.toLowerCase().equals("cancel")) {
+                List<Employee> lsEmployee = eDao.findLike(name, lastName);
+                if (!lsEmployee.isEmpty()) {
+                    return lsEmployee;
+                }
+                return null;
+            }
+            return null;
         }
         return null;
     }
@@ -97,7 +104,7 @@ public class EmployeeManagement extends AbstractManagement<Employee> {
 
                 e.setUserChange(user);
                 e.setDateChange(new Date());
-                e.setHireDate(new Date());
+                e.setHireDate(eDao.find(e.getEmpNo()).getHireDate());
                 captureData(e, user);
                 if (e.getPositionNo() != null) {
                     eDao.update(e);
@@ -113,6 +120,7 @@ public class EmployeeManagement extends AbstractManagement<Employee> {
 
     @Override
     public void captureData(Employee e, String user) {
+        v = new Validate();
         logger.debug("Ingresando a metodo captureData");
         try {
             logger.debug("Setendo nombre de empleado");
@@ -219,10 +227,12 @@ public class EmployeeManagement extends AbstractManagement<Employee> {
         e.setHireDate(new Date());
         captureData(e, user);
         try {
-            eDao.create(e);
+            if (e.getPositionNo() != null) {
+                eDao.create(e);
+            }
+
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(EmployeeManagement.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 }
