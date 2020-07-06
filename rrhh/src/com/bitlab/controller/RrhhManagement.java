@@ -132,7 +132,7 @@ public class RrhhManagement {
             try {
                 switch (getCapture(user).toLowerCase()) {
                     case "a":
-                        logger.debug("Ejecutando funcion para crear plaillas");
+                        logger.debug("--- Ejecutando funcion para crear plaillas");
 //                        menuManagement(user);
                         pMa = new PayrollManagement();
                         pMa.CreatePayroll(user);

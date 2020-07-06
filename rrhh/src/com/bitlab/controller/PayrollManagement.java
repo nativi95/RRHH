@@ -75,12 +75,14 @@ public class PayrollManagement {
      * @param user
      */
     public void CreatePayroll(String user) {
+        val = new Validate();
         logger.debug("--- Iniciando proceso de creación de plaillas");
         py = new Payroll(0);
         logger.debug("--- Obteniendo id del empleado ");
-        Employee employ = new Employee(val.isNumeric(scan));
+        
         logger.debug("--- Ingresando proceso de lectura de datos");
         System.out.println("Ingrese ID de Empleado");
+        Employee employ = new Employee(val.isNumeric(scan));
         py.setEmpNo(employ);
         System.out.println("Ingrese Fecha de Inicio de Pago posterior al dia 26 del mes anterior");
         py.setFromDate(DatesControls.stringToDate(scan.nextLine()));
