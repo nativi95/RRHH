@@ -138,6 +138,12 @@ public class EmployeeManagement extends AbstractManagement<Employee> {
                     fromCmd = scan.nextLine().toLowerCase();
                     if (!fromCmd.equals("cancel")) {
                         e.setBirthDate(DatesControls.stringToDate(fromCmd));
+                        
+                        System.out.println("Ingrese el correo electrónico o [cancel] para cancelar");
+                        fromCmd = scan.nextLine().toLowerCase();
+                        if (!fromCmd.equals("cancel")) {
+                            e.setEmail(fromCmd);
+                        
                         System.out.println("Ingrese el genero del nuevo empleado [F] femenino [M] Masculino o [cancel] para cancelar");
                         fromCmd = scan.nextLine().toLowerCase();
                         if (!fromCmd.equals("cancel") && (fromCmd.startsWith("f") || fromCmd.startsWith("m"))) {
@@ -195,6 +201,7 @@ public class EmployeeManagement extends AbstractManagement<Employee> {
                             System.out.println("Datos no validos");
                         }
                     }
+                  }
                 }
             }
 
