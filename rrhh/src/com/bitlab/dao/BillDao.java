@@ -62,13 +62,11 @@ public class BillDao extends AbstractDao<Bill>{
 
     @Override
     protected void setMappingParamsToUpdate(PreparedStatement ps, Bill entity) throws SQLException {
-        ps.setInt(7, entity.getPayrollNo().getPayrollNo());
+        ps.setInt(5, entity.getPayrollNo().getPayrollNo());
         ps.setDouble(1, entity.getBilValue());
         ps.setString(2, entity.getBilDescription());
-        ps.setString(3, entity.getUserCreate());
-        ps.setString(4, DatesControls.dateToString(entity.getDateCreate()));
-        ps.setString(5, entity.getUserChange());
-        ps.setString(6, DatesControls.dateToString(entity.getDateChange()));
+        ps.setString(3, entity.getUserChange());
+        ps.setString(4, DatesControls.dateToString(entity.getDateChange()));
     }
 
     @Override

@@ -51,8 +51,7 @@ public abstract class AbstractDao<T> {
      * @return String[]
      */
     protected abstract String[] getTableColumns();
-    
-    
+
     /**
      * metodo abstracto retorna los nombres de la columna a buscar
      *
@@ -221,9 +220,8 @@ public abstract class AbstractDao<T> {
                 strIndicators.append(getTableColumns()[i]).append("=?,");
             }
         }
-byte size=(byte)strIndicators.toString().length();
         //Se quita la ultima "," de la cadena para formatear correctamente el SQL y se reemplaza el comodin 
-        sql = sql.replace(COLUMNS_INDICATOR, strIndicators.toString().substring(0, size- 1));
+        sql = sql.replace(COLUMNS_INDICATOR, strIndicators.toString().substring(0, strIndicators.toString().length() - 1));
         return sql;
     }
 
@@ -329,7 +327,7 @@ byte size=(byte)strIndicators.toString().length();
         closeJDBCObjects(con, ps, rs); //Se cierra la conexión
         return e;
     }
-    
+
     public List<T> findLike(Object name) throws SQLException, ClassNotFoundException {
         String sql = getFindAllSQL() + SQL_WHERE + getColumnLike() + " LIKE %?%"; //Se juega con el SQL dinámico
         Connection con = getConnection(); //Se obtiene la conexión

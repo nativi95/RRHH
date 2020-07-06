@@ -71,10 +71,4 @@ public class DatesControls {
     public static Date getToday() {
         return new Date();
     }
-    
-    public static void main(String[] args) {
-        System.out.println( DatesControls.dateToGregorian(new Date()));
-    }
-    
-
 }

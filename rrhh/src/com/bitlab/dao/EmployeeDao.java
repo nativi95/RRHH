@@ -58,7 +58,7 @@ public class EmployeeDao extends AbstractDao<Employee> {
                     rs.getString("A_user_create"),
                     rs.getDate("A_date_create"),
                     rs.getString("A_user_change"),
-                    rs.getDate("A_user_change")
+                    rs.getDate("A_date_change")
             );
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(EmployeeDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -84,7 +84,7 @@ public class EmployeeDao extends AbstractDao<Employee> {
 
     @Override
     protected void setMappingParamsToUpdate(PreparedStatement ps, Employee entity) throws SQLException {
-        ps.setInt(12, entity.getEmpNo());
+        ps.setInt(10, entity.getEmpNo());
         ps.setString(1, DatesControls.dateToString(entity.getBirthDate()));
         ps.setString(2, entity.getFirstName());
         ps.setString(3, entity.getLastName());
@@ -92,10 +92,8 @@ public class EmployeeDao extends AbstractDao<Employee> {
         ps.setString(5, DatesControls.dateToString(entity.getHireDate()));
         ps.setInt(6, entity.getPositionNo().getPositionNo());
         ps.setInt(7, entity.getDeptNo().getDeptNo());
-        ps.setString(8, entity.getUserCreate());
-        ps.setString(9, DatesControls.dateToString(entity.getDateCreate()));
-        ps.setString(10, entity.getUserChange());
-        ps.setString(11, DatesControls.dateToString(entity.getDateChange()));
+        ps.setString(8, entity.getUserChange());
+        ps.setString(9, DatesControls.dateToString(entity.getDateChange()));
     }
 
     @Override
@@ -122,5 +120,9 @@ public class EmployeeDao extends AbstractDao<Employee> {
         }
         return null;
     }
-
+    
+    public static void main(String[] args) {
+        EmployeeDao e= new EmployeeDao();
+        System.out.println(""+e.getUpdateSQL());
+    }
 }

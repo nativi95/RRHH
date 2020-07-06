@@ -52,12 +52,10 @@ public class RolDao extends AbstractDao<Rol> {
 
     @Override
     protected void setMappingParamsToUpdate(PreparedStatement ps, Rol entity) throws SQLException {
-        ps.setInt(6, entity.getRolRolNo());
+        ps.setInt(4, entity.getRolRolNo());
         ps.setString(1, entity.getRolRol());
-        ps.setString(2, entity.getUserCreate());
-        ps.setString(3, DatesControls.dateToString(entity.getDateCreate()));
-        ps.setString(4, entity.getUserChange());
-        ps.setString(5, DatesControls.dateToString(entity.getDateChange()));
+        ps.setString(2, entity.getUserChange());
+        ps.setString(3, DatesControls.dateToString(entity.getDateChange()));
     }
 
     @Override
