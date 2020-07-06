@@ -57,6 +57,7 @@ public class EmployeeManagement extends AbstractManagement<Employee> {
 
     @Override
     protected List<Employee> getFindAll() {
+        eDao=new EmployeeDao();
         try {
             return eDao.findAll();
         } catch (SQLException | ClassNotFoundException ex) {
@@ -67,6 +68,7 @@ public class EmployeeManagement extends AbstractManagement<Employee> {
 
     @Override
     protected Employee find(int id) {
+        eDao=new EmployeeDao();
         try {
             return eDao.find(id);
         } catch (SQLException | ClassNotFoundException ex) {
@@ -77,6 +79,7 @@ public class EmployeeManagement extends AbstractManagement<Employee> {
 
     @Override
     protected String getFindToString(int id) {
+        eDao=new EmployeeDao();
         Employee e;
         try {
             e = eDao.find(id);
