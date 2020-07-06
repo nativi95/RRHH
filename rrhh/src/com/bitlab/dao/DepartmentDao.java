@@ -12,6 +12,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -21,7 +23,7 @@ public class DepartmentDao extends AbstractDao<Department> {
 
     @Override
     public String getTableName() {
-        return "";
+        return "emp_dep_department";
     }
 
     @Override
@@ -65,5 +67,15 @@ public class DepartmentDao extends AbstractDao<Department> {
     protected String getColumnLike() {
         return "dep_dept_name";
     }
-
+    
+    public static void main(String[] args){
+        DepartmentDao dDao = new DepartmentDao();
+        try {
+            dDao.findAll();
+        } catch (SQLException ex) {
+            Logger.getLogger(DepartmentDao.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DepartmentDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

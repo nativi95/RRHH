@@ -18,15 +18,16 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
  * @author nativi
  */
 public class EmployeeManagement extends AbstractManagement<Employee> {
-
+    private static org.slf4j.Logger logger = LoggerFactory.getLogger(DepartmentManagement.class);
     private EmployeeDao eDao;
-
+     
     @Override
     protected List<Employee> findLike(String user) {
         try {
@@ -99,19 +100,27 @@ public class EmployeeManagement extends AbstractManagement<Employee> {
 
     @Override
     public void captureData(Employee e, String user) {
-        
+        logger.debug("Ingresando a metodo captureData");
         try {
+            logger.debug("Setendo nombre de empleado");
             System.out.println("Ingrese el nombre de empleado o [cancel] para cancelar");
             e.setFirstName(getCapture(user));
+            logger.debug("Seteando apellido de empleado");
             System.out.println("Ingrese el apellido de empleado o [cancel] para cancelar");
             e.setLastName(getCapture(user));
+            logger.debug("Seteando fecha de nacimiento");
             System.out.println("Ingrese la fecha de nacimiento del empleado dd-MM-yyyy o [cancel] para cancelar");
             e.setBirthDate(DatesControls.stringToDate(getCapture(user)));
+            System.out.println("Ingrese el genero del nuevo empleado [F] femenino [M] Masculino");
+            e.setGender(getCapture(user).charAt(0));
+            logger.debug("Creando istancia de DepartamentDao");
             DepartmentDao dDao = new DepartmentDao();
+            logger.debug("Cargando lista de departamentos disponibles");
             List<Department> lsDeparment = dDao.findAll();
             System.out.println("Especifique a que departamento pertenece el empleado escribiendo el numero correspondiente posterior de [enter] o [cancel] para cancelar");
             boolean bandera = true;
             int captura;
+            
             while (bandera) {
                 for (byte i = 0; i < lsDeparment.size(); i++) {
                     System.out.println(i + ". " + lsDeparment.get(i).getDeptName());
@@ -136,7 +145,7 @@ public class EmployeeManagement extends AbstractManagement<Employee> {
                 captura = validatedNumber(user);
                 if (captura < lsPosition.size() && captura >= 0) {
                     e.setPositionNo(lsPosition.get(captura));
-                    bandera = true;
+                    bandera = false;
                 } else {
                     bandera = true;
                 }
@@ -162,8 +171,7 @@ public class EmployeeManagement extends AbstractManagement<Employee> {
     }
 
     @Override
-    public void addRecord(String user
-    ) {
+    public void addRecord(String user) {
         eDao = new EmployeeDao();
         Employee e = new Employee(0);
         e.setUserChange(user);
@@ -173,6 +181,7 @@ public class EmployeeManagement extends AbstractManagement<Employee> {
         e.setHireDate(new Date());
         captureData(e, user);
         try {
+            System.out.println("Objeto : " + e.toString());
             eDao.create(e);
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(EmployeeManagement.class.getName()).log(Level.SEVERE, null, ex);

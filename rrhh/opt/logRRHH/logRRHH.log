@@ -1,129 +1,148 @@
-2020-07-04 06:55:03,064 DEBUG com.bitlab.dao.UserDao [main] Obtiene los datos segun id de registro
-2020-07-04 06:55:03,070 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
-2020-07-04 06:55:03,423 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
-2020-07-04 06:55:03,431 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
-2020-07-04 06:55:03,438 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
-2020-07-04 06:55:03,444 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
-2020-07-04 06:55:03,448 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
-2020-07-04 06:55:03,458 DEBUG com.bitlab.dao.UserDao [main] Obtiene los datos segun id de registro
-2020-07-04 06:55:03,458 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
-2020-07-04 06:55:03,463 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
-2020-07-04 06:55:03,469 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
-2020-07-04 06:55:03,476 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
-2020-07-04 06:55:03,479 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
-2020-07-04 06:55:03,483 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
-2020-07-04 06:55:08,964 DEBUG com.bitlab.dao.UserDao [main] Actualización de registro de usuario
-2020-07-04 06:55:15,744 DEBUG com.bitlab.dao.UserDao [main] Obtiene los datos segun id de registro
-2020-07-04 06:55:15,745 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
-2020-07-04 06:55:15,755 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
-2020-07-04 06:55:15,760 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
-2020-07-04 06:55:15,764 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
-2020-07-04 06:55:15,774 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
-2020-07-04 06:55:15,780 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
-2020-07-04 06:55:15,786 DEBUG com.bitlab.dao.UserDao [main] Ejectuta metodo captuteData
-2020-07-04 06:55:15,786 DEBUG com.bitlab.dao.UserDao [main] Captura de datos a guardar
-2020-07-04 06:56:31,692 DEBUG com.bitlab.dao.UserDao [main] Mapeo de paramentros para actualizar Usuario
-2020-07-04 06:57:07,057 ERROR com.bitlab.dao.UserDao [main] Ha ocurrido una excepcion en la actualizacion
-com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE usr_user_no = 1' at line 1
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
-	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
-	at com.mysql.jdbc.Util.getInstance(Util.java:408)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:944)
-	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3976)
-	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3912)
-	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2530)
-	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2683)
-	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2486)
-	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1858)
-	at com.mysql.jdbc.PreparedStatement.executeUpdateInternal(PreparedStatement.java:2079)
-	at com.mysql.jdbc.PreparedStatement.executeUpdateInternal(PreparedStatement.java:2013)
-	at com.mysql.jdbc.PreparedStatement.executeLargeUpdate(PreparedStatement.java:5104)
-	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:1998)
-	at com.bitlab.abstracts.AbstractDao.update(AbstractDao.java:302)
-	at com.bitlab.controller.UserManagement.updateRecord(UserManagement.java:95)
-	at com.bitlab.abstracts.AbstractManagement.menuResultados(AbstractManagement.java:191)
-	at com.bitlab.abstracts.AbstractManagement.searchMenu(AbstractManagement.java:166)
-	at com.bitlab.abstracts.AbstractManagement.show(AbstractManagement.java:130)
-	at com.bitlab.abstracts.AbstractManagement.findById(AbstractManagement.java:119)
-	at com.bitlab.abstracts.AbstractManagement.AbstractManagement(AbstractManagement.java:85)
-	at com.bitlab.controller.UserManagement.main(UserManagement.java:157)
-2020-07-04 13:10:24,370 DEBUG com.bitlab.dao.UserDao [main] Obtiene los datos segun id de registro
-2020-07-04 13:10:24,373 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
-2020-07-04 13:10:24,896 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
-2020-07-04 13:10:24,913 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
-2020-07-04 13:10:24,922 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
-2020-07-04 13:10:24,926 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
-2020-07-04 13:10:24,932 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
-2020-07-04 13:10:24,941 DEBUG com.bitlab.dao.UserDao [main] Obtiene los datos segun id de registro
-2020-07-04 13:10:24,942 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
-2020-07-04 13:10:24,950 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
-2020-07-04 13:10:24,965 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
-2020-07-04 13:10:24,971 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
-2020-07-04 13:10:24,977 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
-2020-07-04 13:10:24,982 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
-2020-07-04 13:10:43,384 DEBUG com.bitlab.dao.UserDao [main] Actualización de registro de usuario
-2020-07-04 13:10:53,056 DEBUG com.bitlab.dao.UserDao [main] Obtiene los datos segun id de registro
-2020-07-04 13:10:53,056 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
-2020-07-04 13:10:53,062 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
-2020-07-04 13:10:53,073 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
-2020-07-04 13:10:53,081 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
-2020-07-04 13:10:53,092 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
-2020-07-04 13:10:53,108 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
-2020-07-04 13:10:53,113 DEBUG com.bitlab.dao.UserDao [main] Ejectuta metodo captuteData
-2020-07-04 13:10:53,113 DEBUG com.bitlab.dao.UserDao [main] Captura de datos a guardar
-2020-07-04 13:11:17,520 DEBUG com.bitlab.dao.UserDao [main] Mapeo de paramentros para actualizar Usuario
-2020-07-04 13:11:17,570 ERROR com.bitlab.dao.UserDao [main] Ha ocurrido una excepcion en la actualizacion
-com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE usr_user_no = 1' at line 1
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
-	at com.mysql.jdbc.Util.handleNewInstance(Util.java:425)
-	at com.mysql.jdbc.Util.getInstance(Util.java:408)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:944)
-	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3976)
-	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:3912)
-	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2530)
-	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2683)
-	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2486)
-	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:1858)
-	at com.mysql.jdbc.PreparedStatement.executeUpdateInternal(PreparedStatement.java:2079)
-	at com.mysql.jdbc.PreparedStatement.executeUpdateInternal(PreparedStatement.java:2013)
-	at com.mysql.jdbc.PreparedStatement.executeLargeUpdate(PreparedStatement.java:5104)
-	at com.mysql.jdbc.PreparedStatement.executeUpdate(PreparedStatement.java:1998)
-	at com.bitlab.abstracts.AbstractDao.update(AbstractDao.java:302)
-	at com.bitlab.controller.UserManagement.updateRecord(UserManagement.java:97)
-	at com.bitlab.abstracts.AbstractManagement.menuResultados(AbstractManagement.java:191)
-	at com.bitlab.abstracts.AbstractManagement.searchMenu(AbstractManagement.java:166)
-	at com.bitlab.abstracts.AbstractManagement.show(AbstractManagement.java:130)
-	at com.bitlab.abstracts.AbstractManagement.findById(AbstractManagement.java:119)
-	at com.bitlab.abstracts.AbstractManagement.AbstractManagement(AbstractManagement.java:85)
-	at com.bitlab.controller.UserManagement.main(UserManagement.java:159)
-2020-07-04 13:12:48,292 DEBUG com.bitlab.dao.UserDao [main] Obtiene los datos segun id de registro
-2020-07-04 13:12:48,295 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
-2020-07-04 13:12:48,801 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
-2020-07-04 13:12:48,812 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
-2020-07-04 13:12:48,824 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
-2020-07-04 13:12:48,838 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
-2020-07-04 13:12:48,845 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
-2020-07-04 13:12:48,852 DEBUG com.bitlab.dao.UserDao [main] Obtiene los datos segun id de registro
-2020-07-04 13:12:48,852 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
-2020-07-04 13:12:48,857 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
-2020-07-04 13:12:48,868 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
-2020-07-04 13:12:48,876 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
-2020-07-04 13:12:48,888 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
-2020-07-04 13:12:48,906 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
-2020-07-04 13:12:58,998 DEBUG com.bitlab.dao.UserDao [main] Actualización de registro de usuario
-2020-07-04 13:13:00,808 DEBUG com.bitlab.dao.UserDao [main] Obtiene los datos segun id de registro
-2020-07-04 13:13:00,809 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
-2020-07-04 13:13:00,820 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
-2020-07-04 13:13:00,856 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
-2020-07-04 13:13:00,874 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
-2020-07-04 13:13:00,916 DEBUG com.bitlab.dao.UserDao [main] Se obtiene los datos del registro de usuario
-2020-07-04 13:13:00,948 DEBUG com.bitlab.dao.UserDao [main] Mapeo de resulset de User
-2020-07-04 13:13:00,961 DEBUG com.bitlab.dao.UserDao [main] Ejectuta metodo captuteData
-2020-07-04 13:13:00,961 DEBUG com.bitlab.dao.UserDao [main] Captura de datos a guardar
-2020-07-04 13:13:09,897 DEBUG com.bitlab.dao.UserDao [main] Mapeo de paramentros para actualizar Usuario
+2020-07-05 17:46:20,264 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu principal
+2020-07-05 17:46:27,939 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu de gestión de usuarios
+2020-07-05 18:25:51,547 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu principal
+2020-07-05 18:26:32,869 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu de gestión de usuarios
+2020-07-05 18:37:28,230 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu principal
+2020-07-05 18:37:56,075 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu de gestión de usuarios
+2020-07-05 18:38:15,029 DEBUG com.bitlab.controller.DepartmentManagement [main] Ingresando a metodo captureData
+2020-07-05 18:38:15,067 DEBUG com.bitlab.controller.DepartmentManagement [main] Setendo nombre de empleado
+2020-07-05 18:38:22,979 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando apellido de empleado
+2020-07-05 18:38:27,194 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando fecha de nacimiento
+2020-07-05 18:38:40,906 DEBUG com.bitlab.controller.DepartmentManagement [main] Creando istancia de DepartamentDao
+2020-07-05 18:38:40,906 DEBUG com.bitlab.controller.DepartmentManagement [main] Cargando lista de departamentos disponibles
+2020-07-05 18:47:08,709 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu principal
+2020-07-05 18:47:12,861 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu de gestión de usuarios
+2020-07-05 18:47:15,364 DEBUG com.bitlab.controller.DepartmentManagement [main] Ingresando a metodo captureData
+2020-07-05 18:47:15,364 DEBUG com.bitlab.controller.DepartmentManagement [main] Setendo nombre de empleado
+2020-07-05 18:47:18,723 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando apellido de empleado
+2020-07-05 18:47:20,583 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando fecha de nacimiento
+2020-07-05 18:47:26,303 DEBUG com.bitlab.controller.DepartmentManagement [main] Creando istancia de DepartamentDao
+2020-07-05 18:47:26,303 DEBUG com.bitlab.controller.DepartmentManagement [main] Cargando lista de departamentos disponibles
+2020-07-05 18:47:54,031 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu principal
+2020-07-05 18:47:57,735 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu de gestión de usuarios
+2020-07-05 18:47:59,171 DEBUG com.bitlab.controller.DepartmentManagement [main] Ingresando a metodo captureData
+2020-07-05 18:47:59,171 DEBUG com.bitlab.controller.DepartmentManagement [main] Setendo nombre de empleado
+2020-07-05 18:48:00,190 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando apellido de empleado
+2020-07-05 18:48:01,078 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando fecha de nacimiento
+2020-07-05 18:48:05,910 DEBUG com.bitlab.controller.DepartmentManagement [main] Creando istancia de DepartamentDao
+2020-07-05 18:48:05,910 DEBUG com.bitlab.controller.DepartmentManagement [main] Cargando lista de departamentos disponibles
+2020-07-05 18:51:28,006 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu principal
+2020-07-05 18:51:31,349 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu de gestión de usuarios
+2020-07-05 18:51:32,569 DEBUG com.bitlab.controller.DepartmentManagement [main] Ingresando a metodo captureData
+2020-07-05 18:51:32,569 DEBUG com.bitlab.controller.DepartmentManagement [main] Setendo nombre de empleado
+2020-07-05 18:51:33,673 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando apellido de empleado
+2020-07-05 18:51:34,429 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando fecha de nacimiento
+2020-07-05 18:51:40,429 DEBUG com.bitlab.controller.DepartmentManagement [main] Creando istancia de DepartamentDao
+2020-07-05 18:51:40,429 DEBUG com.bitlab.controller.DepartmentManagement [main] Cargando lista de departamentos disponibles
+2020-07-05 18:53:55,461 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu principal
+2020-07-05 18:53:58,610 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu de gestión de usuarios
+2020-07-05 18:53:59,891 DEBUG com.bitlab.controller.DepartmentManagement [main] Ingresando a metodo captureData
+2020-07-05 18:53:59,891 DEBUG com.bitlab.controller.DepartmentManagement [main] Setendo nombre de empleado
+2020-07-05 18:54:01,249 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando apellido de empleado
+2020-07-05 18:54:02,206 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando fecha de nacimiento
+2020-07-05 18:54:06,762 DEBUG com.bitlab.controller.DepartmentManagement [main] Creando istancia de DepartamentDao
+2020-07-05 18:54:06,762 DEBUG com.bitlab.controller.DepartmentManagement [main] Cargando lista de departamentos disponibles
+2020-07-05 18:55:07,117 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu principal
+2020-07-05 18:55:10,432 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu de gestión de usuarios
+2020-07-05 18:55:11,451 DEBUG com.bitlab.controller.DepartmentManagement [main] Ingresando a metodo captureData
+2020-07-05 18:55:11,451 DEBUG com.bitlab.controller.DepartmentManagement [main] Setendo nombre de empleado
+2020-07-05 18:55:12,508 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando apellido de empleado
+2020-07-05 18:55:13,374 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando fecha de nacimiento
+2020-07-05 18:55:23,246 DEBUG com.bitlab.controller.DepartmentManagement [main] Creando istancia de DepartamentDao
+2020-07-05 18:55:23,246 DEBUG com.bitlab.controller.DepartmentManagement [main] Cargando lista de departamentos disponibles
+2020-07-05 18:55:53,098 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu principal
+2020-07-05 18:55:56,008 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu de gestión de usuarios
+2020-07-05 18:55:57,027 DEBUG com.bitlab.controller.DepartmentManagement [main] Ingresando a metodo captureData
+2020-07-05 18:55:57,027 DEBUG com.bitlab.controller.DepartmentManagement [main] Setendo nombre de empleado
+2020-07-05 18:55:57,814 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando apellido de empleado
+2020-07-05 18:55:58,545 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando fecha de nacimiento
+2020-07-05 18:56:03,864 DEBUG com.bitlab.controller.DepartmentManagement [main] Creando istancia de DepartamentDao
+2020-07-05 18:56:03,864 DEBUG com.bitlab.controller.DepartmentManagement [main] Cargando lista de departamentos disponibles
+2020-07-05 20:13:42,602 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu principal
+2020-07-05 20:13:46,359 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu de gestión de usuarios
+2020-07-05 20:13:47,683 DEBUG com.bitlab.controller.DepartmentManagement [main] Ingresando a metodo captureData
+2020-07-05 20:13:47,684 DEBUG com.bitlab.controller.DepartmentManagement [main] Setendo nombre de empleado
+2020-07-05 20:13:48,689 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando apellido de empleado
+2020-07-05 20:13:49,405 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando fecha de nacimiento
+2020-07-05 20:13:57,898 DEBUG com.bitlab.controller.DepartmentManagement [main] Creando istancia de DepartamentDao
+2020-07-05 20:13:57,900 DEBUG com.bitlab.controller.DepartmentManagement [main] Cargando lista de departamentos disponibles
+2020-07-05 20:24:40,264 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu principal
+2020-07-05 20:24:44,265 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu de gestión de usuarios
+2020-07-05 20:24:46,198 DEBUG com.bitlab.controller.DepartmentManagement [main] Ingresando a metodo captureData
+2020-07-05 20:24:46,198 DEBUG com.bitlab.controller.DepartmentManagement [main] Setendo nombre de empleado
+2020-07-05 20:24:47,904 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando apellido de empleado
+2020-07-05 20:24:49,296 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando fecha de nacimiento
+2020-07-05 20:25:16,706 DEBUG com.bitlab.controller.DepartmentManagement [main] Creando istancia de DepartamentDao
+2020-07-05 20:25:16,707 DEBUG com.bitlab.controller.DepartmentManagement [main] Cargando lista de departamentos disponibles
+2020-07-05 20:31:36,521 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu principal
+2020-07-05 20:31:40,057 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu de gestión de usuarios
+2020-07-05 20:31:41,002 DEBUG com.bitlab.controller.DepartmentManagement [main] Ingresando a metodo captureData
+2020-07-05 20:31:41,003 DEBUG com.bitlab.controller.DepartmentManagement [main] Setendo nombre de empleado
+2020-07-05 20:31:42,882 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando apellido de empleado
+2020-07-05 20:31:43,907 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando fecha de nacimiento
+2020-07-05 20:31:50,247 DEBUG com.bitlab.controller.DepartmentManagement [main] Creando istancia de DepartamentDao
+2020-07-05 20:31:50,248 DEBUG com.bitlab.controller.DepartmentManagement [main] Cargando lista de departamentos disponibles
+2020-07-05 20:34:37,302 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu principal
+2020-07-05 20:34:40,548 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu de gestión de usuarios
+2020-07-05 20:39:38,852 DEBUG com.bitlab.controller.DepartmentManagement [main] Ingresando a metodo captureData
+2020-07-05 20:39:38,852 DEBUG com.bitlab.controller.DepartmentManagement [main] Setendo nombre de empleado
+2020-07-05 20:40:08,416 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando apellido de empleado
+2020-07-05 20:40:12,768 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando fecha de nacimiento
+2020-07-05 20:40:29,811 DEBUG com.bitlab.controller.DepartmentManagement [main] Creando istancia de DepartamentDao
+2020-07-05 20:40:29,811 DEBUG com.bitlab.controller.DepartmentManagement [main] Cargando lista de departamentos disponibles
+2020-07-05 20:41:06,386 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu principal
+2020-07-05 20:41:10,246 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu de gestión de usuarios
+2020-07-05 20:41:11,615 DEBUG com.bitlab.controller.DepartmentManagement [main] Ingresando a metodo captureData
+2020-07-05 20:41:11,616 DEBUG com.bitlab.controller.DepartmentManagement [main] Setendo nombre de empleado
+2020-07-05 20:41:14,334 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando apellido de empleado
+2020-07-05 20:41:15,033 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando fecha de nacimiento
+2020-07-05 20:41:23,452 DEBUG com.bitlab.controller.DepartmentManagement [main] Creando istancia de DepartamentDao
+2020-07-05 20:41:23,452 DEBUG com.bitlab.controller.DepartmentManagement [main] Cargando lista de departamentos disponibles
+2020-07-05 20:49:10,343 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu principal
+2020-07-05 20:49:13,647 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu de gestión de usuarios
+2020-07-05 20:49:15,552 DEBUG com.bitlab.controller.DepartmentManagement [main] Ingresando a metodo captureData
+2020-07-05 20:49:15,553 DEBUG com.bitlab.controller.DepartmentManagement [main] Setendo nombre de empleado
+2020-07-05 20:49:16,989 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando apellido de empleado
+2020-07-05 20:49:20,977 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando fecha de nacimiento
+2020-07-05 20:49:30,999 DEBUG com.bitlab.controller.DepartmentManagement [main] Creando istancia de DepartamentDao
+2020-07-05 20:49:31,000 DEBUG com.bitlab.controller.DepartmentManagement [main] Cargando lista de departamentos disponibles
+2020-07-05 20:52:37,584 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu principal
+2020-07-05 20:52:40,887 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu de gestión de usuarios
+2020-07-05 20:52:41,878 DEBUG com.bitlab.controller.DepartmentManagement [main] Ingresando a metodo captureData
+2020-07-05 20:52:41,878 DEBUG com.bitlab.controller.DepartmentManagement [main] Setendo nombre de empleado
+2020-07-05 20:52:42,858 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando apellido de empleado
+2020-07-05 20:52:43,407 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando fecha de nacimiento
+2020-07-05 20:52:48,467 DEBUG com.bitlab.controller.DepartmentManagement [main] Creando istancia de DepartamentDao
+2020-07-05 20:52:48,468 DEBUG com.bitlab.controller.DepartmentManagement [main] Cargando lista de departamentos disponibles
+2020-07-05 21:00:52,744 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu principal
+2020-07-05 21:00:58,067 DEBUG com.bitlab.controller.DepartmentManagement [main] Mostrando menu de gestión de usuarios
+2020-07-05 21:01:00,828 DEBUG com.bitlab.controller.DepartmentManagement [main] Ingresando a metodo captureData
+2020-07-05 21:01:00,828 DEBUG com.bitlab.controller.DepartmentManagement [main] Setendo nombre de empleado
+2020-07-05 21:01:05,868 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando apellido de empleado
+2020-07-05 21:01:08,645 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando fecha de nacimiento
+2020-07-05 21:01:34,268 DEBUG com.bitlab.controller.DepartmentManagement [main] Creando istancia de DepartamentDao
+2020-07-05 21:01:34,269 DEBUG com.bitlab.controller.DepartmentManagement [main] Cargando lista de departamentos disponibles
+2020-07-05 21:16:07,505 DEBUG com.bitlab.controller.DepartmentManagement [main] Ingresando a metodo captureData
+2020-07-05 21:16:07,507 DEBUG com.bitlab.controller.DepartmentManagement [main] Setendo nombre de empleado
+2020-07-05 21:16:17,055 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando apellido de empleado
+2020-07-05 21:16:21,606 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando fecha de nacimiento
+2020-07-05 21:16:28,550 DEBUG com.bitlab.controller.DepartmentManagement [main] Creando istancia de DepartamentDao
+2020-07-05 21:16:28,551 DEBUG com.bitlab.controller.DepartmentManagement [main] Cargando lista de departamentos disponibles
+2020-07-05 21:18:06,040 DEBUG com.bitlab.controller.DepartmentManagement [main] Ingresando a metodo captureData
+2020-07-05 21:18:06,043 DEBUG com.bitlab.controller.DepartmentManagement [main] Setendo nombre de empleado
+2020-07-05 21:18:11,182 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando apellido de empleado
+2020-07-05 21:18:13,160 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando fecha de nacimiento
+2020-07-05 21:18:17,944 DEBUG com.bitlab.controller.DepartmentManagement [main] Creando istancia de DepartamentDao
+2020-07-05 21:18:17,946 DEBUG com.bitlab.controller.DepartmentManagement [main] Cargando lista de departamentos disponibles
+2020-07-05 21:27:09,418 DEBUG com.bitlab.controller.DepartmentManagement [main] Ingresando a metodo captureData
+2020-07-05 21:27:09,421 DEBUG com.bitlab.controller.DepartmentManagement [main] Setendo nombre de empleado
+2020-07-05 21:27:13,230 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando apellido de empleado
+2020-07-05 21:27:15,114 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando fecha de nacimiento
+2020-07-05 21:27:30,364 DEBUG com.bitlab.controller.DepartmentManagement [main] Creando istancia de DepartamentDao
+2020-07-05 21:27:30,366 DEBUG com.bitlab.controller.DepartmentManagement [main] Cargando lista de departamentos disponibles
+2020-07-05 21:35:52,317 DEBUG com.bitlab.controller.DepartmentManagement [main] Ingresando a metodo captureData
+2020-07-05 21:35:52,319 DEBUG com.bitlab.controller.DepartmentManagement [main] Setendo nombre de empleado
+2020-07-05 21:35:55,574 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando apellido de empleado
+2020-07-05 21:35:57,691 DEBUG com.bitlab.controller.DepartmentManagement [main] Seteando fecha de nacimiento
+2020-07-05 21:36:10,415 DEBUG com.bitlab.controller.DepartmentManagement [main] Creando istancia de DepartamentDao
+2020-07-05 21:36:10,416 DEBUG com.bitlab.controller.DepartmentManagement [main] Cargando lista de departamentos disponibles
