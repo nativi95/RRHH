@@ -23,7 +23,7 @@ import java.util.logging.Logger;
  *
  * @author Andrea
  */
-public class PayrollDao extends AbstractDao<Payroll>{
+public class PayrollDao extends AbstractDao<Payroll> {
 
     @Override
     public String getTableName() {
@@ -79,8 +79,8 @@ public class PayrollDao extends AbstractDao<Payroll>{
     protected String getColumnLike() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-    public int getLastInsertIdPayroll() throws SQLException, ClassNotFoundException{
+
+    public int getLastInsertIdPayroll() throws SQLException, ClassNotFoundException {
         int idPayroll = 0;
         String lastInsertIdSql = "SELECT last_insert_id()";
         Connection con = getConnection(); //Se conecta a la BD        
@@ -92,22 +92,37 @@ public class PayrollDao extends AbstractDao<Payroll>{
         closeJDBCObjects(con, ps, rs); //Cierra la conexión
         return idPayroll;
     }
-    
-        
-    public List<Payroll> payrollByDates(Date DateFrom, Date dateTo) throws SQLException, ClassNotFoundException{
-    String sql=getFindAllSQL()+SQL_WHERE+" pay_from_date <=? and pay_to_date >= ?";
-    Connection con = getConnection(); //Se conecta a la BD        
+
+    public List<Payroll> payrollByDates(Date DateFrom, Date dateTo) throws SQLException, ClassNotFoundException {
+        String sql = getFindAllSQL() + SQL_WHERE + " pay_from_date <=? and pay_to_date >= ?";
+        Connection con = getConnection(); //Se conecta a la BD        
         PreparedStatement ps = con.prepareStatement(sql); //Crea el Statement
         ps.setString(1, DatesControls.dateToString(DateFrom));
         ps.setString(2, DatesControls.dateToString(dateTo));
         ResultSet rs = ps.executeQuery(); //Ejecuta la query
-        List<Payroll> lsPayroll=null;
-        
+        List<Payroll> lsPayroll = null;
+
         while (rs.next()) { //Si la BD devolvio coincidencias (Registros)
-            lsPayroll.add(getMappingResults(rs) );//Se mapean y se asignan a la variable
+            lsPayroll.add(getMappingResults(rs));//Se mapean y se asignan a la variable
         }
         closeJDBCObjects(con, ps, rs); //Cierra la conexión
         return lsPayroll;
-    } 
-    
+    }
+
+    public List<Payroll> employeePayrollHistory(int id) throws SQLException, ClassNotFoundException {
+        String sql = getFindAllSQL() + SQL_WHERE + " pay_emp_no=?";
+        Connection con = getConnection(); //Se conecta a la BD        
+        PreparedStatement ps = con.prepareStatement(sql); //Crea el Statement
+        ps.setInt(1, id);
+
+        ResultSet rs = ps.executeQuery(); //Ejecuta la query
+        List<Payroll> lsPayroll = null;
+
+        while (rs.next()) { //Si la BD devolvio coincidencias (Registros)
+            lsPayroll.add(getMappingResults(rs));//Se mapean y se asignan a la variable
+        }
+        closeJDBCObjects(con, ps, rs); //Cierra la conexión
+        return lsPayroll;
+    }
+
 }
