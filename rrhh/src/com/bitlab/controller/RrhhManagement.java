@@ -27,7 +27,7 @@ import org.slf4j.LoggerFactory;
 public class RrhhManagement {
 
     // Variable logger
-    private static Logger logger = LoggerFactory.getLogger(DepartmentManagement.class);
+    private static Logger logger = LoggerFactory.getLogger(RrhhManagement.class);
 
     //Objeto de clase escanner para leer datos
     Scanner scan = new Scanner(System.in);
@@ -38,6 +38,7 @@ public class RrhhManagement {
     //Objeto de clase EmployeeDao
     private EmployeeDao eDao = new EmployeeDao();
     private EmployeeManagement eMa = new EmployeeManagement();
+    private PayrollManagement pMa /*= new PayrollManagement()*/;
 
     //Objeto de clase que contiene metodos de validacion
     private Validate validate = new Validate();
@@ -123,15 +124,18 @@ public class RrhhManagement {
             System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
 
             System.out.println("Escriba la letra de la opción deseada y pulse [enter] ");
-            System.out.println("A. Gestión de empleados");
+//            System.out.println("A. Gestión de empleados");
+            System.out.println("A. Creacion de plantillas");
             System.out.println("B. Historial de planillas del mes actual");
             System.out.println("C. Ver Historial de planillas segun mes espacífico");
             System.out.println("D. Salir");
             try {
                 switch (getCapture(user).toLowerCase()) {
                     case "a":
-                        logger.debug("Mostrando menu de gestión de usuarios");
-                        menuManagement(user);
+                        logger.debug("Ejecutando funcion para crear plaillas");
+//                        menuManagement(user);
+                        pMa = new PayrollManagement();
+                        pMa.CreatePayroll(user);
                         search = true;
                         break;
                     case "b":
@@ -170,6 +174,7 @@ public class RrhhManagement {
 
         while (search) {
             try {
+                logger.debug("Mostrando menu principal de RRHH");
                 System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
 
                 System.out.println("Desea ingresar más parámetros de búsqueda escriba la opión y pulse [enter] ");
@@ -227,5 +232,8 @@ public class RrhhManagement {
         }
     }
 
-
+    public static void main(String[] args) {
+        RrhhManagement o = new RrhhManagement();
+        o.rrhhManagement("Andrea");
+    }
 }
