@@ -7,11 +7,15 @@ package com.bitlab.controller;
 
 import com.bitlab.dao.EmployeeDao;
 import com.bitlab.entities.Employee;
+import com.bitlab.util.DatesControls;
 import com.bitlab.util.Validate;
 import java.util.Scanner;
 
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,6 +25,7 @@ import org.slf4j.LoggerFactory;
  * @author Andrea
  */
 public class RrhhManagement {
+
     // Variable logger
     private static Logger logger = LoggerFactory.getLogger(DepartmentManagement.class);
 
@@ -69,13 +74,15 @@ public class RrhhManagement {
         this.rrhhManagement(user);
 
     }
+
     /**
      * Imprime las listas de tipo employee
-     * @param lsEmploye 
+     *
+     * @param lsEmploye
      */
-    public void showList(List<Employee> lsEmploye){
-    for (Employee e : lsEmploye) {
-            System.out.println("Id: "+e.getEmpNo()+", Nombre: "+e.getFirstName()+", Apellido: "+e.getLastName()+", Nacimiento: "+e.getBirthDate()+", Contratado: "+e.getHireDate());
+    public void showList(List<Employee> lsEmploye) {
+        for (Employee e : lsEmploye) {
+            System.out.println("Id: " + e.getEmpNo() + ", Nombre: " + e.getFirstName() + ", Apellido: " + e.getLastName() + ", Nacimiento: " + e.getBirthDate() + ", Contratado: " + e.getHireDate());
         }
     }
 
@@ -152,10 +159,12 @@ public class RrhhManagement {
             }*/
         }
     }
-/**
- * Menu de mantenimiento de empleado por parte de rrhh
- * @param user 
- */
+
+    /**
+     * Menu de mantenimiento de empleado por parte de rrhh
+     *
+     * @param user
+     */
     public void menuManagement(String user) {
         boolean search = true;
 
@@ -175,34 +184,34 @@ public class RrhhManagement {
                 switch (getCapture(user).toLowerCase()) {
                     case "a":
                         eMa.addRecord(user);
-                        search=true;
+                        search = true;
                         break;
                     case "b":
                         eMa.updateRecord(user);
-                        search=true;
+                        search = true;
                         break;
                     case "c":
                         eMa.removeRecord(user);
-                        search=true;
+                        search = true;
                         break;
                     case "d":
                         eMa.getFindAll();
                         this.show(user);
-                        search=true;
+                        search = true;
                         break;
                     case "e":
                         this.findById(user);
-                        search=true;
+                        search = true;
                         break;
                     case "f":
                         eMa.findLike(user);
-                        search=true;
+                        search = true;
                         break;
                     case "g":
                         this.rrhhManagement(user);
                         break;
-                        case "h":
-                        search=false;
+                    case "h":
+                        search = false;
                         break;
                     default:
                         System.out.println("Escriba una opción valida");
@@ -216,4 +225,6 @@ public class RrhhManagement {
             }
         }
     }
+
+
 }
