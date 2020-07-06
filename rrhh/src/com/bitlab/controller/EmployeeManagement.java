@@ -152,7 +152,7 @@ public class EmployeeManagement extends AbstractManagement<Employee> {
             }
 
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(EmployeeManagement.class.getName()).log(Level.SEVERE, null, ex);
+            logger.error("Ha ocurrido un excepcion en la creacion del registro " + ex);
         }
 
     }
@@ -181,7 +181,6 @@ public class EmployeeManagement extends AbstractManagement<Employee> {
         e.setHireDate(new Date());
         captureData(e, user);
         try {
-            System.out.println("Objeto : " + e.toString());
             eDao.create(e);
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(EmployeeManagement.class.getName()).log(Level.SEVERE, null, ex);

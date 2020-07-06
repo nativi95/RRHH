@@ -121,3 +121,17 @@ INSERT INTO `employees`.`emp_rol_rol` ( `rol_rol`, `A_user_create`, `A_date_crea
 INSERT INTO `employees`.`emp_rol_rol` ( `rol_rol`, `A_user_create`, `A_date_create`, `A_user_change`, `A_date_change`) VALUES ( 'rrhh', 'Juan', '2020-07-03', 'Juan', '2020-07-03');
 INSERT INTO `employees`.`emp_rol_rol` ( `rol_rol`, `A_user_create`, `A_date_create`, `A_user_change`, `A_date_change`) VALUES ( 'rrhh', 'Carlos', '2020-07-03', 'Juan', '2020-07-03');
 INSERT INTO `employees`.`emp_rol_rol` ( `rol_rol`, `A_user_create`, `A_date_create`, `A_user_change`, `A_date_change`) VALUES ( 'admin', 'Carlos', '2020-07-03', 'Juan', '2020-07-03');
+
+-- INSERT DE DEPARTAMENTOS -----------------------------------------------------------------------------------------------
+
+INSERT INTO `employees`.`emp_dep_department` (`dep_dept_name`, `A_user_create`, `A_date_create`, `A_user_change`, `A_date_change`) VALUES ('Marketing', 'Andrea', '2020-07-05', 'Andrea', '2020-07-05');
+INSERT INTO `employees`.`emp_dep_department` (`dep_dept_name`, `A_user_create`, `A_date_create`, `A_user_change`, `A_date_change`) VALUES ('Ventas', 'Andrea', '2020-07-05', 'Andrea', '2020-07-05');
+INSERT INTO `employees`.`emp_dep_department` (`dep_dept_name`, `A_user_create`, `A_date_create`, `A_user_change`, `A_date_change`) VALUES ('RRHH', 'Andrea', '2020-07-05', 'Andrea', '2020-07-05');
+INSERT INTO `employees`.`emp_dep_department` (`dep_dept_name`, `A_user_create`, `A_date_create`, `A_user_change`, `A_date_change`) VALUES ('Informatica', 'Andrea', '2020-07-05', 'Andrea', '2020-07-05');
+
+-- INSERT DE JEFATURAS -----------------------------------------------------------------------------------------------
+
+INSERT INTO `employees`.`emp_pos_position` (`pos_position`, `A_user_create`, `A_date_create`, `A_user_change`, `A_date_change`) VALUES ('Gerente Marketing', 'Andrea', '2020-07-05', 'Andrea', '2020-07-05');
+INSERT INTO `employees`.`emp_pos_position` (`pos_position`, `A_user_create`, `A_date_create`, `A_user_change`, `A_date_change`) VALUES ('Gerente de ventas', 'Andrea', '2020-07-05', 'Andrea', '2020-07-05');
+INSERT INTO `employees`.`emp_pos_position` (`pos_position`, `A_user_create`, `A_date_create`, `A_user_change`, `A_date_change`) VALUES ('Gerente de RRHH', 'Andrea', '2020-07-05', 'Andrea', '2020-07-05');
+INSERT INTO `employees`.`emp_pos_position` (`pos_position`, `A_user_create`, `A_date_create`, `A_user_change`, `A_date_change`) VALUES ('Gerente de informatica', 'Andrea', '2020-07-05', 'Andrea', '2020-07-05');
