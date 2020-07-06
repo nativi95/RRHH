@@ -28,10 +28,10 @@ public class AdminManagement {
         while (flag) {
             try {
                 System.out.println("Ingrese una de las opciones escribiendo el literal correspondiente despues de un [enter]\n");
-                System.out.println("A. Gestion de usuarios");
-                System.out.println("B. Gestion de Roles");
-                System.out.println("C. Gestion de empleados");
-                System.out.println("D. Gestion de departamentos");
+                System.out.println("A. Gestión de usuarios");
+                System.out.println("B. Gestión de Roles");
+                System.out.println("C. Gestión de empleados");
+                System.out.println("D. Gestión de departamentos");
                 System.out.println("E. Salir");
                 switch (scan.nextLine().toLowerCase()) {
                     case "a":
