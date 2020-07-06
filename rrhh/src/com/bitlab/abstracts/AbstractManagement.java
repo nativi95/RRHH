@@ -233,6 +233,9 @@ public abstract class AbstractManagement<T> {
                         menuResultados(user);
                         search = false;
                         break;
+                    case "e":
+                        search = false;
+                        break;
                     default:
                         System.out.println("Escriba una opción valida");
                         search = true;
