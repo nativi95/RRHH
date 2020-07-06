@@ -196,7 +196,6 @@ public abstract class AbstractDao<T> {
         //con el nombre de la tabla y columnas que indicará la clase hija 
         sql = sql.replace(TABLE_INDICATOR, getTableName())
                 .replace("[", "").replace("]", ""); //Debido al metodo Arrays devuelve los resultas [campo,campo2,campo3] se aplica el replace de los corchetes []
-        System.out.println(sql);
         return sql;
     }
 
