@@ -110,10 +110,8 @@ public class UserManagement extends AbstractManagement<User> {
         try {
             uDao.remove(id);
         } catch (SQLException ex) {
-//            Logger.getLogger(UserManagement.class.getName()).log(Level.SEVERE, null, ex);
             logger.error("Ha ocurrido una excepcion en la actualizacion", ex);
         } catch (ClassNotFoundException ex) {
-//            Logger.getLogger(UserManagement.class.getName()).log(Level.SEVERE, null, ex);
             logger.error("Ha ocurrido una excepcion en la actualizacion", ex);
         }
     }
@@ -124,10 +122,8 @@ public class UserManagement extends AbstractManagement<User> {
             logger.debug("Se obtiene toda la lista de usuarios");
             return uDao.findAll();
         } catch (SQLException ex) {
-//            Logger.getLogger(UserManagement.class.getName()).log(Level.SEVERE, null, ex);
             logger.error("Ha ocurrido una excepcion en la eliminación", ex);
         } catch (ClassNotFoundException ex) {
-//            Logger.getLogger(UserManagement.class.getName()).log(Level.SEVERE, null, ex);
             logger.error("Ha ocurrido una excepcion en la eliminación", ex);
         }
         return null;
@@ -139,10 +135,8 @@ public class UserManagement extends AbstractManagement<User> {
             logger.debug("Se obtiene los datos del registro de usuario");
             return uDao.find(id);
         } catch (SQLException ex) {
-//            Logger.getLogger(UserManagement.class.getName()).log(Level.SEVERE, null, ex);
             logger.error("Ha ocurrido una excepcion en la eliminación", ex);
         } catch (ClassNotFoundException ex) {
-//            Logger.getLogger(UserManagement.class.getName()).log(Level.SEVERE, null, ex);
             logger.error("Ha ocurrido una excepcion en la eliminación", ex);
         }
         return null;
