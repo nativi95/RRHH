@@ -55,27 +55,14 @@ public class DepartmentDao extends AbstractDao<Department> {
 
     @Override
     protected void setMappingParamsToUpdate(PreparedStatement ps, Department entity) throws SQLException {
-        ps.setInt(6, entity.getDeptNo());
+        ps.setInt(4, entity.getDeptNo());
         ps.setString(1, entity.getDeptName());
-        ps.setString(2, entity.getUserCreate());
-        ps.setString(3, DatesControls.dateToString(entity.getDateCreate()));
-        ps.setString(4, entity.getUserChange());
-        ps.setString(5, DatesControls.dateToString(entity.getDateChange()));
+        ps.setString(2, entity.getUserChange());
+        ps.setString(3, DatesControls.dateToString(entity.getDateChange()));
     }
 
     @Override
     protected String getColumnLike() {
         return "dep_dept_name";
-    }
-    
-    public static void main(String[] args){
-        DepartmentDao dDao = new DepartmentDao();
-        try {
-            dDao.findAll();
-        } catch (SQLException ex) {
-            Logger.getLogger(DepartmentDao.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DepartmentDao.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
 }

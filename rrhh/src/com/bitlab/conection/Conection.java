@@ -57,4 +57,14 @@ public class Conection {
             con.close();//cierra conexion
         }
     }
+    
+    public static void main(String[] args) {
+        try {
+            Conection.openConnection();
+        } catch (SQLException ex) {
+            Logger.getLogger(Conection.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Conection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

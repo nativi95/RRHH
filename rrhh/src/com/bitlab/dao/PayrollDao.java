@@ -66,14 +66,12 @@ public class PayrollDao extends AbstractDao<Payroll>{
 
     @Override
     protected void setMappingParamsToUpdate(PreparedStatement ps, Payroll entity) throws SQLException {
-        ps.setInt(8, entity.getPayrollNo());
+        ps.setInt(6, entity.getPayrollNo());
         ps.setInt(1, entity.getEmpNo().getEmpNo());
         ps.setString(2, DatesControls.dateToString(entity.getFromDate()));
         ps.setString(3, DatesControls.dateToString(entity.getToDate()));
-        ps.setString(4, entity.getUserCreate());
-        ps.setString(5, DatesControls.dateToString(entity.getDateCreate()));
-        ps.setString(6, entity.getUserChange());
-        ps.setString(7, DatesControls.dateToString(entity.getDateChange()));
+        ps.setString(4, entity.getUserChange());
+        ps.setString(5, DatesControls.dateToString(entity.getDateChange()));
     }
 
     @Override

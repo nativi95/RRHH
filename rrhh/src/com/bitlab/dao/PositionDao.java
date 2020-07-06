@@ -11,6 +11,8 @@ import com.bitlab.util.DatesControls;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -51,17 +53,14 @@ public class PositionDao extends AbstractDao<Position> {
 
     @Override
     protected void setMappingParamsToUpdate(PreparedStatement ps, Position entity) throws SQLException {
-        ps.setInt(6, entity.getPositionNo());
+        ps.setInt(4, entity.getPositionNo());
         ps.setString(1, entity.getPosition());
-        ps.setString(2, entity.getUserCreate());
-        ps.setString(3, DatesControls.dateToString(entity.getDateCreate()));
-        ps.setString(4, entity.getUserChange());
-        ps.setString(5, DatesControls.dateToString(entity.getDateChange()));
+        ps.setString(2, entity.getUserChange());
+        ps.setString(3, DatesControls.dateToString(entity.getDateChange()));
     }
 
     @Override
     protected String getColumnLike() {
         return "pos_position";
     }
-
 }
