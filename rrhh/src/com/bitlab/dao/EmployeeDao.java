@@ -86,7 +86,7 @@ public class EmployeeDao extends AbstractDao<Employee> {
 
     @Override
     protected void setMappingParamsToUpdate(PreparedStatement ps, Employee entity) throws SQLException {
-        ps.setInt(10, entity.getEmpNo());
+        ps.setInt(11, entity.getEmpNo());
         ps.setString(1, DatesControls.dateToString(entity.getBirthDate()));
         ps.setString(2, entity.getFirstName());
         ps.setString(3, entity.getLastName());

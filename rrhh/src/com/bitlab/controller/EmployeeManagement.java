@@ -130,19 +130,19 @@ public class EmployeeManagement extends AbstractManagement<Employee> {
         logger.debug("Ingresando a metodo captureData");
         try {
             logger.debug("Setendo nombre de empleado");
-            System.out.println("AAAAAAAAAAIngrese el nombre de empleado o [cancel] para cancelar");
-            fromCmd = scan.nextLine().toLowerCase();
-            if (!fromCmd.equals("cancel")) {
+            System.out.println("Ingrese el nombre de empleado o [cancel] para cancelar");
+            fromCmd = scan.nextLine();
+            if (!fromCmd.equalsIgnoreCase("cancel")) {
                 e.setFirstName(fromCmd);
                 logger.debug("Seteando apellido de empleado");
                 System.out.println("Ingrese el apellido de empleado o [cancel] para cancelar");
-                fromCmd = scan.nextLine().toLowerCase();
-                if (!fromCmd.equals("cancel")) {
+                fromCmd = scan.nextLine();
+                if (!fromCmd.equalsIgnoreCase("cancel")) {
                     e.setLastName(fromCmd);
                     logger.debug("Seteando fecha de nacimiento");
                     System.out.println("Ingrese la fecha de nacimiento del empleado dd-MM-yyyy o [cancel] para cancelar");
-                    fromCmd = scan.nextLine().toLowerCase();
-                    if (!fromCmd.equals("cancel")) {
+                    fromCmd = scan.nextLine();
+                    if (!fromCmd.equalsIgnoreCase("cancel")) {
                         e.setBirthDate(DatesControls.stringToDate(fromCmd));
 
                             System.out.println("Ingrese el genero del nuevo empleado [F] femenino [M] Masculino o [cancel] para cancelar");
@@ -236,7 +236,7 @@ public class EmployeeManagement extends AbstractManagement<Employee> {
         System.out.println("Ingrese correo electronico del empleado o escriba [cancel] para cancelar");
         fromCmd = scan.nextLine().toLowerCase();
         if (!fromCmd.equals("cancel")) {
-            e.setEmail(fromCmd);
+            e.setEmail(fromCmd.toLowerCase());
             captureData(e, user);
             try {
                 if (e.getPositionNo() != null) {
