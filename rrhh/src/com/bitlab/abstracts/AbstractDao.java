@@ -276,6 +276,7 @@ public abstract class AbstractDao<T> {
         Connection con = getConnection(); //Se conecta a la BD
         PreparedStatement ps = con.prepareStatement(getCreateSQL()); //Crea el Statement
         setMappingParamsToCreate(ps, entity); //Se mapean los datos de la entidad al statement para enviarlos a la BD
+        System.out.println("La sentencias es: " + ps.toString());
         ps.executeUpdate(); //Se ejecuta en la BD
         closeJDBCObjects(con, ps); //Se cierran los objetos
     }

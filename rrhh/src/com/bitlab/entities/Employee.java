@@ -17,9 +17,10 @@ public class Employee {
     private int empNo;//numero correlativo
     private Date birthDate;//fecha de nacimiento
     private String firstName;//primer nombre
-    private String lastName;//primer apellido
+    private String lastName;//primer apellido    
     private char gender; // permite M o F 
     private Date hireDate;// fecha de pago
+    private String email;//primer apellido
     private Position positionNo;
     private Department deptNo;
 
@@ -44,31 +45,15 @@ public class Employee {
     public Employee(int empNo) {
         this.empNo = empNo;
     }
-    
-    /**
-     *Contructor recibe todos los campos de Employee
-    *@param  int empNo numero correlativo
-    *@param Date birthDate fecha de nacimiento
-    *@param String firstName primer nombre
-    *@param String lastName primer apellido
-    *@param char gender permite M o F 
-    *@param Date hireDate fecha de pago
-    *@param Position positionNo;
-    *@param Department deptNo;
-    *@param String UserCreate usuario de auditoria crear
-    *@param Date dateCreate fecha de creacion
-    *@param String userChange usuario de auditoria actualizar
-    *@param Date dateChange fecha de actualizacion
-     * 
-     */
 
-    public Employee(int empNo, Date birthDate, String firstName, String lastName, char gender, Date hireDate, Position positionNo, Department deptNo, String UserCreate, Date dateCreate, String userChange, Date dateChange) {
+    public Employee(int empNo, Date birthDate, String firstName, String lastName, char gender, Date hireDate, String email, Position positionNo, Department deptNo, String UserCreate, Date dateCreate, String userChange, Date dateChange) {
         this.empNo = empNo;
         this.birthDate = birthDate;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.hireDate = hireDate;
+        this.email = email;
         this.positionNo = positionNo;
         this.deptNo = deptNo;
         this.UserCreate = UserCreate;
@@ -76,6 +61,7 @@ public class Employee {
         this.userChange = userChange;
         this.dateChange = dateChange;
     }
+    
 
     //+++++++++++++++++++++++++++Get y Set++++++++++++++++++++++++++++++
     public int getEmpNo() {
@@ -174,6 +160,16 @@ public class Employee {
     public void setDeptNo(Department deptNo) {
         this.deptNo = deptNo;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
+       
     //+++++++++++++++++++++toString+++++++++++++++++++++++++++++++
 
     @Override

@@ -31,7 +31,7 @@ public class EmployeeDao extends AbstractDao<Employee> {
 
     @Override
     protected String[] getTableColumns() {
-        String[] columns = {"emp_emp_no", "emp_birth_date", "emp_first_name", "emp_last_name", "emp_gender", "emp_hire_date", "emp_position_no", "emp_dept_no", "A_user_create", "A_date_create", "A_user_change", "A_date_change"};
+        String[] columns = {"emp_emp_no", "emp_birth_date", "emp_first_name", "emp_last_name", "emp_gender", "emp_hire_date", "emp_email", "emp_position_no", "emp_dept_no", "A_user_create", "A_date_create", "A_user_change", "A_date_change"};
         return columns;
     }
 
@@ -53,6 +53,7 @@ public class EmployeeDao extends AbstractDao<Employee> {
                     rs.getString("emp_last_name"),
                     (rs.getString("emp_gender")).charAt(0),
                     rs.getDate("emp_hire_date"),
+                    rs.getString("emp_last_name"),
                     (pDao.find(rs.getInt("emp_position_no"))),
                     (dDao.find(rs.getInt("emp_dept_no"))),
                     rs.getString("A_user_create"),
@@ -74,12 +75,13 @@ public class EmployeeDao extends AbstractDao<Employee> {
         ps.setString(4, entity.getLastName());
         ps.setString(5, String.valueOf(entity.getGender()));
         ps.setString(6, DatesControls.dateToString(entity.getHireDate()));
-        ps.setInt(7, entity.getPositionNo().getPositionNo());
-        ps.setInt(8, entity.getDeptNo().getDeptNo());
-        ps.setString(9, entity.getUserCreate());
-        ps.setString(10, DatesControls.dateToString(entity.getDateCreate()));
-        ps.setString(11, entity.getUserChange());
-        ps.setString(12, DatesControls.dateToString(entity.getDateChange()));
+        ps.setString(7, entity.getEmail());
+        ps.setInt(8, entity.getPositionNo().getPositionNo());
+        ps.setInt(9, entity.getDeptNo().getDeptNo());
+        ps.setString(10, entity.getUserCreate());
+        ps.setString(11, DatesControls.dateToString(entity.getDateCreate()));
+        ps.setString(12, entity.getUserChange());
+        ps.setString(13, DatesControls.dateToString(entity.getDateChange()));
     }
 
     @Override
@@ -90,10 +92,11 @@ public class EmployeeDao extends AbstractDao<Employee> {
         ps.setString(3, entity.getLastName());
         ps.setString(4, String.valueOf(entity.getGender()));
         ps.setString(5, DatesControls.dateToString(entity.getHireDate()));
-        ps.setInt(6, entity.getPositionNo().getPositionNo());
-        ps.setInt(7, entity.getDeptNo().getDeptNo());
-        ps.setString(8, entity.getUserChange());
-        ps.setString(9, DatesControls.dateToString(entity.getDateChange()));
+        ps.setString(6, entity.getEmail());
+        ps.setInt(7, entity.getPositionNo().getPositionNo());
+        ps.setInt(8, entity.getDeptNo().getDeptNo());
+        ps.setString(9, entity.getUserChange());
+        ps.setString(10, DatesControls.dateToString(entity.getDateChange()));
     }
 
     @Override
