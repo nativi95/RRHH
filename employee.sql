@@ -47,6 +47,7 @@ CREATE TABLE emp_emp_employee (
     emp_last_name   	VARCHAR(16)     NOT NULL,
     emp_gender      	ENUM ('M','F')  NOT NULL,    
     emp_hire_date   	DATE            NOT NULL,
+    emp_email           VARCHAR(150)    NOT NULL,
     emp_position_no     INT             NOT NULL,
     emp_dept_no     	INT         	NOT NULL,
 	A_user_create 	    VARCHAR(10)     NOT NULL,
