@@ -20,13 +20,14 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
  * @author CarlosAlex
  */
 public class PayrollManagement {
-    
+    private static org.slf4j.Logger logger = LoggerFactory.getLogger(PayrollManagement.class);
     Validate val;
     PayrollDao pay;
     BillDao bill;
@@ -36,8 +37,11 @@ public class PayrollManagement {
     RrhhManagement rh = new RrhhManagement();
     
     public void wages(int id, String user) {
+        logger.debug("--- Iniciando metodo para ingresar valores a la planilla");
         boolean flag = true;
+        logger.debug("--- Entrando a bucle para lectura de datos");
         while (!flag) {
+            logger.debug("--- Iniciando la lectura de datos");
             System.out.println("¿Desea agregar ingresos a esta planilla? [S] para Si [Cualquier tecla] para NO");
             String rs = scan.nextLine();
             if (rs.equalsIgnoreCase("S")) {
@@ -45,15 +49,18 @@ public class PayrollManagement {
                 System.out.println("Ingrese Valor de Pago $0.00");
                 bl.setBilValue(Double.valueOf(scan.nextLine()));
                 System.out.println("Ingrese Descripcion del Pago");
+                logger.debug("--- Cargando los datos");
                 bl.setBilDescription(scan.nextLine());
                 bl.setUserCreate(user);
                 bl.setUserChange(user);
                 try {
+                    logger.debug("--- Creando registros de bill en la base de datos");
                     bill.create(bl);
+                    logger.debug("--- Creacion de planilla realizada con exito");
                 } catch (SQLException ex) {
-                    Logger.getLogger(PayrollManagement.class.getName()).log(Level.SEVERE, null, ex);
+                    logger.error("--- A ocurrido una excepcion de SQL " + ex);
                 } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(PayrollManagement.class.getName()).log(Level.SEVERE, null, ex);
+                    logger.error("--- A ocurrido una excepcion de clase" + ex);
                 }
             } else {
                 flag = false;
@@ -68,23 +75,27 @@ public class PayrollManagement {
      * @param user
      */
     public void CreatePayroll(String user) {
+        logger.debug("--- Iniciando proceso de creación de plaillas");
         py = new Payroll(0);
-        
+        logger.debug("--- Obteniendo id del empleado ");
         Employee employ = new Employee(val.isNumeric(scan));
+        logger.debug("--- Ingresando proceso de lectura de datos");
         System.out.println("Ingrese ID de Empleado");
         py.setEmpNo(employ);
         System.out.println("Ingrese Fecha de Inicio de Pago posterior al dia 26 del mes anterior");
         py.setFromDate(DatesControls.stringToDate(scan.nextLine()));
         System.out.println("Ingrese Fecha de Corte de Pago igual o menor al 25 del mes actual");
         py.setToDate(DatesControls.stringToDate(scan.nextLine()));
-        
+        logger.debug("--- Ingresando datos de auditoria automaticamente");
         py.setUserCreate(user);
         py.setUserChange(user);
         py.setDateCreate(new Date());
         py.setDateChange(new Date());
-        
+        logger.debug("--- Datos ingresados correctamente");
         try {
+            logger.debug("--- Creando registro de planilla en la base de datos");
             pay.create(py);
+            logger.debug("--- Llamando metodo para guardar registros en Bill");
             wages(pay.getLastInsertIdPayroll(), user);
         } catch (SQLException ex) {
             java.util.logging.Logger.getLogger(PayrollManagement.class.getName()).log(Level.SEVERE, null, ex);
