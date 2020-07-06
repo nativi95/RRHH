@@ -6,15 +6,20 @@
 package com.bitlab.dao;
 
 import com.bitlab.abstracts.AbstractDao;
+import com.bitlab.conection.Conection;
 import com.bitlab.entities.Rol;
 import com.bitlab.entities.User;
 import com.bitlab.util.DatesControls;
 import com.bitlab.util.Sha;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
@@ -82,5 +87,29 @@ public class UserDao extends AbstractDao<User> {
     @Override
     protected String getColumnLike() {
         return "usr_user";
+    }
+    
+    public User login (String user, String pass){
+        try {
+            Connection con=Conection.openConnection();
+            String sql=getFindAllSQL()+" "+SQL_WHERE+"usr_user=? AND user_password=?";
+            PreparedStatement ps=con.prepareStatement(sql);
+            ps.setString(1, user);
+            ps.setString(2, pass);
+            ResultSet rs = ps.executeQuery(); //Se ejecuta y se utiliza un ResultSet para obtener los valores
+        List<User> objects = new ArrayList<>();
+        while (rs.next()) { //Si la BD encontro registros por cada uno itera
+            objects.add(getMappingResults(rs)); //Agrega los datos
+        }
+        closeJDBCObjects(con, ps, rs); //Cierra la conexión
+        
+        if(!objects.isEmpty()){
+        return objects.get(0);
+        }
+        
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(UserDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 }

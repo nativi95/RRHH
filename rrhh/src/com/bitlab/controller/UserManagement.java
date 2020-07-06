@@ -9,10 +9,11 @@ import com.bitlab.abstracts.AbstractManagement;
 import com.bitlab.dao.UserDao;
 import com.bitlab.entities.Rol;
 import com.bitlab.entities.User;
-import com.bitlab.util.DatesControls;
+import com.bitlab.util.Sha;
 import java.util.Date;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Scanner;
 import java.util.logging.Level;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
@@ -158,6 +159,56 @@ public class UserManagement extends AbstractManagement<User> {
             java.util.logging.Logger.getLogger(UserManagement.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    public void login() {
+        RrhhManagement rh;
+        AdminManagement am;
+        User u = null;
+        Scanner scan = new Scanner(System.in);
+        boolean flag = true;
+        while (flag) {
+            System.out.println("Ingrese su usuario");
+            String user = scan.nextLine();
+            System.out.println("Ingrese su contraseña");
+            String pass = Sha.encrypt(scan.nextLine());
+            u = uDao.login(user, pass);
+            if (u == null) {
+                System.out.println("Credenciales invalidas intente nuevamente\n");
+                flag = true;
+            } else {
+                if (u.getRolNo().getRolRolNo() == 1) {
+                    System.out.println("-----Bienvenido " + user + " al menu de recursos humanos-----");
+                    am = new AdminManagement();
+                    am.adminMenu(user);
+
+                } else {
+                    rh = new RrhhManagement();
+                    System.out.println("-----Bienvenido " + user + " al menu de recursos humanos-----");
+                    rh.menuManagement(user);
+                }
+                boolean flag2 = true;
+                while (flag2) {
+                    System.out.println("Desea iniciar sesion con otra cuenta\n A.Si\nB.No");
+                    if (scan.nextLine().toLowerCase().equals("a")) {
+                        flag = true;
+                        flag2 = false;
+                    } else {
+                        if (scan.nextLine().toLowerCase().equals("b")) {
+                            System.out.println("Finalizando");
+                            flag = false;
+                            flag2 = false;
+                        } else {
+
+                            System.out.println("Ingrese una de las opciones validas");
+                            flag2 = true;
+                        }
+
+                    }
+                }
+            }
+
+        }
     }
 
 }
