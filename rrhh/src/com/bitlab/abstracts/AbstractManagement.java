@@ -125,7 +125,6 @@ public abstract class AbstractManagement<T> {
                 }
                 flag = true;
                 break;
-
                 case "c": {
                     try {
                         findById(user);
@@ -137,12 +136,11 @@ public abstract class AbstractManagement<T> {
                 }
                 flag = true;
                 break;
-
                 case "d":
+                    findLike(user);
                     flag = true;
                     break;
-                case "e":
-                    findLike(user);
+                case "e":                    
                     flag = false;
                     break;
                 default:
