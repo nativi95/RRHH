@@ -34,6 +34,14 @@ public class DatesControls {
         }
 
     }
+    /**
+     * Formate los objetos Date con el formato sql
+     * @param date
+     * @return 
+     */
+    public static Date dateSqlFormat(Date date){
+    return stringToDate(dateToString(date));
+    }
 
     /**
      * Metodo estatico que convierte fechas de Date a GregorianCalendar
