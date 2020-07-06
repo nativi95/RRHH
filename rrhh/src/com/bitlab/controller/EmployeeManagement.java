@@ -130,7 +130,7 @@ public class EmployeeManagement extends AbstractManagement<Employee> {
         logger.debug("Ingresando a metodo captureData");
         try {
             logger.debug("Setendo nombre de empleado");
-            System.out.println("Ingrese el nombre de empleado o [cancel] para cancelar");
+            System.out.println("AAAAAAAAAAIngrese el nombre de empleado o [cancel] para cancelar");
             fromCmd = scan.nextLine().toLowerCase();
             if (!fromCmd.equals("cancel")) {
                 e.setFirstName(fromCmd);
@@ -144,11 +144,6 @@ public class EmployeeManagement extends AbstractManagement<Employee> {
                     fromCmd = scan.nextLine().toLowerCase();
                     if (!fromCmd.equals("cancel")) {
                         e.setBirthDate(DatesControls.stringToDate(fromCmd));
-
-                        System.out.println("Ingrese el correo electrónico o [cancel] para cancelar");
-                        fromCmd = scan.nextLine().toLowerCase();
-                        if (!fromCmd.equals("cancel")) {
-                            e.setEmail(fromCmd);
 
                             System.out.println("Ingrese el genero del nuevo empleado [F] femenino [M] Masculino o [cancel] para cancelar");
                             fromCmd = scan.nextLine().toLowerCase();
@@ -206,7 +201,7 @@ public class EmployeeManagement extends AbstractManagement<Employee> {
                             } else {
                                 System.out.println("Datos no validos");
                             }
-                        }
+                        
                     }
                 }
             }
@@ -241,6 +236,7 @@ public class EmployeeManagement extends AbstractManagement<Employee> {
         System.out.println("Ingrese correo electronico del empleado o escriba [cancel] para cancelar");
         fromCmd = scan.nextLine().toLowerCase();
         if (!fromCmd.equals("cancel")) {
+            e.setEmail(fromCmd);
             captureData(e, user);
             try {
                 if (e.getPositionNo() != null) {
