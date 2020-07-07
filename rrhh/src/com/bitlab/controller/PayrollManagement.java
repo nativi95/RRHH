@@ -27,7 +27,8 @@ import org.slf4j.LoggerFactory;
  * @author CarlosAlex
  */
 public class PayrollManagement {
-     // Variable logger
+    // Variable logger
+
     private static org.slf4j.Logger logger = LoggerFactory.getLogger(PayrollManagement.class);
     //Atributos 
     Validate val;
@@ -168,7 +169,8 @@ public class PayrollManagement {
     /**
      * Imprimir Listas List<Payroll>
      *
-     * @param List<Payroll> lsPayroll
+     * @param lsPayroll
+ 
      */
     public void show(List<Payroll> lsPayroll) {
 
@@ -183,12 +185,12 @@ public class PayrollManagement {
     }
 
     public void charges(int id, String user) throws SQLException, ClassNotFoundException {
-    /**
-     El Metodo muestra los descuentos de ISSS y AFP
-     *
-     * @param id
-     * @param user
-     */
+        /**
+         * El Metodo muestra los descuentos de ISSS y AFP
+         *
+         * @param id
+         * @param user
+         */
         bill = new BillDao();
         double i = bill.wagesValue(id);
         if (i <= 0) {
@@ -238,8 +240,10 @@ public class PayrollManagement {
 
         }
     }
+
     /**
-    Metodo para Calcular el Descuento de AFP y envia el resultado a metodo charges
+     * Metodo para Calcular el Descuento de AFP y envia el resultado a metodo
+     * charges
      *
      * @param id
      * @param user
@@ -257,13 +261,14 @@ public class PayrollManagement {
             wages(id, user);
         } else {
 
-            bl.setBilValue(0.725 * -value);
+            bl.setBilValue(7.25 * -value);
         }
         return bl;
     }
 
     /**
-     Metodo para Calcular el Descuento de ISSS y envia el resultado a metodo charges
+     * Metodo para Calcular el Descuento de ISSS y envia el resultado a metodo
+     * charges
      *
      * @param id
      * @param user
@@ -281,15 +286,16 @@ public class PayrollManagement {
             wages(id, user);
         } else {
 
-            bl.setBilValue(-value * 0.75);
+            bl.setBilValue(-value * 7.5);
         }
         return bl;
     }
 
     /**
-    Metodo para Mostrar en una Lista el Historial de Planillas
+     * Metodo para Mostrar en una Lista el Historial de Planillas
      *
      * @param user
+     * @return List<Payroll>
      */
     public List<Payroll> employeePayrollHistory(String user) {
         List<Payroll> lsPayroll = null;
@@ -308,6 +314,10 @@ public class PayrollManagement {
         return lsPayroll;
     }
 
+    /**
+     * Imprime el detalle de payroll
+     * @param id 
+     */
     public void showBills(int id) {
         bill = new BillDao();
         List<Bill> lsBill = null;
@@ -318,11 +328,12 @@ public class PayrollManagement {
             total = total + bl.getBilValue();
         }
         System.out.println("====================================\n");
-        System.out.println((double)Math.round(total * 100d) / 100d);
+        System.out.println((double) Math.round(total * 100d) / 100d);
     }
 
-     /**
-     Metodo para consultar una planilla en especifico a traves de ID de planilla
+    /**
+     * Metodo para consultar una planilla en especifico a traves de ID de
+     * planilla
      *
      * @param user
      */
@@ -340,7 +351,7 @@ public class PayrollManagement {
             System.out.println("Cargo: " + py.getEmpNo().getPositionNo().getPosition() + " Departamento: " + py.getEmpNo().getDeptNo().getDeptName());
             System.out.println("==================================================\n");
             showBills(py.getPayrollNo());
-            System.out.println("\n\n Si desea actualizar algun valor  de algún cargo, escriba Si y presiones [enter]");
+            System.out.println("\n\n Si desea actualizar algun valor  de algún cargo, escriba [Si] y presiones [enter]");
             if (rh.getCapture(user).toLowerCase().equals("si")) {
                 updateBill(user);
             }
@@ -354,28 +365,37 @@ public class PayrollManagement {
 
     }
 
-    public void updateBill(String user) {
-     /**
-    Metodo para ingresar cargo 
+    /**
+     * Metodo para ingresar cargo
      *
      * @param user
      */
-    public void updateBill(String user){
+    public void updateBill(String user) {
         System.out.println("Ingrese el numero de registro del cargo");
         val = new Validate();
         rh = new RrhhManagement();
-        bl = new Bill(val.isNumeric());
+
         bill = new BillDao();
-        System.out.println("Ingrese La Descripción");
 
         try {
+            bl = bill.find(val.isNumeric());
+            System.out.println("Ingrese La Descripción");
             bl.setBilDescription(rh.getCapture(user));
             System.out.println("Ingrese el nuevo cargo");
             bl.setBilValue(Double.parseDouble(rh.getCapture(user)));
             bl.setUserChange(user);
+            bl.setDateChange(DatesControls.dateSqlFormat(new Date()));
             bill.update(bl);
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(PayrollManagement.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public static void main(String[] args) {
+        PayrollManagement p = new PayrollManagement();
+        PayrollDao pd= new PayrollDao();
+       
+            p.show(p.payrollCurrentMonth());
+       
     }
 }

@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -92,13 +93,11 @@ public class PayrollDao extends AbstractDao<Payroll> {
     }
 
     public List<Payroll> payrollByDates(Date DateFrom, Date dateTo) throws SQLException, ClassNotFoundException {
-        String sql = getFindAllSQL() + SQL_WHERE + " pay_from_date <=? and pay_to_date >= ?";
+        String sql = getFindAllSQL() + SQL_WHERE + " pay_from_date >= '"+DatesControls.dateToString(DateFrom)+"' and pay_to_date <= '"+DatesControls.dateToString(dateTo)+"'";
         Connection con = getConnection(); //Se conecta a la BD        
         PreparedStatement ps = con.prepareStatement(sql); //Crea el Statement
-        ps.setString(1, DatesControls.dateToString(DateFrom));
-        ps.setString(2, DatesControls.dateToString(dateTo));
         ResultSet rs = ps.executeQuery(); //Ejecuta la query
-        List<Payroll> lsPayroll = null;
+        List<Payroll> lsPayroll = new ArrayList<>();
 
         while (rs.next()) { //Si la BD devolvio coincidencias (Registros)
             lsPayroll.add(getMappingResults(rs));//Se mapean y se asignan a la variable

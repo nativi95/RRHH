@@ -37,7 +37,7 @@ public class BillDao extends AbstractDao<Bill>{
 
     @Override
     protected String getTableKey() {
-        return "bil_bil_no";
+        return "bill_bill_no";
     }
 
     @Override
