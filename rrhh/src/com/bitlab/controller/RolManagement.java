@@ -8,7 +8,6 @@ package com.bitlab.controller;
 import com.bitlab.abstracts.AbstractManagement;
 import com.bitlab.dao.RolDao;
 import com.bitlab.entities.Rol;
-
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
@@ -31,10 +30,10 @@ public class RolManagement extends AbstractManagement<Rol> {
             logger.debug("Se obtiene lista de roles de usuario");
             return rDao.findAll();
         } catch (SQLException ex) {
-//            Logger.getLogger(RolManagement.class.getName()).log(Level.SEVERE, null, ex);
+
             logger.error("Ha ocurrido una excepcion en la eliminación", ex);
         } catch (ClassNotFoundException ex) {
-//            Logger.getLogger(RolManagement.class.getName()).log(Level.SEVERE, null, ex);
+
             logger.error("Ha ocurrido una excepcion en la eliminación", ex);
         }
         return null;
@@ -46,10 +45,10 @@ public class RolManagement extends AbstractManagement<Rol> {
             logger.debug("Se obtiene los datos del registro de rol del usuario");
             return rDao.find(id);
         } catch (SQLException ex) {
-//            Logger.getLogger(RolManagement.class.getName()).log(Level.SEVERE, null, ex);
+
             logger.error("Ha ocurrido una excepcion en la eliminación", ex);
         } catch (ClassNotFoundException ex) {
-//            Logger.getLogger(RolManagement.class.getName()).log(Level.SEVERE, null, ex);
+
             logger.error("Ha ocurrido una excepcion en la eliminación", ex);
         }
         return null;
@@ -112,10 +111,10 @@ public class RolManagement extends AbstractManagement<Rol> {
         try {
             rDao.remove(id);
         } catch (SQLException ex) {
-//            Logger.getLogger(RolManagement.class.getName()).log(Level.SEVERE, null, ex);
+
             logger.error("Ha ocurrido una excepcion en la actualizacion", ex);
         } catch (ClassNotFoundException ex) {
-//            Logger.getLogger(RolManagement.class.getName()).log(Level.SEVERE, null, ex);
+
             logger.error("Ha ocurrido una excepcion en la actualizacion", ex);
         }
     }
@@ -134,10 +133,10 @@ public class RolManagement extends AbstractManagement<Rol> {
         try {
             rDao.create(r);
         } catch (SQLException ex) {
-//            Logger.getLogger(UserManagement.class.getName()).log(Level.SEVERE, null, ex);
+
             logger.error("Ha ocurrido una excepcion en la creacion", ex);
         } catch (ClassNotFoundException ex) {
-//            Logger.getLogger(UserManagement.class.getName()).log(Level.SEVERE, null, ex);
+
             logger.error("Ha ocurrido una excepcion en la creacion", ex);
         }
         System.out.println("\n------------------------------------------------------\n");
