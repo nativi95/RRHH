@@ -6,14 +6,12 @@
 package com.bitlab.dao;
 
 import com.bitlab.abstracts.AbstractDao;
-import com.bitlab.entities.Employee;
 import com.bitlab.entities.Payroll;
 import com.bitlab.util.DatesControls;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -60,9 +58,9 @@ public class PayrollDao extends AbstractDao<Payroll> {
         ps.setString(3, DatesControls.dateToString(entity.getFromDate()));
         ps.setString(4, DatesControls.dateToString(entity.getToDate()));
         ps.setString(5, entity.getUserCreate());
-        ps.setString(6, DatesControls.dateToString(entity.getDateCreate()));
+        ps.setString(6, DatesControls.dateToString(new Date()));
         ps.setString(7, entity.getUserChange());
-        ps.setString(8, DatesControls.dateToString(entity.getDateChange()));
+        ps.setString(8, DatesControls.dateToString(new Date()));
     }
 
     @Override
@@ -82,7 +80,7 @@ public class PayrollDao extends AbstractDao<Payroll> {
 
     public int getLastInsertIdPayroll() throws SQLException, ClassNotFoundException {
         int idPayroll = 0;
-        String lastInsertIdSql = "SELECT last_insert_id()";
+        String lastInsertIdSql = "SELECT max(pay_payroll_no) from "+getTableName();
         Connection con = getConnection(); //Se conecta a la BD        
         PreparedStatement ps = con.prepareStatement(lastInsertIdSql); //Crea el Statement
         ResultSet rs = ps.executeQuery(); //Ejecuta la query

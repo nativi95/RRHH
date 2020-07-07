@@ -36,13 +36,7 @@ public class Conection {
     //++++++++++++++++++++++++++++++++metodos para abrir y cerrar conexion++++++++++++++++
     public static Connection openConnection() throws SQLException, ClassNotFoundException {
         Class.forName(DRIVER);//se ingresa driver de conexion
-        Connection conn = DriverManager.getConnection(URL, USER, PASS);//retorna conexion a BD
-        if (conn != null) {
-            System.out.println("se conecto");
-        } else {
-            System.out.println("nell");
-        }
-        return conn;
+        return DriverManager.getConnection(URL, USER, PASS);//retorna conexion a BD
     }
 
     /**
@@ -55,16 +49,6 @@ public class Conection {
         if (con != null && !con.isClosed())// validacion de objeto con no estar cerrado y diferente de null
         {
             con.close();//cierra conexion
-        }
-    }
-    
-    public static void main(String[] args) {
-        try {
-            Conection.openConnection();
-        } catch (SQLException ex) {
-            Logger.getLogger(Conection.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Conection.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

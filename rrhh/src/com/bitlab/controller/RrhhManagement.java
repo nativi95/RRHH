@@ -123,25 +123,24 @@ public class RrhhManagement {
             System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
 
             System.out.println("Escriba la letra de la opción deseada y pulse [enter] ");
-            System.out.println("A. Creacion de plantillas");
+            System.out.println("A. Gestion empleado");
             System.out.println("B. Historial de planillas del mes actual");
             System.out.println("C. Ver Historial de planillas segun mes espacífico");
             System.out.println("D. Salir");
             try {
+                pMa = new PayrollManagement();
                 switch (getCapture(user).toLowerCase()) {
                     case "a":
                         logger.debug("--- Ejecutando funcion para crear plaillas");
-
-                        
-                        pMa.CreatePayroll(user);
+                        menuManagement(user);
                         search = true;
                         break;
                     case "b":
-
+                        pMa.payrollCurrentMonth();
                         search = true;
                         break;
                     case "c":
-
+                        pMa.payRollByDates(user);
                         search = true;
                         break;
                     case "d":
@@ -181,7 +180,8 @@ public class RrhhManagement {
                 System.out.println("E. Buscar por código identificador registros");
                 System.out.println("F. Buscar similares");
                 System.out.println("G. Generación de planilla de empleado");
-                System.out.println("H. Salir");
+                System.out.println("H. Ver planilla de empleado");
+                System.out.println("I. Salir");
                 switch (getCapture(user).toLowerCase()) {
                     case "a":
                         eMa.addRecord(user);
@@ -210,9 +210,13 @@ public class RrhhManagement {
                         search = true;
                         break;
                     case "g":
-                        this.rrhhManagement(user);
+                        pMa.CreatePayroll(user);
                         break;
                     case "h":
+                        pMa.checkPayroll(user);
+                        search = true;
+                        break;
+                        case "i":
                         search = false;
                         break;
                     default:
@@ -226,10 +230,5 @@ public class RrhhManagement {
                 logger.error("Ha ocurrido una excepcion en la creacion", ex);
             }
         }
-    }
-
-    public static void main(String[] args) {
-        RrhhManagement o = new RrhhManagement();
-        o.rrhhManagement("Andrea");
     }
 }

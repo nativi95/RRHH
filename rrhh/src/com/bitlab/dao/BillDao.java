@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -30,7 +31,7 @@ public class BillDao extends AbstractDao<Bill>{
 
     @Override
     protected String[] getTableColumns() {
-        String[] columns = {"bil_bil_no","bil_payroll_no", "bil_value", "bil_description", "A_user_create", "Adate_create", "A_user_change", "A_date_change"};
+        String[] columns = {"bill_bill_no","bil_payroll_no", "bil_value", "bil_description", "A_user_create", "A_date_create", "A_user_change", "A_date_change"};
         return columns;
     }
 
@@ -43,8 +44,8 @@ public class BillDao extends AbstractDao<Bill>{
     protected Bill getMappingResults(ResultSet rs) throws SQLException {
         PayrollDao pDao = new PayrollDao();
         try {
-            return new Bill(pDao.find(rs.getInt(1)), rs.getDouble(2), rs.getString(3), rs.getString(4),
-                    rs.getDate(5), rs.getString(6), rs.getDate(7));
+            return new Bill(rs.getInt(1), pDao.find(rs.getInt(2)), rs.getDouble(3), rs.getString(4), rs.getString(5),
+                    rs.getDate(6), rs.getString(7), rs.getDate(8));
             
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(PayrollDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -82,7 +83,7 @@ public class BillDao extends AbstractDao<Bill>{
     public double wagesValue(int id){
         double i=0;
         try {
-            String sql= "SELECT SUM(bil_value) FROM"+getTableName()+SQL_WHERE +"bil_payroll_no=? and bil_value>0";
+            String sql= "SELECT SUM(bil_value) FROM emp_bil_bill where bil_payroll_no= "+id+" and bil_value > 0";
             Connection con = getConnection(); //Se conecta a la BD
             PreparedStatement ps = con.prepareStatement(getFindAllSQL()); //Crea el Statement
             ResultSet rs = ps.executeQuery(); //Ejecuta la query
@@ -99,8 +100,8 @@ public class BillDao extends AbstractDao<Bill>{
     }
     
     public List<Bill> billDescription(int id){
-        double i=0;
-        List<Bill> lsBill=null;
+        
+        List<Bill> lsBill=new ArrayList<>();
         try {
             String sql= getFindAllSQL()+SQL_WHERE +"bil_payroll_no=?";
             Connection con = getConnection(); //Se conecta a la BD

@@ -55,7 +55,8 @@ public class Bill {
     */
    
 
-    public Bill(Payroll payrollNo, double bilValue, String bilDescription, String UserCreate, Date dateCreate, String userChange, Date dateChange) {
+    public Bill(int billNo, Payroll payrollNo, double bilValue, String bilDescription, String UserCreate, Date dateCreate, String userChange, Date dateChange) {
+        this.billNo = billNo;
         this.payrollNo = payrollNo;
         this.bilValue = bilValue;
         this.bilDescription = bilDescription;
