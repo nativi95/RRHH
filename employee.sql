@@ -76,7 +76,7 @@ CREATE TABLE emp_pay_payroll (
 ; 
 
 CREATE TABLE emp_bil_bill (
-    bill_bill_no       INT              NOT NULL,
+    bill_bill_no       INT              NOT NULL auto_increment,
     bil_payroll_no     INT             	NOT NULL,
     bil_value 		   FLOAT(7,2)		NOT NULL,
     bil_description	   VARCHAR(50) 		NOT NULL,

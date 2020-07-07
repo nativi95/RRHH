@@ -27,6 +27,7 @@ import org.slf4j.LoggerFactory;
  * @author CarlosAlex
  */
 public class PayrollManagement {
+
     private static org.slf4j.Logger logger = LoggerFactory.getLogger(PayrollManagement.class);
     Validate val;
     PayrollDao pay;
@@ -35,37 +36,48 @@ public class PayrollManagement {
     Bill bl;
     Scanner scan = new Scanner(System.in);
     RrhhManagement rh = new RrhhManagement();
-    
+
     public void wages(int id, String user) {
-        logger.debug("--- Iniciando metodo para ingresar valores a la planilla");
-        boolean flag = true;
-        logger.debug("--- Entrando a bucle para lectura de datos");
-        while (!flag) {
+        try {
+
+            bill = new BillDao();
+            logger.debug("--- Iniciando metodo para ingresar valores a la planilla");
+            boolean flag = true;
+            logger.debug("--- Entrando a bucle para lectura de datos");
             logger.debug("--- Iniciando la lectura de datos");
             System.out.println("¿Desea agregar ingresos a esta planilla? [S] para Si [Cualquier tecla] para NO");
             String rs = scan.nextLine();
             if (rs.equalsIgnoreCase("S")) {
-                bl = new Bill(0);
-                System.out.println("Ingrese Valor de Pago $0.00");
-                bl.setBilValue(Double.valueOf(scan.nextLine()));
-                System.out.println("Ingrese Descripcion del Pago");
-                logger.debug("--- Cargando los datos");
-                bl.setBilDescription(scan.nextLine());
-                bl.setUserCreate(user);
-                bl.setUserChange(user);
-                try {
+                while (flag) {
+
+                    bl = new Bill(0);
+                    System.out.println("Ingrese Valor de Pago $0.00");
+                    bl.setBilValue(Double.valueOf(scan.nextLine()));
+                    System.out.println("Ingrese Descripcion del Pago");
+                    logger.debug("--- Cargando los datos");
+                    bl.setBilDescription(scan.nextLine());
+                    bl.setUserCreate(user);
+                    bl.setUserChange(user);
+                    py = new Payroll(id);
+                    bl.setPayrollNo(py);
+
                     logger.debug("--- Creando registros de bill en la base de datos");
                     bill.create(bl);
                     logger.debug("--- Creacion de planilla realizada con exito");
-                } catch (SQLException ex) {
-                    logger.error("--- A ocurrido una excepcion de SQL " + ex);
-                } catch (ClassNotFoundException ex) {
-                    logger.error("--- A ocurrido una excepcion de clase" + ex);
+
+                    System.out.println("Desea agregar otros ingresos [s] para si [cualquier tecla] para no");
+                    if (scan.nextLine().toLowerCase().equals("s")) {
+                        flag = true;
+
+                    } else {
+                        charges(id, user);
+                        flag = false;
+                    }
+
                 }
-            } else {
-                flag = false;
             }
-            
+
+        } catch (SQLException | ClassNotFoundException ex) {
         }
     }
 
@@ -79,7 +91,7 @@ public class PayrollManagement {
         logger.debug("--- Iniciando proceso de creación de plaillas");
         py = new Payroll(0);
         logger.debug("--- Obteniendo id del empleado ");
-        
+        pay = new PayrollDao();
         logger.debug("--- Ingresando proceso de lectura de datos");
         System.out.println("Ingrese ID de Empleado");
         Employee employ = new Employee(val.isNumeric(scan));
@@ -96,6 +108,7 @@ public class PayrollManagement {
         logger.debug("--- Datos ingresados correctamente");
         try {
             logger.debug("--- Creando registro de planilla en la base de datos");
+            System.out.println("el objeto " + py.toString());
             pay.create(py);
             logger.debug("--- Llamando metodo para guardar registros en Bill");
             wages(pay.getLastInsertIdPayroll(), user);
@@ -121,9 +134,9 @@ public class PayrollManagement {
             py.setFromDate(DatesControls.stringToDate(rh.getCapture(user)));
             System.out.println("Ingrese la fecha de corte en formato dd-MM-yyyy para la búsqueda o presiones [cancel] para cancelar");
             py.setToDate(DatesControls.stringToDate(rh.getCapture(user)));
-            
+
             lsPayroll = pay.payrollByDates(py.getFromDate(), py.getToDate());
-            
+
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(PayrollManagement.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -157,7 +170,7 @@ public class PayrollManagement {
      * @param List<Payroll> lsPayroll
      */
     public void show(List<Payroll> lsPayroll) {
-        
+
         for (Payroll p : lsPayroll) {
             StringBuilder stb = new StringBuilder();
             stb.append("Id de planilla: ").append(p.getPayrollNo());
@@ -165,10 +178,10 @@ public class PayrollManagement {
             stb.append(", Fecha de inicio ").append(p.getFromDate()).append(", Fecha de corte").append(p.getToDate());
             System.out.println(stb.toString());
         }
-        
+
     }
-    
-    public void charges(int id, String user) {
+
+    public void charges(int id, String user) throws SQLException, ClassNotFoundException {
         bill = new BillDao();
         double i = bill.wagesValue(id);
         if (i <= 0) {
@@ -181,13 +194,17 @@ public class PayrollManagement {
                 bl = afp(id, i, user);
                 System.out.println("AFP :$" + bl.getBilValue());
                 bill.create(bl);
+                bl = isss(id, i, user);
                 System.out.println("ISSS :$" + bl.getBilValue());
                 bill.create(bl);
-                while (!flag) {
+                while (flag) {
                     System.out.println("Si desea otros descuentos a esta planilla presiones [S] para Si [Cualquier tecla] para NO");
                     String rs = scan.nextLine();
                     if (rs.equalsIgnoreCase("S")) {
                         bl = new Bill(0);
+                        py = new Payroll(id);
+                        bl.setPayrollNo(py);
+                        bl.getPayrollNo().setPayrollNo(id);
                         System.out.println("Ingrese Valor de Pago $0.00");
                         bl.setBilValue(Double.valueOf(scan.nextLine()));
                         System.out.println("Ingrese Descripcion del Pago");
@@ -204,17 +221,17 @@ public class PayrollManagement {
                     } else {
                         flag = false;
                     }
-                    
+
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(PayrollManagement.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(PayrollManagement.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
         }
     }
-    
+
     public Bill afp(int id, double value, String user) {
         py = new Payroll(id);
         bl.setBillNo(0);
@@ -226,12 +243,12 @@ public class PayrollManagement {
             System.out.println("Esta planilla no cuenta con ingresos\n");
             wages(id, user);
         } else {
-            
-            bl.setBilValue(0.0725 * -value);
+
+            bl.setBilValue(0.725 * -value);
         }
         return bl;
     }
-    
+
     public Bill isss(int id, double value, String user) {
         py = new Payroll(id);
         bl.setBillNo(0);
@@ -243,12 +260,12 @@ public class PayrollManagement {
             System.out.println("Esta planilla no cuenta con ingresos\n");
             wages(id, user);
         } else {
-            
-            bl.setBilValue(-value * 0.075);
+
+            bl.setBilValue(-value * 0.75);
         }
         return bl;
     }
-    
+
     public List<Payroll> employeePayrollHistory(String user) {
         List<Payroll> lsPayroll = null;
         try {
@@ -257,15 +274,15 @@ public class PayrollManagement {
             val = new Validate();
             System.out.println("Ingrese el Id del empleado");
             py.getEmpNo().setEmpNo(val.isNumeric());
-            
+
             lsPayroll = pay.employeePayrollHistory(py.getEmpNo().getEmpNo());
-            
+
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(PayrollManagement.class.getName()).log(Level.SEVERE, null, ex);
         }
         return lsPayroll;
     }
-    
+
     public void showBills(int id) {
         bill = new BillDao();
         List<Bill> lsBill = null;
@@ -276,9 +293,9 @@ public class PayrollManagement {
             total = total + bl.getBilValue();
         }
         System.out.println("====================================\n");
-        System.out.println("Total = " + total);
+        System.out.println((double)Math.round(total * 100d) / 100d);
     }
-    
+
     public void checkPayroll(String user) {
         pay = new PayrollDao();
         py = new Payroll();
@@ -287,34 +304,34 @@ public class PayrollManagement {
         py.setPayrollNo(val.isNumeric());
         try {
             py = pay.find(py.getPayrollNo());
-            
-            System.out.println("====================================\n");
+
+            System.out.println("==================================================\n");
             System.out.println("Empleado: " + py.getEmpNo().getFirstName() + " " + py.getEmpNo().getLastName());
             System.out.println("Cargo: " + py.getEmpNo().getPositionNo().getPosition() + " Departamento: " + py.getEmpNo().getDeptNo().getDeptName());
-            System.out.println("====================================\n");
+            System.out.println("==================================================\n");
             showBills(py.getPayrollNo());
             System.out.println("\n\n Si desea actualizar algun valor  de algún cargo, escriba Si y presiones [enter]");
             if (rh.getCapture(user).toLowerCase().equals("si")) {
                 updateBill(user);
             }
-            
+
         } catch (SQLException | ClassNotFoundException ex) {
-            
+
             Logger.getLogger(PayrollManagement.class
                     .getName()).log(Level.SEVERE, null, ex);
-            
+
         }
-        
+
     }
-    
-    public void updateBill(String user){
+
+    public void updateBill(String user) {
         System.out.println("Ingrese el numero de registro del cargo");
         val = new Validate();
         rh = new RrhhManagement();
         bl = new Bill(val.isNumeric());
         bill = new BillDao();
         System.out.println("Ingrese La Descripción");
-        
+
         try {
             bl.setBilDescription(rh.getCapture(user));
             System.out.println("Ingrese el nuevo cargo");
@@ -325,5 +342,4 @@ public class PayrollManagement {
             Logger.getLogger(PayrollManagement.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
 }
