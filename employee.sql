@@ -140,3 +140,9 @@ INSERT INTO `employees`.`emp_pos_position` (`pos_position`, `A_user_create`, `A_
 INSERT INTO `employees`.`emp_pos_position` (`pos_position`, `A_user_create`, `A_date_create`, `A_user_change`, `A_date_change`) VALUES ('Gerente de ventas', 'Andrea', '2020-07-05', 'Andrea', '2020-07-05');
 INSERT INTO `employees`.`emp_pos_position` (`pos_position`, `A_user_create`, `A_date_create`, `A_user_change`, `A_date_change`) VALUES ('Gerente de RRHH', 'Andrea', '2020-07-05', 'Andrea', '2020-07-05');
 INSERT INTO `employees`.`emp_pos_position` (`pos_position`, `A_user_create`, `A_date_create`, `A_user_change`, `A_date_change`) VALUES ('Gerente de informatica', 'Andrea', '2020-07-05', 'Andrea', '2020-07-05');
+
+-- ------------------------------------------- --
+-- Usuario admin:   Andrea  contraseña: admin  --
+-- Usuario admin:   Juan    contraseña: admin  --
+-- Usuario RRHH:    Carlos  contraseña: admin  --
+-- ------------------------------------------- --
