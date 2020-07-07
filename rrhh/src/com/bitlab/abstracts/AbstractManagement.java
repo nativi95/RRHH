@@ -4,13 +4,8 @@
  * and open the template in the editor.
  */
 package com.bitlab.abstracts;
-
 import com.bitlab.controller.UserManagement;
-
-
-
 import java.sql.SQLException;
-
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;

@@ -7,15 +7,9 @@ package com.bitlab.controller;
 
 import com.bitlab.dao.EmployeeDao;
 import com.bitlab.entities.Employee;
-import com.bitlab.util.DatesControls;
 import com.bitlab.util.Validate;
 import java.util.Scanner;
-
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -116,7 +110,11 @@ public class RrhhManagement {
             return capture;
         }
     }
-
+     /**
+    Menu para la administracion de planillas
+     *
+     * @param user
+     */
     public void rrhhManagement(String user) {
         pMa = new PayrollManagement();
         boolean search = true;
@@ -125,7 +123,6 @@ public class RrhhManagement {
             System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
 
             System.out.println("Escriba la letra de la opción deseada y pulse [enter] ");
-//            System.out.println("A. Gestión de empleados");
             System.out.println("A. Creacion de plantillas");
             System.out.println("B. Historial de planillas del mes actual");
             System.out.println("C. Ver Historial de planillas segun mes espacífico");
@@ -134,17 +131,17 @@ public class RrhhManagement {
                 switch (getCapture(user).toLowerCase()) {
                     case "a":
                         logger.debug("--- Ejecutando funcion para crear plaillas");
-//                        menuManagement(user);
+
                         
                         pMa.CreatePayroll(user);
                         search = true;
                         break;
                     case "b":
-//                        findById(user);
+
                         search = true;
                         break;
                     case "c":
-//                        findLike(user);
+
                         search = true;
                         break;
                     case "d":
@@ -152,16 +149,14 @@ public class RrhhManagement {
                         search = false;
                         break;
                     default:
-//                        System.out.println("Escriba una opción valida");
-                        search = true;
+;
+                       search = true;
                         break;
                 }
             } catch (SQLException ex) {
                 logger.error("Ha ocurrido una excepcion en la creacion", ex);
             }
-            /*catch (ClassNotFoundException ex) {
-                logger.error("Ha ocurrido una excepcion en la creacion", ex);
-            }*/
+          
         }
     }
 

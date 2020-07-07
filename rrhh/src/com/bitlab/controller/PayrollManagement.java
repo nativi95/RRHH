@@ -27,7 +27,9 @@ import org.slf4j.LoggerFactory;
  * @author CarlosAlex
  */
 public class PayrollManagement {
+     // Variable logger
     private static org.slf4j.Logger logger = LoggerFactory.getLogger(PayrollManagement.class);
+    //Atributos 
     Validate val;
     PayrollDao pay;
     BillDao bill;
@@ -167,7 +169,12 @@ public class PayrollManagement {
         }
         
     }
-    
+    /**
+     El Metodo muestra los descuentos de ISSS y AFP
+     *
+     * @param id
+     * @param user
+     */
     public void charges(int id, String user) {
         bill = new BillDao();
         double i = bill.wagesValue(id);
@@ -214,7 +221,13 @@ public class PayrollManagement {
             
         }
     }
-    
+    /**
+    Metodo para Calcular el Descuento de AFP y envia el resultado a metodo charges
+     *
+     * @param id
+     * @param user
+     * @param value
+     */
     public Bill afp(int id, double value, String user) {
         py = new Payroll(id);
         bl.setBillNo(0);
@@ -231,7 +244,14 @@ public class PayrollManagement {
         }
         return bl;
     }
-    
+
+    /**
+     Metodo para Calcular el Descuento de ISSS y envia el resultado a metodo charges
+     *
+     * @param id
+     * @param user
+     * @param value
+     */
     public Bill isss(int id, double value, String user) {
         py = new Payroll(id);
         bl.setBillNo(0);
@@ -248,7 +268,11 @@ public class PayrollManagement {
         }
         return bl;
     }
-    
+    /**
+    Metodo para Mostrar en una Lista el Historial de Planillas
+     *
+     * @param user
+     */
     public List<Payroll> employeePayrollHistory(String user) {
         List<Payroll> lsPayroll = null;
         try {
@@ -265,7 +289,11 @@ public class PayrollManagement {
         }
         return lsPayroll;
     }
-    
+     /**
+     Metodo para Mostrar Pagos
+     *
+     * @param id
+     */
     public void showBills(int id) {
         bill = new BillDao();
         List<Bill> lsBill = null;
@@ -278,7 +306,11 @@ public class PayrollManagement {
         System.out.println("====================================\n");
         System.out.println("Total = " + total);
     }
-    
+     /**
+     Metodo para consultar una planilla en especifico a traves de ID de planilla
+     *
+     * @param user
+     */
     public void checkPayroll(String user) {
         pay = new PayrollDao();
         py = new Payroll();
@@ -306,7 +338,11 @@ public class PayrollManagement {
         }
         
     }
-    
+     /**
+    Metodo para ingresar cargo 
+     *
+     * @param user
+     */
     public void updateBill(String user){
         System.out.println("Ingrese el numero de registro del cargo");
         val = new Validate();
