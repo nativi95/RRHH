@@ -83,8 +83,7 @@ public class EmployeeManagement extends AbstractManagement<Employee> {
         Employee e;
         try {
             e = eDao.find(id);
-            System.out.println("Objeto: " + e.toString());
-            return "--" + e.getEmpNo() + ", " + e.getFirstName() + ", " + e.getLastName() + ", nacimiento " + e.getBirthDate() + "Genero " + e.getGender() + ", contratación " + e.getHireDate() + ", Departamento " + e.getDeptNo().getDeptName() + ", Cargo " + e.getPositionNo().getPosition();
+            return "--[" + e.getEmpNo() + "] -- [Nombre: " + e.getFirstName() + " " + e.getLastName() + "] -- [Nacimiento: " + e.getBirthDate() + "] -- [Genero: " + e.getGender() + "] -- [Contratación: " + e.getHireDate() + "] -- [Departamento: " + e.getDeptNo().getDeptName() + "] -- [Cargo: " + e.getPositionNo().getPosition() +"]";
 
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(EmployeeManagement.class.getName()).log(Level.SEVERE, null, ex);

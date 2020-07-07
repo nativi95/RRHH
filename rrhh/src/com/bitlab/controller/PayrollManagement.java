@@ -390,12 +390,4 @@ public class PayrollManagement {
             Logger.getLogger(PayrollManagement.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    public static void main(String[] args) {
-        PayrollManagement p = new PayrollManagement();
-        PayrollDao pd= new PayrollDao();
-       
-            p.show(p.payrollCurrentMonth());
-       
-    }
 }
