@@ -100,9 +100,9 @@ public class PayrollManagement {
             logger.debug("--- Llamando metodo para guardar registros en Bill");
             wages(pay.getLastInsertIdPayroll(), user);
         } catch (SQLException ex) {
-            java.util.logging.Logger.getLogger(PayrollManagement.class.getName()).log(Level.SEVERE, null, ex);
+            logger.debug("--- Ha ocurrido una excepcion de SQL" + ex);
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PayrollManagement.class.getName()).log(Level.SEVERE, null, ex);
+            logger.debug("--- Ha ocurrido una excepcion de Clase" + ex);
         }
     }
 
