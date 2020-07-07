@@ -24,14 +24,14 @@ import org.slf4j.Logger;
  */
 public class UserManagement extends AbstractManagement<User> {
 
-    private static Logger logger = LoggerFactory.getLogger(UserDao.class);
+    private static Logger logger = LoggerFactory.getLogger(UserManagement.class);
 
     UserDao uDao = new UserDao();
 
     @Override
     public void captureData(User u, String user) {
         try {
-            logger.debug("Captura de datos a guardar");
+            logger.debug("--- Captura de datos a guardar");
             System.out.println("Escriba el usuario nuevo y despues presione [enter] o [Cancel] para cancelar ");
             u.setUser(getCapture(user));
             System.out.println("Escriba la contraseña y despues presione [enter] o [Cancel] para cancelar ");
@@ -39,40 +39,42 @@ public class UserManagement extends AbstractManagement<User> {
             System.out.println("Escriba el ID de rol 1 es administrador y 2. rrhh y despues presione [enter] o [Cancel] para cancelar ");
             Rol r = new Rol(validatedNumber(user));
             u.setRolNo(r);
+            logger.debug("--- Datos ingresados correctamente");
         } catch (SQLException ex) {
-            java.util.logging.Logger.getLogger(UserManagement.class.getName()).log(Level.SEVERE, null, ex);
+            logger.error("--- Ha ocurrido una excepcion SQL" + ex);
         }
     }
 
     @Override
     public void addRecord(String user) {
         System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
-        logger.debug("Creacion de Nuevo Rol de Usuario");
+        logger.debug("--- Creacion de Nuevo Rol de Usuario");
         User u = new User(0);
         u.setUserChange(user);
         u.setDateChange(new Date());
         u.setUserCreate(user);
         u.setDateCreate(new Date());
-        logger.debug("Se ejecuta el metodo captuteData");
+        logger.debug("--- Se ejecuta el metodo captuteData");
         captureData(u, user);
         try {
             uDao.create(u);
         } catch (SQLException ex) {
-            logger.error("Ha ocurrido una excepcion en la creacion", ex);
+            logger.error("--- Ha ocurrido una excepcion en la creacion", ex);
         } catch (ClassNotFoundException ex) {
-            logger.error("Ha ocurrido una excepcion en la creacion", ex);
+            logger.error("--- Ha ocurrido una excepcion en la creacion", ex);
         }
         System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
     }
 
     @Override
     protected String getFindToString(int id) {
-        logger.debug("Obtiene los datos segun id de registro");
+        logger.debug("--- Obtiene los datos segun id de registro");
         try {
             return "--" + find(id).getUserNo() + " " + find(id).getUser() + " [contraseña] " + find(id).getRolNo().getRolRol() + "--";
 
         } catch (Exception e) {
-            return "No se encontraron resultados";
+            logger.error("--- Ha ocurrido una excepcion " + e);
+            return "No se encontraron resultados";            
         }
     }
 
@@ -80,18 +82,21 @@ public class UserManagement extends AbstractManagement<User> {
     public void updateRecord(String user) {
         try {
             System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
-            logger.debug("Actualización de registro de usuario");
+            logger.debug("--- Actualización de registro de usuario");
+            logger.debug("--- Ingresando a proceso de lectura de datos");
             System.out.println("Ingrese el codigo de registro y posteriormente presione [enter] o [Cancel] para cancelar");
 
             User u = new User(validatedNumber(user));
+            logger.debug("--- Mostrando datos actuales del registro seleccionado");
             System.out.println("Estos son los registros actuales, actualice los registros que desee y escriba nuevamente los que no desea actualizar o [Cancel] para cancelar:");
             System.out.println(getFindToString(u.getUserNo()));
             u.setUserChange(user);
             u.setDateChange(new Date());
-            logger.debug("Ejectuta metodo captuteData");
+            logger.debug("--- Ejectuta metodo captuteData");
             captureData(u, user);
             try {
                 uDao.update(u);
+                logger.debug("--- Datos acutalizados correctaemte");
             } catch (SQLException | ClassNotFoundException ex) {
                 logger.error("Ha ocurrido una excepcion en la actualizacion", ex);
 
@@ -106,9 +111,10 @@ public class UserManagement extends AbstractManagement<User> {
     @Override
     public void remove(int id) {
         System.out.println("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
-        logger.debug("Eliminación de registro usuario");
+        logger.debug("--- Eliminación de registro usuario");
         try {
             uDao.remove(id);
+            logger.debug("--- Eliminacion realizada con exito");
         } catch (SQLException ex) {
             logger.error("Ha ocurrido una excepcion en la actualizacion", ex);
         } catch (ClassNotFoundException ex) {
