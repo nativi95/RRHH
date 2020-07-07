@@ -55,10 +55,10 @@ public class RolManagement extends AbstractManagement<Rol> {
     }
 
     @Override
-    protected String getFindToString(int id) {
+    protected String getFindToString(Rol id) {
         logger.debug("Obtiene los datos segun id de registro");
         try {
-            return "--" + find(id).getRolRolNo() + " " + find(id).getRolRol() + " [contraseña] " + "--";
+            return "--" + id.getRolRolNo() + " " + id.getRolRol() + " [contraseña] " + "--";
 
         } catch (Exception e) {
             return "No se encontraron resultados";
@@ -74,7 +74,7 @@ public class RolManagement extends AbstractManagement<Rol> {
 
             Rol u = new Rol(validatedNumber(user));
             System.out.println("Estos son los registros actuales, actualice los registros que desee y escriba nuevamente los que no desea actualizar o [Cancel] para cancelar:");
-            System.out.println(getFindToString(u.getRolRolNo()));
+            System.out.println(getFindToString(find(u.getRolRolNo())));
             u.setUserChange(user);
             u.setDateChange(new Date());
             logger.debug("Ejectuta metodo captureData");

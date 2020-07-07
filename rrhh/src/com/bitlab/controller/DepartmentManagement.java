@@ -61,10 +61,10 @@ public class DepartmentManagement extends AbstractManagement<Department>{
     }
 
     @Override
-    protected String getFindToString(int id) {
+    protected String getFindToString(Department id) {
         logger.debug("Obtiene los datos segun id de registro");
         try {
-            return "-- [No.Departamento] " + find(id).getDeptNo() + " -- [Nombre] " + find(id).getDeptName() + "--";
+            return "-- [No.Departamento] " + id.getDeptNo() + " -- [Nombre] " + id.getDeptName() + "--";
 
         } catch (Exception e) {
             return "No se encontraron resultados";
@@ -80,7 +80,7 @@ public class DepartmentManagement extends AbstractManagement<Department>{
         Department d = new Department(validatedNumber(user));
         
         System.out.println("Estos son los registros actuales, actualice los registros que desee y escriba nuevamente los que no desea actualizar o [Cancel] para cancelar:");
-        System.out.println(getFindToString(d.getDeptNo()));
+        System.out.println(getFindToString(find(d.getDeptNo())));
         d.setDeptName(user);
         d.setUserChange(user);
         d.setDateChange(new Date());

@@ -67,10 +67,10 @@ public class UserManagement extends AbstractManagement<User> {
     }
 
     @Override
-    protected String getFindToString(int id) {
+    protected String getFindToString(User id) {
         logger.debug("--- Obtiene los datos segun id de registro");
         try {
-            return "--" + find(id).getUserNo() + " " + find(id).getUser() + " [contraseña] " + find(id).getRolNo().getRolRol() + "--";
+            return "--" + id.getUserNo() + " " + id.getUser() + " [contraseña] " + id.getRolNo().getRolRol() + "--";
 
         } catch (Exception e) {
             logger.error("--- Ha ocurrido una excepcion " + e);
@@ -89,7 +89,7 @@ public class UserManagement extends AbstractManagement<User> {
             User u = new User(validatedNumber(user));
             logger.debug("--- Mostrando datos actuales del registro seleccionado");
             System.out.println("Estos son los registros actuales, actualice los registros que desee y escriba nuevamente los que no desea actualizar o [Cancel] para cancelar:");
-            System.out.println(getFindToString(u.getUserNo()));
+            System.out.println(getFindToString(find(u.getUserNo())));
             u.setUserChange(user);
             u.setDateChange(new Date());
             logger.debug("--- Ejectuta metodo captuteData");

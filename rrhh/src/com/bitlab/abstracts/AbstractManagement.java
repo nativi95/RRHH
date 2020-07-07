@@ -41,7 +41,7 @@ public abstract class AbstractManagement<T> {
      * @param id
      * @return 
      */
-    protected abstract String getFindToString(int id);//to string de find
+    protected abstract String getFindToString(T id);//to string de find
 
     /**
      * Metodo abstracto que realizara el Set a la entidad y posteriormente actualizara un registro 
@@ -132,7 +132,7 @@ public abstract class AbstractManagement<T> {
                 flag = true;
                 break;
                 case "d":
-                    findLike(user);
+                    showList(findLike(user));
                     flag = true;
                     break;
                 case "e":                    
@@ -154,7 +154,7 @@ public abstract class AbstractManagement<T> {
  */
     public void show(String user) throws SQLException, ClassNotFoundException {
 
-        showList();
+        showList(getFindAll());
         searchMenu(user);
 
     }
@@ -178,8 +178,8 @@ public abstract class AbstractManagement<T> {
  */
     public void show(int id, String user) throws SQLException, ClassNotFoundException {
 
-        if(!getFindToString(id).isEmpty()){
-            System.out.println(getFindToString(id));
+        if(!getFindToString(find(id)).isEmpty()){
+            System.out.println(getFindToString(find(id)));
         }else{
             System.out.println("No se encontró el registro");
         }
@@ -189,10 +189,10 @@ public abstract class AbstractManagement<T> {
 /**
  * Metodo que permite imprimir lista de la entidad <T>
  */
-    public void showList() {//se repite
+    public void showList(List<T> lsList) {//se repite
 
-        for (T object : getFindAll()) {
-            System.out.println(object.toString());
+        for (T object : lsList) {
+            System.out.println(getFindToString(object));
         }
     }
 /**
