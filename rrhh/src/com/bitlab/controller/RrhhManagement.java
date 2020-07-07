@@ -61,8 +61,8 @@ public class RrhhManagement {
      */
     public void show(int id, String user) throws SQLException, ClassNotFoundException {
 
-        if (!eMa.getFindToString(id).isEmpty()) {
-            System.out.println(eMa.getFindToString(id));
+        if (!eMa.getFindToString(eMa.find(id)).isEmpty()) {
+            System.out.println(eMa.getFindToString(eMa.find(id)));
         } else {
             System.out.println("No se encontró el registro");
         }
@@ -90,7 +90,7 @@ public class RrhhManagement {
      */
     public void show(String user) throws SQLException, ClassNotFoundException {
 
-        eMa.showList();
+        eMa.showList(eMa.getFindAll());
 
     }
 

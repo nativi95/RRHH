@@ -78,17 +78,13 @@ public class EmployeeManagement extends AbstractManagement<Employee> {
     }
 
     @Override
-    protected String getFindToString(int id) {
+    protected String getFindToString(Employee id) {
         eDao=new EmployeeDao();
         Employee e;
-        try {
-            e = eDao.find(id);
-            return "--[" + e.getEmpNo() + "] -- [Nombre: " + e.getFirstName() + " " + e.getLastName() + "] -- [Nacimiento: " + e.getBirthDate() + "] -- [Genero: " + e.getGender() + "] -- [Contratación: " + e.getHireDate() + "] -- [Departamento: " + e.getDeptNo().getDeptName() + "] -- [Cargo: " + e.getPositionNo().getPosition() +"]";
+       
+            
+            return "--[" + id.getEmpNo() + "] -- [Nombre: " + id.getFirstName() + " " + id.getLastName() + "] -- [Nacimiento: " + id.getBirthDate() + "] -- [Genero: " + id.getGender() + "] -- [Contratación: " + id.getHireDate() + "] -- [Departamento: " + id.getDeptNo().getDeptName() + "] -- [Cargo: " + id.getPositionNo().getPosition() +"]";
 
-        } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(EmployeeManagement.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
     }
 
     @Override
@@ -102,7 +98,7 @@ public class EmployeeManagement extends AbstractManagement<Employee> {
             if (e.getEmpNo() != 0) {
 
                 System.out.println("Estos son los registros actuales, escriba nuavemente los campos que no desea actualizar");
-                System.out.println(getFindToString(e.getEmpNo()));
+                System.out.println(getFindToString(find(e.getEmpNo())));
                 e.setHireDate(eDao.find(e.getEmpNo()).getHireDate());
 
                 e.setUserChange(user);
