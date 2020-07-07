@@ -183,7 +183,7 @@ public class UserManagement extends AbstractManagement<User> {
                 } else {
                     rh = new RrhhManagement();
                     System.out.println("-----Bienvenido " + user + " al menu de recursos humanos-----");
-                    rh.menuManagement(user);
+                    rh.rrhhManagement(user);
                 }
                 boolean flag2 = true;
                 while (flag2) {
