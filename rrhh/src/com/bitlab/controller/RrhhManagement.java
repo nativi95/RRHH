@@ -118,6 +118,7 @@ public class RrhhManagement {
     }
 
     public void rrhhManagement(String user) {
+        pMa = new PayrollManagement();
         boolean search = true;
         while (search) {
             logger.debug("Mostrando menu principal");
@@ -134,7 +135,7 @@ public class RrhhManagement {
                     case "a":
                         logger.debug("--- Ejecutando funcion para crear plaillas");
 //                        menuManagement(user);
-                        pMa = new PayrollManagement();
+                        
                         pMa.CreatePayroll(user);
                         search = true;
                         break;
