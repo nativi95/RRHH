@@ -136,11 +136,11 @@ public class RrhhManagement {
                         search = true;
                         break;
                     case "b":
-                        pMa.payrollCurrentMonth();
+                        pMa.show(pMa.payrollCurrentMonth());
                         search = true;
                         break;
                     case "c":
-                        pMa.payRollByDates(user);
+                        pMa.show(pMa.payRollByDates(user));
                         search = true;
                         break;
                     case "d":
